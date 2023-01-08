@@ -1,23 +1,28 @@
 <template>
-  <v-app>
-    <v-main>
-      <HelloWorld/>
-    </v-main>
+  <v-app id="inspire">
+    <v-app-bar class="px-3" color="white" flat density="compact">
+      <v-spacer></v-spacer>
+
+      <v-tabs centered color="grey-darken-2">
+        <v-tab v-for="link in links" :key="link">
+          {{ link }}
+        </v-tab>
+      </v-tabs>
+      <v-spacer></v-spacer>
+    </v-app-bar>
+
+    <router-view></router-view>
   </v-app>
 </template>
 
 <script>
-import HelloWorld from './components/HelloWorld.vue'
-
 export default {
-  name: 'App',
+  name: "App",
 
-  components: {
-    HelloWorld,
-  },
+  components: {},
 
   data: () => ({
-    //
+    links: ["Welcome", "Amenities", "Info", "Help", "News"],
   }),
-}
+};
 </script>
