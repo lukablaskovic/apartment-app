@@ -92,7 +92,7 @@
                 p_icon="mdi-alert-box-outline"
                 :p_iconColor="$vuetify.theme.current.colors.yellow"
                 :p_list="houseRules"
-                p_extendTitle="Additional rules">
+                p_extendTitle="More">
               </expandableCard>
             </v-col>
             <v-col sm="3" cols="12">
@@ -104,7 +104,8 @@
                 :p_list="wiFi"
                 :p_extendTitle="'Scan QR'"
                 :p_bonusDataIcon="wiFiBonusData.icon"
-                :p_bonusDataText="wiFiBonusData.text"></expandableCard>
+                :p_bonusDataText="wiFiBonusData.text"
+                :p_component="'c_e_wifi'"></expandableCard>
             </v-col>
             <v-col cols="3">
               <expandableCard
@@ -118,10 +119,15 @@
           </v-row>
         </v-container>
       </v-img>
-      <v-divider class="mt-16"></v-divider>
-      <div class="mt-4">
-        <div id="amenities" class="text-h4 text-center mb-12">Help</div>
-      </div>
+      <v-container class="mt-4 text-center">
+        <div>
+          <div id="help" class="text-h4 text-center mb-4">Help</div>
+          <div>
+            We wish you peaceful and healthy holiday in Pula Croatia, but
+            emergency situations may occur unexpectedly.
+          </div>
+        </div>
+      </v-container>
     </div>
   </div>
 </template>

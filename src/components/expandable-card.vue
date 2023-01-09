@@ -24,7 +24,7 @@
       </v-row>
     </v-card-text>
 
-    <div class="d-flex py-1">
+    <div class="d-flex">
       <v-list-item density="compact" :prepend-icon="p_bonusDataIcon">
         <v-list-item-subtitle>{{ p_bonusDataText }}</v-list-item-subtitle>
       </v-list-item>
@@ -34,15 +34,7 @@
       <div v-if="expand">
         <div class="py-2"></div>
 
-        <v-list class="bg-transparent">
-          <v-list-item
-            v-for="item in forecast"
-            :key="item.day"
-            :title="item.day"
-            :append-icon="item.icon"
-            :subtitle="item.temp">
-          </v-list-item>
-        </v-list>
+        <component :is="p_component"></component>
       </div>
     </v-expand-transition>
 
@@ -56,7 +48,11 @@
   </v-card>
 </template>
 <script>
+import c_e_wifi from "@/components/expandable/wi-fi.vue";
 export default {
+  components: {
+    c_e_wifi,
+  },
   props: [
     "p_title",
     "p_description",
@@ -66,24 +62,10 @@ export default {
     "p_extendTitle",
     "p_bonusDataIcon",
     "p_bonusDataText",
+    "p_component",
   ],
   data: () => ({
-    labels: { 0: "SU", 1: "MO", 2: "TU", 3: "WED", 4: "TH", 5: "FR", 6: "SA" },
     expand: false,
-    time: 0,
-    forecast: [
-      {
-        day: "Tuesday",
-        icon: "mdi-white-balance-sunny",
-        temp: "24\xB0/12\xB0",
-      },
-      {
-        day: "Wednesday",
-        icon: "mdi-white-balance-sunny",
-        temp: "22\xB0/14\xB0",
-      },
-      { day: "Thursday", icon: "mdi-cloud", temp: "25\xB0/15\xB0" },
-    ],
   }),
 };
 </script>

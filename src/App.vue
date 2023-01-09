@@ -31,7 +31,10 @@
           <a href="https://airbnb.com/h/pula-apartment-luka"
             ><i class="fa-brands fa-airbnb fa-2x mx-4"></i
           ></a>
-          <i class="fa-solid fa-b fa-2x mx-4"></i>
+          <a
+            href="https://www.booking.com/hotel/hr/modern-and-airy-apartment-in-a-quiet-part-of-pula.en-gb.html"
+            ><i class="fa-solid fa-b fa-2x mx-4"></i
+          ></a>
         </v-col>
       </v-row>
     </v-footer>
@@ -62,3 +65,20 @@ export default {
   },
 };
 </script>
+<style scoped>
+a {
+  color: inherit;
+}
+.fa-envelope:hover {
+  color: #f7c844;
+}
+.fa-whatsapp:hover {
+  color: #2ed74a; /* red */
+}
+.fa-airbnb:hover {
+  color: #fc325e;
+}
+.fa-b:hover {
+  color: #05377e;
+}
+</style>
