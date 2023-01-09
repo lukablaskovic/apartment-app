@@ -24,13 +24,9 @@
       </v-row>
     </v-card-text>
 
-    <div class="d-flex py-3 justify-space-between">
-      <v-list-item density="compact" prepend-icon="mdi-weather-windy">
-        <v-list-item-subtitle>123 km/h</v-list-item-subtitle>
-      </v-list-item>
-
-      <v-list-item density="compact" prepend-icon="mdi-weather-pouring">
-        <v-list-item-subtitle>48%</v-list-item-subtitle>
+    <div class="d-flex py-1">
+      <v-list-item density="compact" :prepend-icon="p_bonusDataIcon">
+        <v-list-item-subtitle>{{ p_bonusDataText }}</v-list-item-subtitle>
       </v-list-item>
     </div>
 
@@ -68,6 +64,8 @@ export default {
     "p_iconColor",
     "p_list",
     "p_extendTitle",
+    "p_bonusDataIcon",
+    "p_bonusDataText",
   ],
   data: () => ({
     labels: { 0: "SU", 1: "MO", 2: "TU", 3: "WED", 4: "TH", 5: "FR", 6: "SA" },

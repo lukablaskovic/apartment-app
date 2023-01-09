@@ -78,36 +78,50 @@
       </v-container>
 
       <v-img
+        v-if="!$vuetify.display.mobile"
         aspect-ratio="3"
         :src="librarySRC"
         cover
         gradient="to top right, rgba(0, 0, 0, 0.8), rgba(27, 27, 27, 0.8)">
         <v-container fill-height class="overlay-content">
           <v-row align="center" justify="center">
-            <v-col cols="3">
+            <v-col sm="3" cols="12">
               <expandableCard
                 :p_title="'Rules'"
                 p_description="General house rules "
                 p_icon="mdi-alert-box-outline"
                 :p_iconColor="$vuetify.theme.current.colors.yellow"
-                :p_list="houseRules">
+                :p_list="houseRules"
+                p_extendTitle="Additional rules">
               </expandableCard>
             </v-col>
-            <v-col cols="3">
+            <v-col sm="3" cols="12">
               <expandableCard
-                p_title="Wi-fi"
+                p_title="Wi-Fi"
                 p_description="Wi-fi details"
                 p_icon="mdi-wifi"
                 p_iconColor="green darken-1"
                 :p_list="wiFi"
-                :p_extendTitle="'Scan QR'"></expandableCard>
+                :p_extendTitle="'Scan QR'"
+                :p_bonusDataIcon="wiFiBonusData.icon"
+                :p_bonusDataText="wiFiBonusData.text"></expandableCard>
             </v-col>
             <v-col cols="3">
-              <expandableCard :p_title="'House appliances'"></expandableCard>
+              <expandableCard
+                :p_title="'House appliances'"
+                p_description="Information regarding house appliances"
+                p_icon="mdi-dishwasher"
+                p_iconColor="blue lighten-5"
+                :p_list="appliances"
+                p_extendTitle="More"></expandableCard>
             </v-col>
           </v-row>
         </v-container>
       </v-img>
+      <v-divider class="mt-16"></v-divider>
+      <div class="mt-4">
+        <div id="amenities" class="text-h4 text-center mb-12">Help</div>
+      </div>
     </div>
   </div>
 </template>
@@ -148,6 +162,29 @@ export default {
       wiFi: [
         { title: "SSID", subtitle: "LUKA" },
         { title: "Password", subtitle: "lukadavorada64" },
+      ],
+      wiFiBonusData: { text: "50/10 Mbps", icon: "mdi-speedometer" },
+      appliances: [
+        {
+          title: "Air conditioner",
+          subtitle: "2 in apartment",
+        },
+        {
+          title: "Cooking board",
+          subtitle: "Instruction Manual",
+        },
+        {
+          title: "Smart TV",
+          subtitle: "Instruction Manual",
+        },
+        {
+          title: "Dishwasher",
+          subtitle: "Built-in dishwasher",
+        },
+        {
+          title: "Washing machine",
+          subtitle: "Washing machine in bathroom",
+        },
       ],
     };
   },

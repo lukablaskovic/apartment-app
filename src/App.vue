@@ -16,11 +16,22 @@
     <v-main>
       <router-view></router-view>
     </v-main>
-    <v-footer color="#100c14"
-      ><v-row justify="center">
-        <v-col cols="auto" class="red--text">
+    <v-footer color="#212121" style="color: aliceblue">
+      <v-row justify="center" class="text-center">
+        <v-col cols="12">
           <p>Apartment Luka</p>
-          <p>Season 2023</p>
+          <p>Season {{ new Date().getFullYear() }}</p>
+        </v-col>
+        <v-divider class=""></v-divider>
+        <v-col class="text-center" cols="12">
+          <i class="fa-solid fa-envelope fa-2x mx-4"></i>
+          <a href="https://wa.me/385917217631"
+            ><i class="fa-brands fa-whatsapp fa-2x mx-4"></i
+          ></a>
+          <a href="https://airbnb.com/h/pula-apartment-luka"
+            ><i class="fa-brands fa-airbnb fa-2x mx-4"></i
+          ></a>
+          <i class="fa-solid fa-b fa-2x mx-4"></i>
         </v-col>
       </v-row>
     </v-footer>
