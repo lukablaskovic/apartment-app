@@ -122,11 +122,8 @@
       <v-container class="mt-4 text-center">
         <div>
           <div id="help" class="text-h4 text-center mb-4">Help</div>
-          <div>
-            We wish you peaceful and healthy holiday in Pula Croatia, but
-            emergency situations may occur unexpectedly.
-          </div>
         </div>
+        <infoTabs></infoTabs>
       </v-container>
     </div>
   </div>
@@ -134,11 +131,13 @@
 
 <script>
 import expandableCard from "@/components/expandable-card.vue";
+import infoTabs from "@/components/info-tabs.vue";
 import mainImage from "@/assets/main.jpg";
 import libraryImage from "@/assets/library.jpg";
 export default {
   components: {
     expandableCard,
+    infoTabs,
   },
   data() {
     return {
