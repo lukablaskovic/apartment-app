@@ -78,12 +78,6 @@
       <v-divider class="mt-8"></v-divider>
       <v-container class="mt-8 text-center">
         <div id="info" class="text-h4 mb-6">Info</div>
-
-        <!--
-        <a href="https://www.speedtest.net/result/14061017471"
-          ><img src="https://www.speedtest.net/result/14061017471.png"
-        /></a>
-        -->
       </v-container>
 
       <v-img
@@ -169,13 +163,13 @@
 
       <v-container class="mt-4 text-center">
         <div>
-          <div id="help" class="text-h4 text-center mb-4">Gallery</div>
+          <div id="gallery" class="text-h4 text-center mb-4">Gallery</div>
         </div>
         <gallery></gallery>
       </v-container>
       <v-container class="mt-4 text-center">
         <div>
-          <div id="help" class="text-h4 text-center mb-4">Reviews</div>
+          <div id="reviews" class="text-h4 text-center mb-4">Reviews</div>
           <p>
             We have been renting our home apartment for almost 8 years now and
             received great review from our friends all over Europe.

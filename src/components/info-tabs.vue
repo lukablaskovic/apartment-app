@@ -78,7 +78,7 @@
         <v-window-item value="three">
           <div>
             Local restaurants, shops and services - everything is a few steps
-            away from the apartment.
+            away from the apartment 🏠.
           </div>
           <v-container>
             <v-row no-gutters>
@@ -98,10 +98,74 @@
             </v-row>
           </v-container>
         </v-window-item>
-        <v-window-item value="four"> Four </v-window-item>
+        <v-window-item value="four">
+          <v-container>
+            <v-row>
+              <v-col>
+                <v-card class="" max-width="200">
+                  <v-img :src="plavaKantaSRC"> </v-img>
+                </v-card>
+              </v-col>
+              <v-col>
+                Allowed ✅
+                <p>- plain paper and newspaper</p>
+                <p>- paper and cardboard packaging</p>
+                <p>- paper towel and napkins</p>
+              </v-col>
+              <v-col>
+                Not allowed ⛔
+                <p>- tetrapack packaging (milk, juice etc)</p>
+                <p>- plasticized or metallized paper</p>
+                <p>- photographs</p>
+              </v-col>
+            </v-row>
+          </v-container>
+          <v-container>
+            <v-row>
+              <v-col>
+                <v-card class="" max-width="200">
+                  <v-img :src="zutaKantaSRC"> </v-img>
+                </v-card>
+              </v-col>
+              <v-col>
+                Allowed ✅
+                <p>- packaging detergent or shampoo</p>
+                <p>- plastic food packaging products</p>
+                <p>- cans, cans, metal lids</p>
+              </v-col>
+              <v-col>
+                Not allowed ⛔
+                <p>- spray packaging</p>
+                <p>- plastic toys</p>
+                <p>- strong chemicals and paint</p>
+              </v-col>
+            </v-row>
+          </v-container>
+          <v-container>
+            <v-row>
+              <v-col>
+                <v-card class="" max-width="200">
+                  <v-img :src="zelenaKantaSRC"> </v-img>
+                </v-card>
+              </v-col>
+
+              <v-col>
+                Allowed ✅
+                <p>- cigarettes and tobacco products</p>
+                <p>- diapers</p>
+                <p>- deodorant spray, hair spray, makeup</p>
+              </v-col>
+              <v-col>
+                Not allowed ⛔
+                <p>- glass bottles (put them in separate nylon bags)</p>
+                <p>- food and green waste (put it in separate nylon bags)</p>
+              </v-col>
+            </v-row>
+          </v-container>
+        </v-window-item>
         <v-window-item value="five">
           <v-expansion-panels
-            class="px-12"
+            :class="$vuetify.display.mobile ? 'px-2' : 'px-12'"
             align="start"
             v-for="f in faq"
             :key="f.id">
@@ -132,6 +196,10 @@ import "animate.css";
 
 import faq from "@/faq.js";
 
+import w_plava from "@/assets/kante/plava.jpg";
+import w_zelena from "@/assets/kante/zelena.jpg";
+import w_zuta from "@/assets/kante/zuta.jpg";
+
 export default {
   components: {
     service,
@@ -142,6 +210,9 @@ export default {
     tataSRC: tataImage,
     tab: null,
     justify: ["start", "center", "end", "space-around", "space-between"],
+    plavaKantaSRC: w_plava,
+    zelenaKantaSRC: w_zelena,
+    zutaKantaSRC: w_zuta,
     emergencyNumbers: [
       {
         name: "General emergency",
