@@ -176,6 +176,15 @@
       <v-container class="mt-4 text-center">
         <div>
           <div id="help" class="text-h4 text-center mb-4">Reviews</div>
+          <p>
+            We have been renting our home apartment for almost 8 years now and
+            received great review from our friends all over Europe.
+          </p>
+          <p>We want to thank you for that! 😊</p>
+          <p>
+            Hope you enjoy your stay here too! Feel free to contact us if you
+            need something, anytime!
+          </p>
           <v-img
             src="https://www.reevoo.com/wp-content/uploads/2016/05/Reevoo_Logo.png"
             :aspect-ratio="$vuetify.display.mobile ? 12 : 18"

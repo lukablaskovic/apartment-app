@@ -6,7 +6,7 @@
       :color="$vuetify.theme.current.colors.yellow">
       <v-tab value="one">Emergency numbers</v-tab>
       <v-tab value="two">Your hosts</v-tab>
-      <v-tab value="three">Apartment</v-tab>
+      <v-tab value="three">Local services</v-tab>
       <v-tab value="four">Waste disposal</v-tab>
       <v-tab value="five">FAQ</v-tab>
     </v-tabs>
@@ -50,6 +50,7 @@
                   <v-card-title> Luka </v-card-title>
 
                   <v-card-subtitle> +385 91 721 7631 </v-card-subtitle>
+                  <v-card-subtitle> Telegram: lukablaskovic </v-card-subtitle>
                   <v-card-subtitle>
                     <i class="fa-brands fa-whatsapp fa-2x mx-2"></i>
                     <i class="fa-brands fa-viber fa-2x mx-2"></i>
@@ -74,9 +75,40 @@
           </v-container>
         </v-window-item>
 
-        <v-window-item value="three"> Three </v-window-item>
+        <v-window-item value="three">
+          <div>
+            Local restaurants, shops and services - everything is a few steps
+            away from the apartment.
+          </div>
+          <v-container>
+            <v-row no-gutters>
+              <v-col
+                sm="2"
+                cols="12"
+                class="mb-4"
+                v-for="s in services"
+                :key="s">
+                <service
+                  :imageSrc="s.imageSRC"
+                  :title="s.title"
+                  :subtitle="s.subtitle"
+                  :rawHTML="s.rawHTML">
+                </service>
+              </v-col>
+            </v-row>
+          </v-container>
+        </v-window-item>
         <v-window-item value="four"> Four </v-window-item>
-        <v-window-item value="five"> Five </v-window-item>
+        <v-window-item value="five">
+          <v-expansion-panels
+            class="px-12"
+            align="start"
+            v-for="f in faq"
+            :key="f.id">
+            <v-expansion-panel :title="f.question" :text="f.answer">
+            </v-expansion-panel>
+          </v-expansion-panels>
+        </v-window-item>
       </v-window>
     </v-card-text>
   </v-card>
@@ -85,10 +117,27 @@
 <script>
 import lukaImage from "@/assets/me.jpg";
 import tataImage from "@/assets/tata.jpg";
+
+//Services
+import service from "@/components/expandable/local-service.vue";
+
+import s_tivoli from "@/assets/services/tivoli.jpg";
+import s_ultra from "@/assets/services/ultra.jpg";
+import s_ljekarna from "@/assets/services/ljekarna.jpg";
+import s_mons from "@/assets/services/mons.jpg";
+import s_posta from "@/assets/services/posta.jpg";
+import s_shell from "@/assets/services/shell.jpg";
+
 import "animate.css";
 
+import faq from "@/faq.js";
+
 export default {
+  components: {
+    service,
+  },
   data: () => ({
+    faq,
     lukaSRC: lukaImage,
     tataSRC: tataImage,
     tab: null,
@@ -125,6 +174,50 @@ export default {
       {
         name: "Tourist health care Pula",
         value: "+385 95 3256 003",
+      },
+    ],
+    services: [
+      {
+        imageSRC: s_tivoli,
+        title: "Pizzeria - Tivoli",
+        subtitle: "Veli vrh 8, 52100 Pula",
+        rawHTML:
+          "<p>Food is our passion. We strive to offer a unique journey for all your senses. We use only the best ingredients to prepare pizza, pasta, salads and desserts.</p><p><b>Address:</b> Veli vrh 8, 52100, Pula</p><p><b>Phone:</b> 052 508 000 (Delivery available)</p><p><b>Distance:</b> 5 min walk the from apartment</p>",
+      },
+      {
+        imageSRC: s_ultra,
+        title: "Grocery store - Ultra",
+        subtitle: "Braće Leonardelli 1, 52100, Pula",
+        rawHTML:
+          "<p>Open everyday from 7AM–9PM</p><p><b>Address:</b> Braće Leonardelli 1, 52100, Pula</p><p><b>Phone:</b> 052 753 819</p><p><b>Distance:</b> 5 min walk from the apartment</p>",
+      },
+      {
+        imageSRC: s_ljekarna,
+        title: "Pharmacy - Veli Vrh",
+        subtitle: "Braće Leonardelli 1, 52100, Pula",
+        rawHTML:
+          "<p>7AM–8PM Monday-Friday, 8AM-1PM Saturday, Sunday closed</p><p><b>Address:</b> Braće Leonardelli 1, 52100, Pula</p><p><b>Phone:</b> 052 223 657</p><p><b>Distance:</b> 5 min walk from the apartment</p>",
+      },
+      {
+        imageSRC: s_mons,
+        title: "Barbecue Mons",
+        subtitle: "Braće Leonardelli 1, 52100, Pula",
+        rawHTML:
+          "<p>Open everyday from 7AM–9PM</p><p><b>Address:</b> Braće Leonardelli 1, 52100, Pula</p><p><b>Phone:</b> 052 753 819</p><p><b>Distance:</b> 5 min walk from the apartment</p>",
+      },
+      {
+        imageSRC: s_posta,
+        title: "Post office - Veli vrh",
+        subtitle: "Creska ul. 5, 52100, Pula",
+        rawHTML:
+          "<p>8–11AM, 11:30AM–3:30PM Monday-Saturday, Sunday closed</p><p><b>Address:</b> Creska ul. 5, 52100, Pula</p><p><b>Phone:</b> 052 553 679</p><p><b>Distance:</b> 1 min walk from the apartment</p>",
+      },
+      {
+        imageSRC: s_shell,
+        title: "Petrol station Shell",
+        subtitle: "Tršćanska ul. 44, 52100, Pula",
+        rawHTML:
+          "<p>6AM–12AM everyday</p><p><b>Address:</b> Tršćanska ul. 44, 52100, Pula</p><p><b>Phone:</b> 099 529 4436</p><p><b>Distance:</b> 5 min from the apartment by car</p>",
       },
     ],
   }),
