@@ -48,7 +48,7 @@ export default {
   components: {},
 
   data: () => ({
-    links: ["Welcome", "Amenities", "Info", "Help", "News"],
+    links: ["Welcome", "Amenities", "Info", "Gallery", "Reviews"],
   }),
   methods: {
     //Link scroll

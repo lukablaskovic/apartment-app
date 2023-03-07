@@ -1,6 +1,9 @@
 <template>
   <v-card>
-    <v-tabs v-model="tab">
+    <v-tabs
+      align-tabs="center"
+      v-model="tab"
+      :color="$vuetify.theme.current.colors.yellow">
       <v-tab value="one">Emergency numbers</v-tab>
       <v-tab value="two">Your hosts</v-tab>
       <v-tab value="three">Apartment</v-tab>
@@ -16,10 +19,10 @@
             emergency situations may occur unexpectedly.
           </div>
           <p>Here's a list of emergency numbers in Croatia 🚨</p>
-          <v-table class="text-center px-12" density="compact">
+          <v-table class="text-center px-6" density="compact">
             <thead>
               <tr>
-                <th class="text-left text-center">Name</th>
+                <th class="text-left text-center">Emergency</th>
                 <th class="text-left text-center">Number</th>
               </tr>
             </thead>
@@ -39,23 +42,34 @@
           <v-container fill-height>
             <v-row align="center" justify="center">
               <v-col sm="3" cols="12">
-                <v-card class="mx-auto" max-width="344">
+                <v-card
+                  class="mx-auto animate__animated animate__backInDown"
+                  max-width="344">
                   <v-img :src="lukaSRC" height="400px" cover></v-img>
 
                   <v-card-title> Luka </v-card-title>
 
                   <v-card-subtitle> +385 91 721 7631 </v-card-subtitle>
-                </v-card></v-col
-              >
+                  <v-card-subtitle>
+                    <i class="fa-brands fa-whatsapp fa-2x mx-2"></i>
+                    <i class="fa-brands fa-viber fa-2x mx-2"></i>
+                    <i class="fa-brands fa-telegram fa-2x mx-2"></i>
+                  </v-card-subtitle> </v-card
+              ></v-col>
               <v-col sm="3" cols="12">
-                <v-card class="mx-auto" max-width="344">
+                <v-card
+                  class="mx-auto animate__animated animate__backInDown"
+                  max-width="344">
                   <v-img :src="tataSRC" height="400px" cover></v-img>
 
                   <v-card-title> Davor </v-card-title>
 
                   <v-card-subtitle> +385 92 181 4318 </v-card-subtitle>
-                </v-card></v-col
-              >
+                  <v-card-subtitle>
+                    <i class="fa-brands fa-whatsapp fa-2x mx-2"></i>
+                    <i class="fa-brands fa-viber fa-2x mx-2"></i>
+                  </v-card-subtitle> </v-card
+              ></v-col>
             </v-row>
           </v-container>
         </v-window-item>
@@ -71,6 +85,7 @@
 <script>
 import lukaImage from "@/assets/me.jpg";
 import tataImage from "@/assets/tata.jpg";
+import "animate.css";
 
 export default {
   data: () => ({
@@ -107,7 +122,12 @@ export default {
         name: "Missing children",
         value: "116 000",
       },
+      {
+        name: "Tourist health care Pula",
+        value: "+385 95 3256 003",
+      },
     ],
   }),
 };
 </script>
+<style></style>

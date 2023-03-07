@@ -35,12 +35,21 @@
         This comfortable vacation apartment is located on the ground floor of a
         family house, located in a quiet part of the
         <a class="underline" href="https://www.pulainfo.hr/" target="_blank"
-          >city of Pula</a
-        >.
+          >city of Pula </a
+        >🌆.
       </div>
       <div>
-        You can have meals on the terrace, relax in the garden or rest on the
-        patio.
+        There is also an outdoor terrace at your disposal where you can relax
+        with your favourite book 📖.
+      </div>
+      <p>
+        The apartment is modernly decorated. It consists of 2 bedrooms with 2
+        large beds, a spacious living/dining room, a kitchen, a bathroom and a
+        veranda - ideal for morning coffee ☕.
+      </p>
+      <div>
+        The apartment is equipped with all the necessary household appliances
+        and high-speed internet 🌐.
       </div>
     </v-container>
     <v-divider class="mt-16"></v-divider>
@@ -119,11 +128,85 @@
           </v-row>
         </v-container>
       </v-img>
+      <v-container v-else fill-height>
+        <v-row align="center" justify="center">
+          <v-col sm="3" cols="12">
+            <expandableCard
+              :p_title="'Rules'"
+              p_description="General house rules "
+              p_icon="mdi-alert-box-outline"
+              :p_iconColor="$vuetify.theme.current.colors.yellow"
+              :p_list="houseRules"
+              p_extendTitle="More">
+            </expandableCard>
+          </v-col>
+          <v-col sm="3" cols="12">
+            <expandableCard
+              p_title="Wi-Fi"
+              p_description="Wi-fi details"
+              p_icon="mdi-wifi"
+              p_iconColor="green darken-1"
+              :p_list="wiFi"
+              :p_extendTitle="'Scan QR'"
+              :p_bonusDataIcon="wiFiBonusData.icon"
+              :p_bonusDataText="wiFiBonusData.text"
+              :p_component="'c_e_wifi'"></expandableCard>
+          </v-col>
+          <v-col sm="3" cols="12">
+            <expandableCard
+              :p_title="'House appliances'"
+              p_description="Information regarding house appliances"
+              p_icon="mdi-dishwasher"
+              p_iconColor="blue lighten-5"
+              :p_list="appliances"
+              p_extendTitle="More"></expandableCard>
+          </v-col>
+        </v-row>
+      </v-container>
+      <v-container>
+        <infoTabs></infoTabs>
+      </v-container>
+
       <v-container class="mt-4 text-center">
         <div>
-          <div id="help" class="text-h4 text-center mb-4">Help</div>
+          <div id="help" class="text-h4 text-center mb-4">Gallery</div>
         </div>
-        <infoTabs></infoTabs>
+        <gallery></gallery>
+      </v-container>
+      <v-container class="mt-4 text-center">
+        <div>
+          <div id="help" class="text-h4 text-center mb-4">Reviews</div>
+          <v-img
+            src="https://www.reevoo.com/wp-content/uploads/2016/05/Reevoo_Logo.png"
+            :aspect-ratio="$vuetify.display.mobile ? 12 : 18"
+            alt="reevo reviews apartment luka" />
+          <div class="text-center">
+            <v-rating
+              v-model="rating"
+              bg-color="amber-lighten-3"
+              readonly
+              half-increments
+              length="10"
+              color="amber-darken-1"></v-rating>
+            <pre>{{ rating }}</pre>
+            <v-container>
+              <v-row>
+                <v-col v-for="r in reviews" :key="r.name" sm="3" cols="12">
+                  <v-card class="mx-auto" max-width="344">
+                    <v-card-item>
+                      <div>
+                        <div class="text-h6 mb-1">{{ r.name }}</div>
+                        <div class="text-caption">
+                          {{ r.text }}
+                        </div>
+                      </div>
+                    </v-card-item>
+                  </v-card>
+                </v-col>
+              </v-row>
+            </v-container>
+          </div>
+        </div>
       </v-container>
     </div>
   </div>
@@ -132,15 +215,18 @@
 <script>
 import expandableCard from "@/components/expandable-card.vue";
 import infoTabs from "@/components/info-tabs.vue";
+import gallery from "@/components/gallery.vue";
 import mainImage from "@/assets/main.jpg";
 import libraryImage from "@/assets/library.jpg";
 export default {
   components: {
     expandableCard,
     infoTabs,
+    gallery,
   },
   data() {
     return {
+      rating: 9.7,
       mainImageSRC: mainImage,
       librarySRC: libraryImage,
       amenities: [
@@ -150,17 +236,19 @@ export default {
         { name: "4k Smart TV", icon: "mdi-television" },
         { name: "Dishwasher", icon: "mdi-dishwasher" },
         { name: "Washing machine", icon: "mdi-washing-machine" },
+        { name: "Child friendly", icon: "mdi-human-male-boy" },
+        { name: "Terrace Patio", icon: "mdi-table-furniture" },
       ],
       justify: ["start", "center", "end", "space-around", "space-between"],
       houseRules: [
-        { title: "No smoking", subtitle: "Feel free to smoke outside" },
-        { title: "No parties", subtitle: "No parties in apartment allowed" },
+        { title: "No smoking 🚭", subtitle: "Feel free to smoke outside" },
+        { title: "No parties 🚫", subtitle: "No parties in apartment allowed" },
         {
-          title: "No treespasing",
+          title: "No treespasing ⛔",
           subtitle: "Please don't enter lower garden",
         },
         {
-          title: "Quiet hours",
+          title: "Quiet hours 🔇",
           subtitle: "From 10pm to 8am",
         },
       ],
@@ -184,11 +272,29 @@ export default {
         },
         {
           title: "Dishwasher",
-          subtitle: "Built-in dishwasher",
+          subtitle: "Built-in kitchen dishwasher",
         },
         {
           title: "Washing machine",
-          subtitle: "Washing machine in bathroom",
+          subtitle: "Located in the bathroom",
+        },
+      ],
+      reviews: [
+        {
+          name: "Jeanette",
+          text: "Wunderschöne Wohnung in Pula mit allem Komfort. Es ist tatsächlich alles vorhanden, sogar Gefrierbeutel. Ein bisschen störend ist der Fluglärm wenn man im Garten liegt. Die spielenden Kinder der nahen Schule haben uns nicht gestört. Vermieter ist der Hammer! Wenn wir Pula wieder besuchen kommen wir sicher wieder hierher.",
+        },
+        {
+          name: "Nadine",
+          text: "Wir haben uns in der Ferienwohnung sehr wohl gefühlt. Die zwei Wochen Urlaub waren viel zu schnell vorbei.",
+        },
+        {
+          name: "Fam V R",
+          text: "Een heel fijn huis met hele vriendelijke eigenaar. Alles erop en eraan, het enige wat ik miste in de keuken was een schaar en een litermaat. Fijne tuin waarin je tot laat heerlijk buiten kan zitten.",
+        },
+        {
+          name: "Thomas",
+          text: "Wunderschöne Wohnung mit tollem Garten. Wir haben uns dort sehr wohl gefühlt.",
         },
       ],
     };
