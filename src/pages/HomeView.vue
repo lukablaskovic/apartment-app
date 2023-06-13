@@ -70,7 +70,7 @@
             :key="item.name">
             <v-icon v-bind="props" :icon="item.icon" size="64"></v-icon>
 
-            <p class="float">{{ item.name }}</p>
+            <p class="">{{ item.name }}</p>
           </v-col>
         </v-row>
       </v-container>
@@ -233,7 +233,7 @@ export default {
       mainImageSRC: mainImage,
       librarySRC: libraryImage,
       amenities: [
-        { name: "Fast Wi-fi", icon: "mdi-wifi" },
+        { name: "Fast Wi-Fi", icon: "mdi-wifi" },
         { name: "Free Parking", icon: "mdi-parking" },
         { name: "2 Air Conditioners", icon: "mdi-air-conditioner" },
         { name: "4k Smart TV", icon: "mdi-television" },
@@ -247,6 +247,10 @@ export default {
         { title: "No smoking 🚭", subtitle: "Feel free to smoke outside" },
         { title: "No parties 🚫", subtitle: "No parties in apartment allowed" },
         {
+          title: "No diapers in toilet 🚫",
+          subtitle: "As well as wet wipes!",
+        },
+        {
           title: "No treespasing ⛔",
           subtitle: "Please don't enter lower garden",
         },
@@ -257,21 +261,21 @@ export default {
       ],
       wiFi: [
         { title: "SSID", subtitle: "LUKA" },
-        { title: "Password", subtitle: "lukadavorada64" },
+        { title: "Password", subtitle: "1r1M8X@$Ny%3x@WT" },
       ],
       wiFiBonusData: { text: "50/10 Mbps", icon: "mdi-speedometer" },
       appliances: [
         {
           title: "Air conditioner",
-          subtitle: "2 in apartment",
+          subtitle: "2 in the apartment",
         },
         {
           title: "Cooking board",
-          subtitle: "Instruction Manual",
+          subtitle: "4 electric panels",
         },
         {
           title: "Smart TV",
-          subtitle: "Instruction Manual",
+          subtitle: "Local TV (HDMI2) + Youtube",
         },
         {
           title: "Dishwasher",
@@ -280,6 +284,10 @@ export default {
         {
           title: "Washing machine",
           subtitle: "Located in the bathroom",
+        },
+        {
+          title: "Extras",
+          subtitle: "Hairdryer, iron, shampoo, towels",
         },
       ],
       reviews: [
