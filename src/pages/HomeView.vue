@@ -179,10 +179,13 @@
             Hope you enjoy your stay here too! Feel free to contact us if you
             need something, anytime!
           </p>
-          <v-img
-            src="https://www.reevoo.com/wp-content/uploads/2016/05/Reevoo_Logo.png"
-            :aspect-ratio="$vuetify.display.mobile ? 12 : 18"
-            alt="reevo reviews apartment luka" />
+          <a
+            href="https://www.novasol.com/holidayhome/croatia/istria/pula/holiday-rental-pula-cir231">
+            <v-img
+              src="https://assets.stickpng.com/images/6030edf6a5a87000040e2b9a.png"
+              :aspect-ratio="$vuetify.display.mobile ? 12 : 18"
+              alt="reevo reviews apartment luka"
+          /></a>
           <div class="text-center">
             <v-rating
               v-model="rating"
@@ -293,19 +296,19 @@ export default {
       reviews: [
         {
           name: "Jeanette",
-          text: "Wunderschöne Wohnung in Pula mit allem Komfort. Es ist tatsächlich alles vorhanden, sogar Gefrierbeutel. Ein bisschen störend ist der Fluglärm wenn man im Garten liegt. Die spielenden Kinder der nahen Schule haben uns nicht gestört. Vermieter ist der Hammer! Wenn wir Pula wieder besuchen kommen wir sicher wieder hierher.",
+          text: "Beautiful apartment in Pula with every comfort. Everything is actually there, even freezer bags. The aircraft noise is a bit disturbing when lying in the garden. The playing children of the nearby school didn't bother us. Landlord is awesome! If we visit Pula again we will definitely come back here.",
         },
         {
           name: "Nadine",
-          text: "Wir haben uns in der Ferienwohnung sehr wohl gefühlt. Die zwei Wochen Urlaub waren viel zu schnell vorbei.",
+          text: "We felt very comfortable in the apartment. The two weeks of vacation were over far too quickly.",
         },
         {
           name: "Fam V R",
-          text: "Een heel fijn huis met hele vriendelijke eigenaar. Alles erop en eraan, het enige wat ik miste in de keuken was een schaar en een litermaat. Fijne tuin waarin je tot laat heerlijk buiten kan zitten.",
+          text: "A very nice house with a very friendly owner. All the trimmings, the only thing I missed in the kitchen was scissors and a liter. Nice garden where you can sit outside until late.",
         },
         {
           name: "Thomas",
-          text: "Wunderschöne Wohnung mit tollem Garten. Wir haben uns dort sehr wohl gefühlt.",
+          text: "Beautiful apartment with a great garden. We felt very comfortable there.",
         },
       ],
     };

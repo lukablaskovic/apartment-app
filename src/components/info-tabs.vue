@@ -108,6 +108,10 @@
               </v-col>
               <v-col>
                 Allowed ✅
+                <v-img
+                  :aspect-ratio="$vuetify.display.mobile ? 1.5 : 4.5"
+                  src="https://cdn-icons-png.flaticon.com/512/1039/1039780.png">
+                </v-img>
                 <p>- plain paper and newspaper</p>
                 <p>- paper and cardboard packaging</p>
                 <p>- paper towel and napkins</p>
@@ -129,6 +133,10 @@
               </v-col>
               <v-col>
                 Allowed ✅
+                <v-img
+                  :aspect-ratio="$vuetify.display.mobile ? 1.5 : 4.5"
+                  src="https://cdn-icons-png.flaticon.com/512/1039/1039778.png">
+                </v-img>
                 <p>- packaging detergent or shampoo</p>
                 <p>- plastic food packaging products</p>
                 <p>- cans, cans, metal lids</p>
@@ -151,6 +159,10 @@
 
               <v-col>
                 Allowed ✅
+                <v-img
+                  :aspect-ratio="$vuetify.display.mobile ? 1.5 : 4.5"
+                  src="https://img.freepik.com/premium-vector/illustration-spray-paint-throwing-garbage-trash-can_152558-87632.jpg?w=2000">
+                </v-img>
                 <p>- cigarettes and tobacco products</p>
                 <p>- diapers</p>
                 <p>- deodorant spray, hair spray, makeup</p>
