@@ -49,7 +49,7 @@
       </p>
       <div>
         The apartment is equipped with all the necessary household appliances
-        and high-speed internet 🌐.
+        and a high-speed internet 🌐.
       </div>
     </v-container>
     <v-divider class="mt-16"></v-divider>
@@ -94,8 +94,7 @@
                 p_description="General house rules "
                 p_icon="mdi-alert-box-outline"
                 :p_iconColor="$vuetify.theme.current.colors.yellow"
-                :p_list="houseRules"
-                p_extendTitle="More">
+                :p_list="houseRules">
               </expandableCard>
             </v-col>
             <v-col sm="3" cols="12">
@@ -116,8 +115,7 @@
                 p_description="Information regarding house appliances"
                 p_icon="mdi-dishwasher"
                 p_iconColor="blue lighten-5"
-                :p_list="appliances"
-                p_extendTitle="More"></expandableCard>
+                :p_list="appliances"></expandableCard>
             </v-col>
           </v-row>
         </v-container>
@@ -182,7 +180,7 @@
           <a
             href="https://www.novasol.com/holidayhome/croatia/istria/pula/holiday-rental-pula-cir231">
             <v-img
-              src="https://assets.stickpng.com/images/6030edf6a5a87000040e2b9a.png"
+              :src="reevooLogo"
               :aspect-ratio="$vuetify.display.mobile ? 12 : 18"
               alt="reevo reviews apartment luka"
           /></a>
@@ -224,6 +222,7 @@ import infoTabs from "@/components/info-tabs.vue";
 import gallery from "@/components/gallery.vue";
 import mainImage from "@/assets/main.jpg";
 import libraryImage from "@/assets/library.jpg";
+import reevooLogo from "@/assets/Reevoo-Logo.png";
 export default {
   components: {
     expandableCard,
@@ -235,6 +234,7 @@ export default {
       rating: 9.7,
       mainImageSRC: mainImage,
       librarySRC: libraryImage,
+      reevooLogo: reevooLogo,
       amenities: [
         { name: "Fast Wi-Fi", icon: "mdi-wifi" },
         { name: "Free Parking", icon: "mdi-parking" },
@@ -294,6 +294,10 @@ export default {
         },
       ],
       reviews: [
+        {
+          name: "Family Rückert",
+          text: "We want to say: Thank you! - for the unforgettable boat-tour, - for having such a lovely apartment with beautiful garden, - for being very kind hosts. We enjoyed our holiday very much! Hopefuly we will be able to be your guests again! Stay healthy and take care of yourself! Best wishes",
+        },
         {
           name: "Jeanette",
           text: "Beautiful apartment in Pula with every comfort. Everything is actually there, even freezer bags. The aircraft noise is a bit disturbing when lying in the garden. The playing children of the nearby school didn't bother us. Landlord is awesome! If we visit Pula again we will definitely come back here.",

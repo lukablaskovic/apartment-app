@@ -80,5 +80,11 @@ let faq = [
     answer:
       "Go take a look at official Tourist office website -  https://www.pulainfo.hr/",
   },
+  {
+    id: "14",
+    question: "❔Is there a damage deposit?",
+    answer:
+      "There is no damage deposit, however if you damage something in the apartment, you are required to pay for it or replace it.",
+  },
 ];
 export default faq;

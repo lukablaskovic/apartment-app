@@ -6,9 +6,10 @@
       :color="$vuetify.theme.current.colors.yellow">
       <v-tab value="one">Emergency numbers</v-tab>
       <v-tab value="two">Your hosts</v-tab>
-      <v-tab value="three">Local services</v-tab>
-      <v-tab value="four">Waste disposal</v-tab>
-      <v-tab value="five">FAQ</v-tab>
+      <v-tab value="three">Boat tour</v-tab>
+      <v-tab value="four">Local services</v-tab>
+      <v-tab value="five">Waste disposal</v-tab>
+      <v-tab value="six">FAQ</v-tab>
     </v-tabs>
 
     <v-card-text class="text-center">
@@ -74,8 +75,75 @@
             </v-row>
           </v-container>
         </v-window-item>
-
         <v-window-item value="three">
+          <div>
+            Up for a boat tour? Feel free to contact us and we can arrange it!
+          </div>
+          <div>
+            Over the last few years we have had great interest and positive
+            feedback from our guests for a private boat tour.
+          </div>
+          <ul class="mt-4">
+            <li>
+              <v-icon>mdi-checkbox-marked-circle</v-icon>Tour is organized by
+              your host Davor
+            </li>
+            <li>
+              <v-icon>mdi-checkbox-marked-circle</v-icon>Navigation next to
+              <a target="_blank" href="https://www.np-brijuni.hr/en"
+                >Brijuni National Park</a
+              >
+            </li>
+            <li>
+              <v-icon>mdi-checkbox-marked-circle</v-icon>Visit of the town
+              <a target="_blank" href="https://www.fazana.hr/">Fažana</a>
+            </li>
+            <li>
+              <v-icon>mdi-checkbox-marked-circle</v-icon>Swimming or sunbathing
+              on local beaches
+            </li>
+            <li>
+              <v-icon>mdi-checkbox-marked-circle</v-icon>Swimming or sunbathing
+              on Kozada Island
+            </li>
+            <li>
+              <v-icon>mdi-checkbox-marked-circle</v-icon>3-4 hours tour duration
+            </li>
+            <li>
+              <v-icon>mdi-checkbox-marked-circle</v-icon>Departure time by
+              agreement
+            </li>
+          </ul>
+          <br />
+          <div><b>Price: 70€</b></div>
+
+          <v-container fill-height>
+            <v-row align="center" justify="center">
+              <v-col sm="3" cols="12">
+                <v-img
+                  :src="boat1SRC"
+                  aspect-ratio="1"
+                  cover
+                  class="bg-grey-lighten-2"></v-img>
+              </v-col>
+              <v-col sm="3" cols="12">
+                <v-img
+                  :src="boat2SRC"
+                  aspect-ratio="1"
+                  cover
+                  class="bg-grey-lighten-2"></v-img>
+              </v-col>
+              <v-col sm="3" cols="12">
+                <v-img
+                  :src="boat3SRC"
+                  aspect-ratio="1"
+                  cover
+                  class="bg-grey-lighten-2"></v-img>
+              </v-col>
+            </v-row>
+          </v-container>
+        </v-window-item>
+        <v-window-item value="four">
           <div>
             Local restaurants, shops and services - everything is a few steps
             away from the apartment 🏠.
@@ -98,7 +166,7 @@
             </v-row>
           </v-container>
         </v-window-item>
-        <v-window-item value="four">
+        <v-window-item value="five">
           <v-container>
             <v-row>
               <v-col>
@@ -175,7 +243,7 @@
             </v-row>
           </v-container>
         </v-window-item>
-        <v-window-item value="five">
+        <v-window-item value="six">
           <v-expansion-panels
             :class="$vuetify.display.mobile ? 'px-2' : 'px-12'"
             align="start"
@@ -212,6 +280,9 @@ import w_plava from "@/assets/kante/plava.jpg";
 import w_zelena from "@/assets/kante/zelena.jpg";
 import w_zuta from "@/assets/kante/zuta.jpg";
 
+import boat1 from "@/assets/boat/boat1.jpg";
+import boat2 from "@/assets/boat/boat2.jpg";
+import boat3 from "@/assets/boat/boat3.jpg";
 export default {
   components: {
     service,
@@ -225,6 +296,9 @@ export default {
     plavaKantaSRC: w_plava,
     zelenaKantaSRC: w_zelena,
     zutaKantaSRC: w_zuta,
+    boat1SRC: boat1,
+    boat2SRC: boat2,
+    boat3SRC: boat3,
     emergencyNumbers: [
       {
         name: "General emergency",
