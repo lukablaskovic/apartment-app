@@ -117,7 +117,7 @@
             </li>
           </ul>
           <br />
-          <div><b>Price: 70€</b></div>
+          <div><b>Family Price: 80€</b></div>
 
           <v-container fill-height>
             <v-row align="center" justify="center">
