@@ -45,13 +45,15 @@
               <v-col sm="3" cols="12">
                 <v-card
                   class="mx-auto animate__animated animate__backInDown"
-                  max-width="344">
-                  <v-img :src="lukaSRC" height="400px" cover></v-img>
+                  max-width="200">
+                  <v-img :src="lukaSRC" height="200px" cover></v-img>
 
                   <v-card-title> Luka </v-card-title>
 
                   <v-card-subtitle> +385 91 721 7631 </v-card-subtitle>
-                  <v-card-subtitle> Telegram: lukablaskovic </v-card-subtitle>
+                  <v-card-subtitle class="mb-2">
+                    Telegram: lukablaskovic
+                  </v-card-subtitle>
                   <v-card-subtitle>
                     <i class="fa-brands fa-whatsapp fa-2x mx-2"></i>
                     <i class="fa-brands fa-viber fa-2x mx-2"></i>
@@ -61,13 +63,13 @@
               <v-col sm="3" cols="12">
                 <v-card
                   class="mx-auto animate__animated animate__backInDown"
-                  max-width="344">
-                  <v-img :src="tataSRC" height="400px" cover></v-img>
+                  max-width="200">
+                  <v-img :src="tataSRC" height="200px" cover></v-img>
 
                   <v-card-title> Davor </v-card-title>
 
                   <v-card-subtitle> +385 92 181 4318 </v-card-subtitle>
-                  <v-card-subtitle>
+                  <v-card-subtitle class="mb-2">
                     <i class="fa-brands fa-whatsapp fa-2x mx-2"></i>
                     <i class="fa-brands fa-viber fa-2x mx-2"></i>
                   </v-card-subtitle> </v-card
