@@ -3,7 +3,7 @@
     <v-tabs
       align-tabs="center"
       v-model="tab"
-      :color="$vuetify.theme.current.colors.yellow">
+      color="$vuetify.theme.current.colors.black">
       <v-tab value="one">Emergency numbers</v-tab>
       <v-tab value="two">Your hosts</v-tab>
       <v-tab value="three">Boat tour</v-tab>
@@ -338,42 +338,42 @@ export default {
     services: [
       {
         imageSRC: s_tivoli,
-        title: "Pizzeria - Tivoli",
+        title: "🍕Pizzeria - Tivoli",
         subtitle: "Veli vrh 8, 52100 Pula",
         rawHTML:
           "<p>Food is our passion. We strive to offer a unique journey for all your senses. We use only the best ingredients to prepare pizza, pasta, salads and desserts.</p><p><b>Address:</b> Veli vrh 8, 52100, Pula</p><p><b>Phone:</b> 052 508 000 (Delivery available)</p><p><b>Distance:</b> 5 min walk the from apartment</p>",
       },
       {
         imageSRC: s_ultra,
-        title: "Grocery store - Ultra",
+        title: "🛒Grocery store - Ultra",
         subtitle: "Braće Leonardelli 1, 52100, Pula",
         rawHTML:
           "<p>Open everyday from 7AM–9PM</p><p><b>Address:</b> Braće Leonardelli 1, 52100, Pula</p><p><b>Phone:</b> 052 753 819</p><p><b>Distance:</b> 5 min walk from the apartment</p>",
       },
       {
         imageSRC: s_ljekarna,
-        title: "Pharmacy - Veli Vrh",
+        title: "⚕️Pharmacy - Veli Vrh",
         subtitle: "Braće Leonardelli 1, 52100, Pula",
         rawHTML:
           "<p>7AM–8PM Monday-Friday, 8AM-1PM Saturday, Sunday closed</p><p><b>Address:</b> Braće Leonardelli 1, 52100, Pula</p><p><b>Phone:</b> 052 223 657</p><p><b>Distance:</b> 5 min walk from the apartment</p>",
       },
       {
         imageSRC: s_mons,
-        title: "Barbecue Mons",
+        title: "🥩Barbecue Mons",
         subtitle: "Braće Leonardelli 1, 52100, Pula",
         rawHTML:
           "<p>Open everyday from 7AM–9PM</p><p><b>Address:</b> Braće Leonardelli 1, 52100, Pula</p><p><b>Phone:</b> 052 753 819</p><p><b>Distance:</b> 5 min walk from the apartment</p>",
       },
       {
         imageSRC: s_posta,
-        title: "Post office - Veli vrh",
+        title: "📮Post office - Veli vrh",
         subtitle: "Creska ul. 5, 52100, Pula",
         rawHTML:
           "<p>8–11AM, 11:30AM–3:30PM Monday-Saturday, Sunday closed</p><p><b>Address:</b> Creska ul. 5, 52100, Pula</p><p><b>Phone:</b> 052 553 679</p><p><b>Distance:</b> 1 min walk from the apartment</p>",
       },
       {
         imageSRC: s_shell,
-        title: "Petrol station Shell",
+        title: "⛽Petrol station Shell",
         subtitle: "Tršćanska ul. 44, 52100, Pula",
         rawHTML:
           "<p>6AM–12AM everyday</p><p><b>Address:</b> Tršćanska ul. 44, 52100, Pula</p><p><b>Phone:</b> 099 529 4436</p><p><b>Distance:</b> 5 min from the apartment by car</p>",

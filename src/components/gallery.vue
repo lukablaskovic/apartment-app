@@ -31,19 +31,25 @@ import detail from "@/assets//gallery/detail.jpg";
 import kitchen from "@/assets//gallery/kitchen.jpg";
 import living_room from "@/assets//gallery/living_room.jpg";
 import toilet from "@/assets//gallery/toilet.jpg";
+import garden1 from "@/assets//gallery/garden1.jpg";
+import garden2 from "@/assets//gallery/garden2.jpg";
+import garden3 from "@/assets//gallery/garden3.jpg";
 
 export default {
   data: () => ({
     galleryImages: [
       { src: living_room, desc: "Cozy living room" },
-      { src: dining, desc: "A dining room" },
+      { src: dining, desc: "Dining Room" },
       { src: bathroom, desc: "Bathroom" },
-      { src: toilet, desc: "Shower and toilet" },
+      { src: toilet, desc: "Shower and Toilet" },
       { src: detail, desc: "Cute detail" },
       { src: corridor, desc: "Main corridor" },
-      { src: kitchen, desc: "A kitchen" },
+      { src: kitchen, desc: "Kitchen" },
       { src: room1, desc: "Bedroom 1" },
       { src: room2, desc: "Bedroom 2" },
+      { src: garden1, desc: "Garden | Swing" },
+      { src: garden2, desc: "Garden | Padio" },
+      { src: garden3, desc: "Garden | Chairs" },
     ],
   }),
 };

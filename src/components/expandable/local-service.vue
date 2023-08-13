@@ -7,7 +7,7 @@
     <v-card-subtitle> {{ subtitle }} </v-card-subtitle>
 
     <v-card-actions>
-      <v-btn @click="show = !show" color="amber-lighten-3" variant="text">
+      <v-btn @click="show = !show" color="black" variant="text">
         Explore
       </v-btn>
 

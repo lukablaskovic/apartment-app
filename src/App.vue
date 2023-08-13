@@ -23,17 +23,41 @@
           <p>Season {{ new Date().getFullYear() }}</p>
         </v-col>
         <v-divider class=""></v-divider>
+
         <v-col class="text-center" cols="12">
-          <i class="fa-solid fa-envelope fa-2x mx-4"></i>
+          <v-dialog v-model="contact" width="auto">
+            <template v-slot:activator="{ props }">
+              <i
+                style="cursor: pointer"
+                v-bind="props"
+                class="fa-solid fa-envelope fa-2x mx-4"></i>
+            </template>
+
+            <v-card>
+              <v-card-text>
+                <div class="mb-2">
+                  Book your stay directly with us and save money on booking
+                  fees! Or just send us a message if you have any questions.
+                  <div><b>E-mail:</b> lukablaskovic2000@gmail.com</div>
+                  <div><b>Phone:</b> +385 91 721 7631</div>
+                </div>
+              </v-card-text>
+              <v-card-actions>
+                <v-btn color="black" block @click="contact = false"
+                  >Close Dialog</v-btn
+                >
+              </v-card-actions>
+            </v-card>
+          </v-dialog>
+
           <a href="https://wa.me/385917217631"
             ><i class="fa-brands fa-whatsapp fa-2x mx-4"></i
           ></a>
+          <a href="https://www.booking.com/Share-C9Tq4d"
+            ><i class="fa-solid fa-b fa-2x mx-4"></i
+          ></a>
           <a href="https://airbnb.com/h/pula-apartment-luka"
             ><i class="fa-brands fa-airbnb fa-2x mx-4"></i
-          ></a>
-          <a
-            href="https://www.booking.com/hotel/hr/modern-and-airy-apartment-in-a-quiet-part-of-pula.en-gb.html"
-            ><i class="fa-solid fa-b fa-2x mx-4"></i
           ></a>
         </v-col>
       </v-row>
@@ -48,7 +72,8 @@ export default {
   components: {},
 
   data: () => ({
-    links: ["Welcome", "Amenities", "Info", "Gallery", "Reviews"],
+    links: ["Welcome", "Amenities", "Gallery", "Info", "Reviews", "Contact"],
+    contact: false,
   }),
   methods: {
     //Link scroll

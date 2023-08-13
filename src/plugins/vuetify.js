@@ -11,7 +11,8 @@ const theme = {
   colors: {
     background: "#e0e0e0",
 
-    yellow: "amber-accent-3",
+    yellow: "amber-accenpropst-3",
+
     /*
     surface: '#FFFFFF',
     primary: '#6200EE',
