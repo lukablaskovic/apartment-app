@@ -390,10 +390,17 @@ export default {
       justify: ["start", "center", "end", "space-around", "space-between"],
       houseRules: [
         { title: "No smoking 🚭", subtitle: "Feel free to smoke outside" },
-        { title: "No parties 🚫", subtitle: "No parties in apartment allowed" },
+        {
+          title: "No parties 🚫",
+          subtitle: "No hen, stag or similar parties",
+        },
         {
           title: "Quiet hours 🔇",
-          subtitle: "From 10pm to 8am",
+          subtitle: "23:00 - 08:00",
+        },
+        {
+          title: "Pets not allowed ❌",
+          subtitle: "",
         },
       ],
       wiFi: [
@@ -404,7 +411,7 @@ export default {
       appliances: [
         {
           title: "Air conditioner",
-          subtitle: "2 in the apartment",
+          subtitle: "2 of them",
         },
         {
           title: "Cooking board",
@@ -424,7 +431,7 @@ export default {
         },
         {
           title: "Extras",
-          subtitle: "Hairdryer, iron, shampoo, towels",
+          subtitle: "Hairdryer, iron, shampoos, towels",
         },
       ],
       reviews: [
