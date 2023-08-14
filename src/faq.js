@@ -20,7 +20,7 @@ let faq = [
   {
     id: "3",
     question: "❔When are the quiet hours?",
-    answer: "22:00 to 08:00 on weekdays and 23:00 to 09:00 on weekends",
+    answer: "23:00 - 08:00",
   },
   {
     id: "4",
@@ -84,7 +84,7 @@ let faq = [
     id: "14",
     question: "❔Is there a damage deposit?",
     answer:
-      "There is no damage deposit, however if you damage something in the apartment, you are required to pay for it or replace it.",
+      "Yes, we require a damage deposit of 100€. It will be returned to you on the day of departure if there is no damage to the apartment.",
   },
 ];
 export default faq;
