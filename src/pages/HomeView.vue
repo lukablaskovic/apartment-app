@@ -477,6 +477,12 @@ export default {
           flag: "it",
           text: "The hosts, Luka and father Davor, are very helpful and welcoming people. The apartment is very nice, with large and comfortable spaces, tastefully furnished in a simple and very functional way. The kitchen has everything you need, including a dishwasher. The living room has a nice comfortable sofa and a large living room, where c'is a table for dinner. The two bedrooms are spacious, with comfortable beds. The bathroom is new, with a nice big shower and washing machine. But the strength of the solution, in our opinion, is the well-kept and wonderful garden!! Here you can find refreshment under the fruit plants, lulling you with the' swing or sitting on the armchairs at the' shade of the gazebo. Just excellent. We will definitely be back & more!!",
         },
+        {
+          name: "Family Šimsa",
+          rating: "10/10",
+          flag: "cz",
+          text: "Excpetional",
+        },
       ],
     };
   },
