@@ -465,12 +465,14 @@ export default {
           flag: "de",
           text: "Beautiful apartment with a great garden. We felt very comfortable there.",
         },
+        /*
         {
           name: "Family Pietrzak ",
           rating: "10/10",
           flag: "pl",
           text: "Excpetional",
         },
+        */
         {
           name: "Family Boggian",
           rating: "10/10",
@@ -482,6 +484,12 @@ export default {
           rating: "10/10",
           flag: "cz",
           text: "Excpetional",
+        },
+        {
+          name: "Family Sarycheva",
+          rating: "10/10",
+          flag: "sk",
+          text: "Clean spacious and well equipped apartment with its own shaded garden. The area is really quiet and just max 25 minutes walking from the city center. Free parking is in front of the house. Really nice friendly and hospitable owners. Great thanks!",
         },
       ],
     };
