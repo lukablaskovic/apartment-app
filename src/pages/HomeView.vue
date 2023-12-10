@@ -13,6 +13,8 @@
         <v-row>
           <v-col cols="12">
             <h1
+              data-aos="zoom-in-right"
+              data-aos-delay="300"
               :class="
                 $vuetify.display.mobile
                   ? 'text-h3 dancing-script-font'
@@ -30,7 +32,7 @@
 
             <v-btn
               class="mt-6"
-              color="yellow"
+              color="white"
               variant="outlined"
               @click="scroll('info')"
               >View more</v-btn
@@ -120,7 +122,9 @@
     <v-container class="text-center mb-12">
       <v-row class="d-flex justify-center">
         <v-col
-          class="d-flex flex-column items-center justify-center"
+          data-aos="fade-down"
+          data-aos-delay="300"
+          class="d-flex flex-column items-center justify-center p-2"
           align-self="center"
           cols="3"
           sm="1"
@@ -178,6 +182,7 @@
           <v-col sm="3" cols="12">
             <expandableCard
               p_title="Wi-Fi"
+              :p_clickable="true"
               p_description="Wi-fi details"
               p_icon="mdi-wifi"
               p_iconColor="green darken-1"
@@ -286,7 +291,7 @@
           <v-container>
             <v-row>
               <v-col v-for="r in reviews" :key="r.name" sm="3" cols="12">
-                <v-card class="mx-auto" max-width="344">
+                <v-card data-aos="flip-up" class="mx-auto" max-width="344">
                   <v-card-item>
                     <div>
                       <p class="text-h6 mb-1">
@@ -396,7 +401,7 @@ export default {
         },
         {
           title: "Quiet hours 🔇",
-          subtitle: "23:00 - 08:00",
+          subtitle: "00:00 - 08:00",
         },
         {
           title: "Pets not allowed ❌",
@@ -405,7 +410,7 @@ export default {
       ],
       wiFi: [
         { title: "SSID", subtitle: "LUKA" },
-        { title: "Password", subtitle: "1r1M8X@$Ny%3x@WT" },
+        { title: "Password", subtitle: "lukadavorada64" },
       ],
       wiFiBonusData: { text: "50/10 Mbps", icon: "mdi-speedometer" },
       appliances: [

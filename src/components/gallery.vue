@@ -1,6 +1,8 @@
 <template>
   <v-row>
     <v-col
+      data-aos="flip-left"
+      data-aos-delay="300"
       v-for="g in galleryImages"
       :key="g.src"
       class="d-flex child-flex"

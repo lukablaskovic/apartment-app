@@ -56,9 +56,11 @@
           <a href="https://www.booking.com/Share-C9Tq4d"
             ><i class="fa-solid fa-b fa-2x mx-4"></i
           ></a>
+          <!--
           <a href="https://airbnb.com/h/pula-apartment-luka"
             ><i class="fa-brands fa-airbnb fa-2x mx-4"></i
           ></a>
+          -->
         </v-col>
       </v-row>
     </v-footer>

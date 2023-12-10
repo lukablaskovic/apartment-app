@@ -1,5 +1,5 @@
 <template>
-  <v-card class="mx-auto" max-width="368">
+  <v-card class="mx-auto" max-width="500">
     <v-card-item :title="p_title">
       <template v-slot:subtitle>
         {{ p_description }}
@@ -40,7 +40,7 @@
 
     <v-divider></v-divider>
 
-    <v-card-actions>
+    <v-card-actions v-if="p_clickable">
       <v-btn @click="expand = !expand" :color="'black'">
         {{ !expand ? p_extendTitle : "Close" }}
       </v-btn>
@@ -63,6 +63,7 @@ export default {
     "p_bonusDataIcon",
     "p_bonusDataText",
     "p_component",
+    "p_clickable",
   ],
   data: () => ({
     expand: false,
