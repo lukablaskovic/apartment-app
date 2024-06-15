@@ -7,7 +7,7 @@
       <v-tab value="one">Emergency numbers</v-tab>
       <v-tab value="two">Your hosts</v-tab>
       <v-tab value="three">Boat tour</v-tab>
-      <v-tab value="four">Local services</v-tab>
+      <v-tab value="four">WHAT'S NEARBY?</v-tab>
       <v-tab value="five">Waste disposal</v-tab>
       <v-tab value="six">FAQ</v-tab>
     </v-tabs>

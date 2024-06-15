@@ -41,7 +41,7 @@ let faq = [
   {
     id: "7",
     question: "❔Are there any shops or restaurants nearby?",
-    answer: "Yes, you can find it all in LOCAL SERVICES tab.",
+    answer: "Yes, you can find it all in WHAT'S NEARBY? tab.",
   },
   {
     id: "8",

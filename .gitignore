@@ -1287,3 +1287,5 @@ node_modules/vuetify/lib/util/propsFactory.mjs.map
 node_modules/vuetify/lib/util/useRender.mjs.map
 node_modules/vuetify/LICENSE.md
 node_modules/vuetify/package.json
+/node_modules
+/node_modules/.vite

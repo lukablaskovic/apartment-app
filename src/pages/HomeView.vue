@@ -182,15 +182,12 @@
           <v-col sm="3" cols="12">
             <expandableCard
               p_title="Wi-Fi"
-              :p_clickable="true"
               p_description="Wi-fi details"
               p_icon="mdi-wifi"
               p_iconColor="green darken-1"
               :p_list="wiFi"
-              :p_extendTitle="'Scan QR'"
               :p_bonusDataIcon="wiFiBonusData.icon"
-              :p_bonusDataText="wiFiBonusData.text"
-              :p_component="'c_e_wifi'"></expandableCard>
+              :p_bonusDataText="wiFiBonusData.text"></expandableCard>
           </v-col>
           <v-col cols="3">
             <expandableCard
@@ -222,7 +219,6 @@
             p_icon="mdi-wifi"
             p_iconColor="green darken-1"
             :p_list="wiFi"
-            :p_extendTitle="'Scan QR'"
             :p_bonusDataIcon="wiFiBonusData.icon"
             :p_bonusDataText="wiFiBonusData.text"
             :p_component="'c_e_wifi'"></expandableCard>
@@ -250,7 +246,7 @@
           Guest reviews
         </div>
         <p>
-          We have been renting our home apartment for almost 8 years now and
+          We have been renting our home apartment for almost 9 years now and
           received great review from our friends all over Europe.
         </p>
         <p>We want to thank you for that! 😊</p>
@@ -404,23 +400,26 @@ export default {
           subtitle: "00:00 - 08:00",
         },
         {
-          title: "Pets not allowed ❌",
-          subtitle: "",
+          title: "Pets allowed on request 🐕",
+          subtitle: "Additional charges may apply",
         },
       ],
       wiFi: [
-        { title: "SSID", subtitle: "LUKA" },
-        { title: "Password", subtitle: "lukadavorada64" },
+        { title: "SSID", subtitle: "LUKA_Guest" },
+        { title: "Password", subtitle: "apartment-luka2024" },
       ],
-      wiFiBonusData: { text: "50/10 Mbps", icon: "mdi-speedometer" },
+      wiFiBonusData: {
+        text: "60/10 Mbps | Mesh Wi-Fi system",
+        icon: "mdi-speedometer",
+      },
       appliances: [
         {
           title: "Air conditioner",
-          subtitle: "2 of them",
+          subtitle: "2 in the apartment",
         },
         {
           title: "Cooking board",
-          subtitle: "4 electric panels",
+          subtitle: "4 electric panels + oven",
         },
         {
           title: "Smart TV",

@@ -44,7 +44,7 @@ export default {
       { src: dining, desc: "Dining Room" },
       { src: bathroom, desc: "Bathroom" },
       { src: toilet, desc: "Shower and Toilet" },
-      { src: detail, desc: "Cute detail" },
+      { src: detail, desc: "Cute Shelf" },
       { src: corridor, desc: "Main corridor" },
       { src: kitchen, desc: "Kitchen" },
       { src: room1, desc: "Bedroom 1" },
