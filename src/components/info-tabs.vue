@@ -362,7 +362,7 @@ export default {
         title: "🥩Barbecue Mons",
         subtitle: "Braće Leonardelli 1, 52100, Pula",
         rawHTML:
-          "<p>Open everyday from 7AM–9PM</p><p><b>Address:</b> Braće Leonardelli 1, 52100, Pula</p><p><b>Phone:</b> 052 753 819</p><p><b>Distance:</b> 5 min walk from the apartment</p>",
+          "<p>Open everyday from 7AM–9PM</p><p><b>Address:</b> Braće Leonardelli 1, 52100, Pula</p><p><b>Phone:</b> 052 753 819</p><p><b>Distance:</b> 2 min walk from the apartment</p>",
       },
       {
         imageSRC: s_posta,
