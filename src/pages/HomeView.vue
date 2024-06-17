@@ -27,7 +27,7 @@
         <v-row>
           <v-col cols="12">
             <h2 :class="$vuetify.display.mobile ? '' : ''">
-              Step inside and feel right at home. We're glad you're here!
+              Step inside and make yourself at home. We're glad you're here!
             </h2>
 
             <v-btn
