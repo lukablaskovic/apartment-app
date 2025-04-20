@@ -1,5 +1,5 @@
 <template>
-  <v-card class="mx-auto" max-width="500">
+  <v-card class="mx-auto" max-width="800" min-height="300">
     <v-card-item :title="p_title">
       <template v-slot:subtitle>
         {{ p_description }}

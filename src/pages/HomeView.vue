@@ -113,7 +113,7 @@
     <div class="mt-4">
       <div
         id="amenities"
-        class="text-h4 text-center mb-4 font-weight-bold text-grey-darken-4">
+        class="text-h3 text-center mb-4 font-weight-bold text-blue-grey-darken-4">
         Amenities
       </div>
     </div>
@@ -124,7 +124,7 @@
         <v-col
           data-aos="fade-down"
           data-aos-delay="300"
-          class="d-flex flex-column items-center justify-center p-6"
+          class="d-flex flex-column items-center justify-center p-6 mx-8"
           align-self="center"
           cols="3"
           sm="1"
@@ -133,7 +133,7 @@
           <v-icon
             v-bind="props"
             :icon="item.icon"
-            color="green-darken-3"
+            color="blue-grey-darken-2"
             :size="$vuetify.display.mobile ? 32 : 48"
             class="mx-auto"></v-icon>
           <p class="mt-2 text-center">{{ item.name }}</p>
@@ -148,7 +148,7 @@
       <div>
         <div
           id="gallery"
-          class="text-h4 text-center mb-4 font-weight-bold text-grey-darken-4">
+          class="text-h3 text-center mb-4 font-weight-bold text-blue-grey-darken-4">
           Gallery
         </div>
       </div>
@@ -157,7 +157,9 @@
 
     <v-divider class="mt-2"></v-divider>
     <v-container class="mt-4 text-center">
-      <div id="info" class="text-h4 mb-6 font-weight-bold text-grey-darken-4">
+      <div
+        id="info"
+        class="text-h3 mb-6 font-weight-bold text-blue-grey-darken-4">
         Info
       </div>
     </v-container>
@@ -242,7 +244,7 @@
       <div>
         <div
           id="reviews"
-          class="text-h4 text-center mb-4 font-weight-bold text-grey-darken-4">
+          class="text-h3 text-center mb-4 font-weight-bold text-blue-grey-darken-4">
           Guest reviews
         </div>
         <p>
@@ -324,7 +326,7 @@
       <div>
         <div
           id="contact"
-          class="text-h4 text-center mb-4 font-weight-bold text-grey-darken-4">
+          class="text-h3 text-center mb-4 font-weight-bold text-blue-grey-darken-4">
           Contact Info
         </div>
         <div>
