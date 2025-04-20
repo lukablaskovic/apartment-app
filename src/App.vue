@@ -19,7 +19,7 @@
     <v-footer color="#212121" style="color: aliceblue">
       <v-row justify="center" class="text-center">
         <v-col cols="12">
-          <p>Apartment Luka</p>
+          <p>Apartment Luka (Pula - Croatia)</p>
           <p>Season {{ new Date().getFullYear() }}</p>
         </v-col>
         <v-divider class=""></v-divider>

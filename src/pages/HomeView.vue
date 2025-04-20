@@ -124,7 +124,7 @@
         <v-col
           data-aos="fade-down"
           data-aos-delay="300"
-          class="d-flex flex-column items-center justify-center p-2"
+          class="d-flex flex-column items-center justify-center p-6"
           align-self="center"
           cols="3"
           sm="1"
@@ -246,8 +246,8 @@
           Guest reviews
         </div>
         <p>
-          We have been renting our home apartment for almost 9 years now and
-          received great review from our friends all over Europe.
+          We have been renting our home apartment for 10 years now and received
+          great review from our friends all over Europe.
         </p>
         <p>We want to thank you for that! 😊</p>
         <p>
@@ -257,15 +257,7 @@
 
         <v-row>
           <v-divider class="mt-12"></v-divider>
-          <v-col cols="12">
-            <a
-              href="https://www.novasol.com/holidayhome/croatia/istria/pula/holiday-rental-pula-cir231">
-              <v-img
-                :src="reevooLogo"
-                :aspect-ratio="$vuetify.display.mobile ? 12 : 38"
-                alt="reevo reviews apartment Luka"
-            /></a>
-          </v-col>
+          <v-col cols="12"> </v-col>
           <v-col cols="12">
             <a href="https://www.booking.com/Share-0wQMOBG">
               <v-img
@@ -284,30 +276,46 @@
             length="10"
             color="amber-darken-1"></v-rating>
           <pre>{{ rating }}</pre>
-          <v-container>
-            <v-row>
-              <v-col v-for="r in reviews" :key="r.name" sm="3" cols="12">
-                <v-card data-aos="flip-up" class="mx-auto" max-width="344">
-                  <v-card-item>
-                    <div>
-                      <p class="text-h6 mb-1">
+          <div class="container mx-auto px-4">
+            <div class="flex flex-wrap -mx-2">
+              <div
+                v-for="r in reviews"
+                :key="r.name"
+                class="w-full sm:w-1/2 md:w-1/3 lg:w-1/5 px-2 mb-4">
+                <div
+                  data-aos="flip-up"
+                  class="bg-white rounded-lg shadow p-3 flex flex-col justify-between h-full">
+                  <div>
+                    <!-- Name + Flag -->
+                    <div class="flex items-center gap-x-2 mb-2">
+                      <p class="text-base font-semibold truncate">
                         {{ r.name }}
-                        <country-flag
-                          class=""
-                          :country="r.flag"
-                          size="normal" />
                       </p>
-
-                      {{ r.rating }}
-                      <div class="text-caption">
-                        {{ r.text }}
-                      </div>
+                      <country-flag
+                        :country="r.flag"
+                        size="normal"
+                        class="h-5 w-5" />
                     </div>
-                  </v-card-item>
-                </v-card>
-              </v-col>
-            </v-row>
-          </v-container>
+
+                    <!-- Rating -->
+                    <div class="mb-2">
+                      <v-rating
+                        :value="r.rating"
+                        color="amber"
+                        dense
+                        readonly
+                        size="20" />
+                    </div>
+
+                    <!-- Text -->
+                    <div class="text-sm text-gray-600 truncate" :title="r.text">
+                      {{ r.text }}
+                    </div>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
         </div>
       </div>
     </v-container>
@@ -322,6 +330,7 @@
         <div>
           Book your stay directly with us and save money on booking fees! Or
           just send us a message if you have any questions.
+
           <div><b>E-mail:</b> lukablaskovic2000@gmail.com</div>
           <div><b>Phone:</b> +385 91 721 7631</div>
         </div>
@@ -355,7 +364,6 @@ import gallery from "@/components/gallery.vue";
 import mainImage from "@/assets/main.jpg";
 import mainAlphaReduced from "@/assets/main_alpha_reduced.jpg";
 import libraryImage from "@/assets/library.jpg";
-import reevooLogo from "@/assets/Reevoo-Logo.png";
 import bookingcomLogo from "@/assets/Bookingcom-logo.png";
 import CountryFlag from "vue-country-flag-next";
 import gardenImage from "@/assets/garden.png";
@@ -373,7 +381,6 @@ export default {
       mainImageSRC: mainAlphaReduced,
       gardenImage: gardenImage,
       librarySRC: libraryImage,
-      reevooLogo: reevooLogo,
       bookingcomLogo: bookingcomLogo,
       amenities: [
         { name: "Fast Wi-Fi", icon: "mdi-wifi" },
@@ -382,7 +389,7 @@ export default {
         { name: "4k Smart TV", icon: "mdi-television" },
         { name: "Dishwasher", icon: "mdi-dishwasher" },
         { name: "Washing Machine", icon: "mdi-washing-machine" },
-        { name: "90 m² size", icon: "mdi-texture-box" },
+        { name: "90 m² Flat", icon: "mdi-texture-box" },
         { name: "Recycling", icon: "mdi-recycle" },
         { name: "Child-Friendly", icon: "mdi-human-male-boy" },
         { name: "Terrace Patio", icon: "mdi-table-furniture" },
@@ -440,6 +447,18 @@ export default {
       ],
       reviews: [
         {
+          name: "Family Wojciech",
+          ragin: "10/10",
+          flag: "pl",
+          text: "It was a pleasure to visit this place. Clean, quiet and very comfortable apartament helped my family to get rest for another busy year. I definately reccomend it as a nice place to spend wonderful holiday.",
+        },
+        {
+          name: "Family Klaus",
+          rating: "10/10",
+          flag: "de",
+          text: "Lovingly and well furnished apartment on the ground floor.We immediately felt comfortable and almost like at home. Everything you need for your daily life is there.",
+        },
+        {
           name: "Family Rückert",
           rating: "10/10",
           flag: "de",
@@ -469,14 +488,14 @@ export default {
           flag: "de",
           text: "Beautiful apartment with a great garden. We felt very comfortable there.",
         },
-        /*
+
         {
           name: "Family Pietrzak ",
           rating: "10/10",
           flag: "pl",
           text: "Excpetional",
         },
-        */
+
         {
           name: "Family Boggian",
           rating: "10/10",
