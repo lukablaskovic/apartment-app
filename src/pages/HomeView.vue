@@ -36,6 +36,23 @@
             </h2>
           </v-col>
         </v-row>
+        <v-row>
+          <v-col
+            cols="12"
+            :class="$vuetify.display.mobile ? 'text-center' : 'text-left'">
+            <v-btn
+              @click="scroll('contact')"
+              :size="$vuetify.display.mobile ? 'large' : 'x-large'"
+              color="amber-darken-1"
+              variant="elevated"
+              class="contact-btn"
+              data-aos="zoom-in-up"
+              data-aos-delay="600">
+              <v-icon start icon="mdi-email-outline" class="mr-2"></v-icon>
+              Contact us
+            </v-btn>
+          </v-col>
+        </v-row>
       </div></v-img
     >
     <!--Modern and Elegant apartment heading-->
@@ -446,27 +463,32 @@
           Contact Info
         </div>
         <div>
-          Book your stay directly with us and save money on booking fees! Or
-          just send us a message if you have any questions.
+          <b>Book your stay directly with us and save money on booking fees!</b>
+          <br />
+          Or just send us a message if you have any questions.
 
           <div><b>E-mail:</b> lukablaskovic2000@gmail.com</div>
           <div><b>Phone:</b> +385 91 721 7631</div>
         </div>
-
+        <br />
         <div class="mb-2 mt-2">
-          Or you can book your stay through one of our partners:
+          You can also book your stay through one of our partners:
         </div>
         <v-row>
           <v-col>
             <a href="https://www.booking.com/Pulse-itMdY9" target="_blank">
               <v-img
                 :src="bookingcomLogo"
-                :aspect-ratio="$vuetify.display.mobile ? 12 : 48"
+                :aspect-ratio="$vuetify.display.mobile ? 18 : 48"
                 alt="booking.com - Apartment Luka Pula Croatia"
             /></a>
           </v-col>
         </v-row>
-
+        <v-row>
+          <v-col>
+            <v-divider>or</v-divider>
+          </v-col>
+        </v-row>
         <v-row>
           <v-col>
             <a href="https://www.airbnb.com/h/apartment-luka" target="_blank">
@@ -480,9 +502,14 @@
 
         <div class="mt-4 pa-4 bg-amber-lighten-3 rounded">
           <p class="text-body-1 font-weight-bold mb-2">
-            We are fully booked for 2025.
+            Notice: We are fully booked for 2025.
           </p>
-          <p class="text-body-2">We offer bookings from June - October 2026.</p>
+          <p class="text-body-2">
+            We offer bookings from June - October 2026.
+            <br />
+            <br />
+            <b>We are looking forward to seeing you!</b>
+          </p>
         </div>
       </div>
     </v-container>
@@ -1283,6 +1310,34 @@ export default {
   .review-rating {
     transform: scale(0.75);
     transform-origin: center;
+  }
+}
+
+/* Contact Button Styles */
+.contact-btn {
+  font-weight: 600;
+  letter-spacing: 0.5px;
+  text-transform: none;
+  border-radius: 50px;
+  padding: 0 2rem;
+  transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+  box-shadow: 0 4px 12px rgba(255, 193, 7, 0.3);
+}
+
+.contact-btn:hover {
+  transform: translateY(-2px);
+  box-shadow: 0 8px 20px rgba(255, 193, 7, 0.4);
+}
+
+.contact-btn:active {
+  transform: translateY(0);
+}
+
+/* Mobile responsive adjustments for contact button */
+@media (max-width: 768px) {
+  .contact-btn {
+    padding: 0 1.5rem;
+    font-size: 0.9rem;
   }
 }
 </style>

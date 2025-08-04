@@ -37,7 +37,8 @@
               <v-card-text>
                 <div class="mb-2">
                   Book your stay directly with us and save money on booking
-                  fees! Or just send us a message if you have any questions.
+                  fees!
+                  <b>Or just send us a message if you have any questions.</b>
                   <div><b>E-mail:</b> lukablaskovic2000@gmail.com</div>
                   <div><b>Phone:</b> +385 91 721 7631</div>
                 </div>
