@@ -3,7 +3,7 @@
     <v-app-bar class="px-3" color="white" flat density="compact">
       <v-spacer></v-spacer>
 
-      <v-tabs centered :color="$vuetify.theme.current.colors.yellow">
+      <v-tabs centered color="amber-darken-1">
         <v-tab
           v-for="link in links"
           :key="link"
@@ -53,14 +53,12 @@
           <a href="https://wa.me/385917217631"
             ><i class="fa-brands fa-whatsapp fa-2x mx-4"></i
           ></a>
-          <a href="https://www.booking.com/Share-C9Tq4d"
+          <a href="https://www.booking.com/Pulse-itMdY9" target="_blank"
             ><i class="fa-solid fa-b fa-2x mx-4"></i
           ></a>
-          <!--
-          <a href="https://airbnb.com/h/pula-apartment-luka"
+          <a href="https://airbnb.com/h/apartment-luka" target="_blank"
             ><i class="fa-brands fa-airbnb fa-2x mx-4"></i
           ></a>
-          -->
         </v-col>
       </v-row>
     </v-footer>

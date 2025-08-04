@@ -1,14 +1,14 @@
 <template>
   <div id="welcome" class="bg-grey-lighten-2">
     <v-img
-      :aspect-ratio="$vuetify.display.mobile ? 1 : 2.5"
+      :aspect-ratio="$vuetify.display.mobile ? 1.2 : 2.5"
       :src="mainImageSRC"
       cover>
       <div
         :class="
           $vuetify.display.mobile
-            ? 'overlay-content text-center'
-            : 'overlay-content'
+            ? 'overlay-content text-center dark-overlay pa-4'
+            : 'overlay-content dark-overlay pa-12'
         ">
         <v-row>
           <v-col cols="12">
@@ -17,8 +17,8 @@
               data-aos-delay="300"
               :class="
                 $vuetify.display.mobile
-                  ? 'text-h3 dancing-script-font'
-                  : 'text-h1 dancing-script-font'
+                  ? 'text-h3 dancing-script-font text-amber-lighten-3 mb-2'
+                  : 'text-h1 dancing-script-font text-amber-lighten-3'
               ">
               Welcome !
             </h1>
@@ -26,17 +26,14 @@
         </v-row>
         <v-row>
           <v-col cols="12">
-            <h2 :class="$vuetify.display.mobile ? '' : ''">
+            <h2
+              :class="
+                $vuetify.display.mobile
+                  ? 'text-body-1 font-weight-medium mb-4'
+                  : 'text-h5 font-weight-medium mb-6'
+              ">
               Step inside and make yourself at home. We're glad you're here!
             </h2>
-
-            <v-btn
-              class="mt-6"
-              color="white"
-              variant="outlined"
-              @click="scroll('info')"
-              >View more</v-btn
-            >
           </v-col>
         </v-row>
       </div></v-img
@@ -107,42 +104,44 @@
       </v-container>
     </div>
     <!--/Modern and Elegant apartment heading-->
-    <v-divider class=""></v-divider>
 
     <!--Amenities Heading-->
-    <div class="mt-4">
-      <div
-        id="amenities"
-        class="text-h3 text-center mb-4 font-weight-bold text-blue-grey-darken-4">
-        Amenities
+    <div class="amenities-section">
+      <v-container class="mt-4 text-center">
+        <div>
+          <div
+            id="amenities"
+            class="text-h3 text-center mb-4 font-weight-bold text-blue-grey-darken-4">
+            Amenities
+          </div>
+        </div>
+      </v-container>
+
+      <!--Amenities icons-->
+      <div class="amenities-container">
+        <div class="amenities-grid">
+          <div
+            v-for="item in amenities"
+            :key="item.name"
+            class="amenity-card"
+            data-aos="fade-up"
+            data-aos-delay="100">
+            <div class="amenity-icon-wrapper">
+              <v-icon
+                :icon="item.icon"
+                :size="$vuetify.display.mobile ? 32 : 40"
+                class="amenity-icon">
+              </v-icon>
+            </div>
+            <div class="amenity-content">
+              <h3 class="amenity-name">{{ item.name }}</h3>
+            </div>
+          </div>
+        </div>
       </div>
     </div>
 
-    <!--Amenities icons-->
-    <v-container class="text-center mb-12">
-      <v-row class="d-flex justify-center">
-        <v-col
-          data-aos="fade-down"
-          data-aos-delay="300"
-          class="d-flex flex-column items-center justify-center p-6 mx-8"
-          align-self="center"
-          cols="3"
-          sm="1"
-          v-for="item in amenities"
-          :key="item.name">
-          <v-icon
-            v-bind="props"
-            :icon="item.icon"
-            color="blue-grey-darken-2"
-            :size="$vuetify.display.mobile ? 32 : 48"
-            class="mx-auto"></v-icon>
-          <p class="mt-2 text-center">{{ item.name }}</p>
-        </v-col>
-      </v-row>
-    </v-container>
-
     <!--/Amenities Heading-->
-    <v-divider class="mt-4"></v-divider>
 
     <v-container class="mt-4 text-center">
       <div>
@@ -160,82 +159,170 @@
       <div
         id="info"
         class="text-h3 mb-6 font-weight-bold text-blue-grey-darken-4">
-        Info
+        Useful information
       </div>
     </v-container>
 
-    <v-img
-      v-if="!$vuetify.display.mobile"
-      aspect-ratio="3"
-      :src="librarySRC"
-      cover
-      gradient="to top right, rgba(0, 0, 0, 0.8), rgba(27, 27, 27, 0.8)">
-      <v-container fill-height class="overlay-content">
-        <v-row align="center" justify="center">
-          <v-col sm="3" cols="12">
-            <expandableCard
-              :p_title="'Rules'"
-              p_description="General house rules "
-              p_icon="mdi-alert-box-outline"
-              :p_iconColor="$vuetify.theme.current.colors.yellow"
-              :p_list="houseRules">
-            </expandableCard>
-          </v-col>
-          <v-col sm="3" cols="12">
-            <expandableCard
-              p_title="Wi-Fi"
-              p_description="Wi-fi details"
-              p_icon="mdi-wifi"
-              p_iconColor="green darken-1"
-              :p_list="wiFi"
-              :p_bonusDataIcon="wiFiBonusData.icon"
-              :p_bonusDataText="wiFiBonusData.text"></expandableCard>
-          </v-col>
-          <v-col cols="3">
-            <expandableCard
-              :p_title="'House appliances'"
-              p_description="Information regarding house appliances"
-              p_icon="mdi-dishwasher"
-              p_iconColor="blue lighten-5"
-              :p_list="appliances"></expandableCard>
-          </v-col>
-        </v-row>
-      </v-container>
-    </v-img>
-    <v-container v-else fill-height>
-      <v-row align="center" justify="center">
-        <v-col sm="3" cols="12">
-          <expandableCard
-            :p_title="'Rules'"
-            p_description="General house rules "
-            p_icon="mdi-alert-box-outline"
-            :p_iconColor="$vuetify.theme.current.colors.yellow"
-            :p_list="houseRules"
-            p_extendTitle="More">
-          </expandableCard>
-        </v-col>
-        <v-col sm="3" cols="12">
-          <expandableCard
-            p_title="Wi-Fi"
-            p_description="Wi-fi details"
-            p_icon="mdi-wifi"
-            p_iconColor="green darken-1"
-            :p_list="wiFi"
-            :p_bonusDataIcon="wiFiBonusData.icon"
-            :p_bonusDataText="wiFiBonusData.text"
-            :p_component="'c_e_wifi'"></expandableCard>
-        </v-col>
-        <v-col sm="3" cols="12">
-          <expandableCard
-            :p_title="'House appliances'"
-            p_description="Information regarding house appliances"
-            p_icon="mdi-dishwasher"
-            p_iconColor="blue lighten-5"
-            :p_list="appliances"
-            p_extendTitle="More"></expandableCard>
-        </v-col>
-      </v-row>
-    </v-container>
+    <div class="info-cards-section" v-if="!$vuetify.display.mobile">
+      <div class="info-cards-container">
+        <div class="info-card">
+          <div class="card-header">
+            <div class="card-icon">
+              <i class="fas fa-exclamation-triangle"></i>
+            </div>
+            <div class="card-title">
+              <h3>House Rules</h3>
+              <p>General house rules</p>
+            </div>
+          </div>
+          <div class="card-content">
+            <div class="rule-item" v-for="rule in houseRules" :key="rule.title">
+              <div class="rule-icon">
+                <i class="fas fa-check-circle"></i>
+              </div>
+              <div class="rule-info">
+                <div class="rule-title">{{ rule.title }}</div>
+                <div class="rule-subtitle">{{ rule.subtitle }}</div>
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <div class="info-card">
+          <div class="card-header">
+            <div class="card-icon">
+              <i class="fas fa-wifi"></i>
+            </div>
+            <div class="card-title">
+              <h3>Wi-Fi Details</h3>
+              <p>Connect to our network</p>
+            </div>
+          </div>
+          <div class="card-content">
+            <div class="wifi-item">
+              <div class="wifi-label">SSID:</div>
+              <div class="wifi-value"><strong>LUKA_Guest</strong></div>
+            </div>
+            <div class="wifi-item">
+              <div class="wifi-label">Password:</div>
+              <div class="wifi-value"><strong>apartment-luka2000</strong></div>
+            </div>
+            <div class="wifi-item">
+              <div class="wifi-icon">
+                <i class="fas fa-tachometer-alt"></i>
+              </div>
+              <div class="wifi-value">60/10 Mbps | Mesh Wi-Fi system</div>
+            </div>
+          </div>
+        </div>
+
+        <div class="info-card">
+          <div class="card-header">
+            <div class="card-icon">
+              <i class="fas fa-kitchen-set"></i>
+            </div>
+            <div class="card-title">
+              <h3>House Appliances</h3>
+              <p>Available amenities</p>
+            </div>
+          </div>
+          <div class="card-content">
+            <div
+              class="appliance-item"
+              v-for="appliance in appliances"
+              :key="appliance.title">
+              <div class="appliance-icon">
+                <i class="fas fa-check"></i>
+              </div>
+              <div class="appliance-info">
+                <div class="appliance-title">{{ appliance.title }}</div>
+                <div class="appliance-subtitle">{{ appliance.subtitle }}</div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+    <div class="info-cards-section-mobile" v-else>
+      <div class="info-cards-container-mobile">
+        <div class="info-card-mobile">
+          <div class="card-header">
+            <div class="card-icon">
+              <i class="fas fa-exclamation-triangle"></i>
+            </div>
+            <div class="card-title">
+              <h3>House Rules</h3>
+              <p>General house rules</p>
+            </div>
+          </div>
+          <div class="card-content">
+            <div class="rule-item" v-for="rule in houseRules" :key="rule.title">
+              <div class="rule-icon">
+                <i class="fas fa-check-circle"></i>
+              </div>
+              <div class="rule-info">
+                <div class="rule-title">{{ rule.title }}</div>
+                <div class="rule-subtitle">{{ rule.subtitle }}</div>
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <div class="info-card-mobile">
+          <div class="card-header">
+            <div class="card-icon">
+              <i class="fas fa-wifi"></i>
+            </div>
+            <div class="card-title">
+              <h3>Wi-Fi Details</h3>
+              <p>Connect to our network</p>
+            </div>
+          </div>
+          <div class="card-content">
+            <div class="wifi-item">
+              <div class="wifi-label">SSID:</div>
+              <div class="wifi-value"><strong>LUKA_Guest</strong></div>
+            </div>
+            <div class="wifi-item">
+              <div class="wifi-label">Password:</div>
+              <div class="wifi-value"><strong>apartment-luka2000</strong></div>
+            </div>
+            <div class="wifi-item">
+              <div class="wifi-icon">
+                <i class="fas fa-tachometer-alt"></i>
+              </div>
+              <div class="wifi-value">60/10 Mbps | Mesh Wi-Fi system</div>
+            </div>
+          </div>
+        </div>
+
+        <div class="info-card-mobile">
+          <div class="card-header">
+            <div class="card-icon">
+              <i class="fas fa-dishwasher"></i>
+            </div>
+            <div class="card-title">
+              <h3>House Appliances</h3>
+              <p>Available amenities</p>
+            </div>
+          </div>
+          <div class="card-content">
+            <div
+              class="appliance-item"
+              v-for="appliance in appliances"
+              :key="appliance.title">
+              <div class="appliance-icon">
+                <i class="fas fa-check"></i>
+              </div>
+              <div class="appliance-info">
+                <div class="appliance-title">{{ appliance.title }}</div>
+                <div class="appliance-subtitle">{{ appliance.subtitle }}</div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
     <v-container>
       <infoTabs></infoTabs>
     </v-container>
@@ -261,12 +348,10 @@
           <v-divider class="mt-12"></v-divider>
           <v-col cols="12"> </v-col>
           <v-col cols="12">
-            <a href="https://www.booking.com/Share-0wQMOBG">
-              <v-img
-                :src="bookingcomLogo"
-                :aspect-ratio="$vuetify.display.mobile ? 12 : 36"
-                alt="booking.com reviews apartment Luka"
-            /></a>
+            Reviews on
+            <a target="_blank" href="https://www.booking.com/Pulse-itMdY9"
+              >Booking.com</a
+            >:
           </v-col>
         </v-row>
         <div class="text-center">
@@ -336,19 +421,38 @@
           <div><b>E-mail:</b> lukablaskovic2000@gmail.com</div>
           <div><b>Phone:</b> +385 91 721 7631</div>
         </div>
+
         <div class="mb-2 mt-2">
           Or you can book your stay through one of our partners:
         </div>
         <v-row>
           <v-col>
-            <a href="https://www.booking.com/Share-0wQMOBG">
+            <a href="https://www.booking.com/Pulse-itMdY9" target="_blank">
               <v-img
                 :src="bookingcomLogo"
                 :aspect-ratio="$vuetify.display.mobile ? 12 : 48"
-                alt="booking.com reviews apartment Luka"
+                alt="booking.com - Apartment Luka Pula Croatia"
             /></a>
           </v-col>
         </v-row>
+
+        <v-row>
+          <v-col>
+            <a href="https://www.airbnb.com/h/apartment-luka" target="_blank">
+              <v-img
+                :src="airbnbLogo"
+                :aspect-ratio="$vuetify.display.mobile ? 12 : 32"
+                alt="airbnb - Apartment Luka Pula Croatia"
+            /></a>
+          </v-col>
+        </v-row>
+
+        <div class="mt-4 pa-4 bg-amber-lighten-3 rounded">
+          <p class="text-body-1 font-weight-bold mb-2">
+            We are fully booked for 2025.
+          </p>
+          <p class="text-body-2">We offer bookings from June - October 2026.</p>
+        </div>
       </div>
     </v-container>
     <v-img
@@ -360,39 +464,40 @@
 </template>
 
 <script>
-import expandableCard from "@/components/expandable-card.vue";
 import infoTabs from "@/components/info-tabs.vue";
 import gallery from "@/components/gallery.vue";
 import mainImage from "@/assets/main.jpg";
 import mainAlphaReduced from "@/assets/main_alpha_reduced.jpg";
 import libraryImage from "@/assets/library.jpg";
 import bookingcomLogo from "@/assets/Bookingcom-logo.png";
+import airbnbLogo from "@/assets/airbnb.png";
 import CountryFlag from "vue-country-flag-next";
 import gardenImage from "@/assets/garden.png";
 
 export default {
   components: {
-    expandableCard,
     infoTabs,
     gallery,
     CountryFlag,
   },
   data() {
     return {
-      rating: 9.8,
+      rating: 10.0,
       mainImageSRC: mainAlphaReduced,
       gardenImage: gardenImage,
       librarySRC: libraryImage,
       bookingcomLogo: bookingcomLogo,
+      airbnbLogo: airbnbLogo,
       amenities: [
         { name: "Fast Wi-Fi", icon: "mdi-wifi" },
         { name: "Free Parking", icon: "mdi-parking" },
         { name: "2 Air Conditioners", icon: "mdi-air-conditioner" },
         { name: "4k Smart TV", icon: "mdi-television" },
+        { name: "Bar", icon: "mdi-glass-wine" },
         { name: "Dishwasher", icon: "mdi-dishwasher" },
         { name: "Washing Machine", icon: "mdi-washing-machine" },
-        { name: "90 m² Flat", icon: "mdi-texture-box" },
-        { name: "Recycling", icon: "mdi-recycle" },
+        { name: "100 m² Flat", icon: "mdi-texture-box" },
+        { name: "Recycling Practices", icon: "mdi-recycle" },
         { name: "Child-Friendly", icon: "mdi-human-male-boy" },
         { name: "Terrace Patio", icon: "mdi-table-furniture" },
         { name: "Lovely Garden", icon: "mdi-flower" },
@@ -415,7 +520,7 @@ export default {
       ],
       wiFi: [
         { title: "SSID", subtitle: "LUKA_Guest" },
-        { title: "Password", subtitle: "apartment-luka2024" },
+        { title: "Password", subtitle: "apartment-luka2000" },
       ],
       wiFiBonusData: {
         text: "60/10 Mbps | Mesh Wi-Fi system",
@@ -549,12 +654,28 @@ export default {
   transform: translate(-50%, -50%);
   z-index: 1;
   color: whitesmoke;
+  width: 90%;
+  max-width: 600px;
 }
 
 .dark-overlay {
-  background: #42424273;
-  border-radius: 5px;
+  background: rgba(0, 0, 0, 0.6);
+  border-radius: 8px;
   letter-spacing: 6px;
+  backdrop-filter: blur(2px);
+}
+
+/* Mobile-specific overlay improvements */
+@media (max-width: 768px) {
+  .overlay-content {
+    width: 95%;
+    letter-spacing: 2px;
+  }
+
+  .dark-overlay {
+    letter-spacing: 2px;
+    backdrop-filter: blur(1px);
+  }
 }
 
 .dancing-script-font {
@@ -565,5 +686,346 @@ export default {
 .paragrahs-big-spacing {
   letter-spacing: 1px;
   line-height: 2;
+}
+
+/* Custom Info Cards Styles */
+.info-cards-section {
+  max-width: 1200px;
+  margin: 0 auto;
+  padding: 2rem 1rem;
+}
+
+.info-cards-container {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 2rem;
+  max-width: 1000px;
+  margin: 0 auto;
+}
+
+.info-card {
+  background: white;
+  border-radius: 12px;
+  overflow: hidden;
+  box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+  transition: transform 0.3s ease;
+  min-height: 300px;
+}
+
+.info-card:hover {
+  transform: translateY(-4px);
+}
+
+.card-header {
+  display: flex;
+  align-items: center;
+  gap: 1rem;
+  padding: 1.5rem;
+  background: #f8f9fa;
+  border-bottom: 1px solid #eee;
+}
+
+.card-icon {
+  width: 48px;
+  height: 48px;
+  border-radius: 50%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 1.5rem;
+}
+
+.card-icon i {
+  color: #fdd835;
+}
+
+.card-title h3 {
+  margin: 0;
+  font-size: 1.25rem;
+  color: #333;
+  font-weight: 600;
+}
+
+.card-title p {
+  margin: 0.25rem 0 0 0;
+  color: #666;
+  font-size: 0.9rem;
+}
+
+.card-content {
+  padding: 1.5rem;
+}
+
+.rule-item,
+.appliance-item {
+  display: flex;
+  align-items: flex-start;
+  gap: 1rem;
+  padding: 0.75rem 0;
+  border-bottom: 1px solid #f0f0f0;
+}
+
+.rule-item:last-child,
+.appliance-item:last-child {
+  border-bottom: none;
+}
+
+.rule-icon,
+.appliance-icon {
+  color: #28a745;
+  font-size: 1rem;
+  margin-top: 0.125rem;
+}
+
+.rule-info,
+.appliance-info {
+  flex: 1;
+}
+
+.rule-title,
+.appliance-title {
+  font-weight: 500;
+  color: #333;
+  margin-bottom: 0.25rem;
+}
+
+.rule-subtitle,
+.appliance-subtitle {
+  color: #666;
+  font-size: 0.9rem;
+}
+
+.wifi-item {
+  display: flex;
+  align-items: center;
+  gap: 1rem;
+  padding: 0.75rem 0;
+  border-bottom: 1px solid #f0f0f0;
+}
+
+.wifi-item:last-child {
+  border-bottom: none;
+}
+
+.wifi-label {
+  font-weight: 500;
+  color: #333;
+  min-width: 80px;
+}
+
+.wifi-value {
+  color: #333;
+}
+
+.wifi-icon {
+  color: #007bff;
+  font-size: 1rem;
+  min-width: 20px;
+}
+
+/* Mobile Styles */
+.info-cards-section-mobile {
+  max-width: 1200px;
+  margin: 0 auto;
+  padding: 1rem 0.5rem;
+}
+
+.info-cards-container-mobile {
+  display: flex;
+  flex-direction: column;
+  gap: 1.5rem;
+  max-width: 400px;
+  margin: 0 auto;
+}
+
+.info-card-mobile {
+  background: white;
+  border-radius: 12px;
+  overflow: hidden;
+  box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+  transition: transform 0.3s ease;
+}
+
+.info-card-mobile:hover {
+  transform: translateY(-2px);
+}
+
+/* Responsive adjustments */
+@media (max-width: 768px) {
+  .info-cards-container {
+    grid-template-columns: 1fr;
+    gap: 1.5rem;
+  }
+
+  .card-header {
+    padding: 1rem;
+  }
+
+  .card-content {
+    padding: 1rem;
+  }
+}
+
+/* Modern Amenities Section Styles */
+.amenities-section {
+  padding: 4rem 2rem;
+  background: linear-gradient(135deg, #f8f9fa 0%, #e9ecef 100%);
+  position: relative;
+  overflow: hidden;
+}
+
+.amenities-section::before {
+  content: "";
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  background: url('data:image/svg+xml,<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 100 100"><defs><pattern id="grain" width="100" height="100" patternUnits="userSpaceOnUse"><circle cx="50" cy="50" r="1" fill="%23ffffff" opacity="0.1"/></pattern></defs><rect width="100" height="100" fill="url(%23grain)"/></svg>');
+  opacity: 0.3;
+  pointer-events: none;
+}
+
+.amenities-container {
+  max-width: 1200px;
+  margin: 0 auto;
+  position: relative;
+  z-index: 1;
+}
+
+.amenities-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+  gap: 1.5rem;
+  padding: 0 1rem;
+}
+
+.amenity-card {
+  background: white;
+  border-radius: 16px;
+  padding: 2rem 1.5rem;
+  text-align: center;
+  box-shadow: 0 4px 20px rgba(0, 0, 0, 0.08);
+  transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+  position: relative;
+  overflow: hidden;
+  border: 1px solid rgba(255, 255, 255, 0.8);
+}
+
+.amenity-card::before {
+  content: "";
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  background: linear-gradient(
+    135deg,
+    rgba(255, 193, 7, 0.05) 0%,
+    rgba(255, 193, 7, 0.1) 100%
+  );
+  opacity: 0;
+  transition: opacity 0.3s ease;
+}
+
+.amenity-card:hover {
+  transform: translateY(-8px);
+  box-shadow: 0 12px 40px rgba(0, 0, 0, 0.15);
+  border-color: #ffe082;
+}
+
+.amenity-card:hover::before {
+  opacity: 1;
+}
+
+.amenity-icon-wrapper {
+  width: 80px;
+  height: 80px;
+  margin: 0 auto 1.5rem;
+  background: linear-gradient(135deg, #ffc107 0%, #ffb300 100%);
+  border-radius: 50%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  position: relative;
+  transition: all 0.3s ease;
+}
+
+.amenity-icon-wrapper::before {
+  content: "";
+  position: absolute;
+  top: -2px;
+  left: -2px;
+  right: -2px;
+  bottom: -2px;
+  background: linear-gradient(135deg, #ffc107, #ffb300, #ff9800);
+  border-radius: 50%;
+  z-index: -1;
+  opacity: 0;
+  transition: opacity 0.3s ease;
+}
+
+.amenity-card:hover .amenity-icon-wrapper {
+  transform: scale(1.1);
+  box-shadow: 0 8px 25px rgba(255, 193, 7, 0.4);
+}
+
+.amenity-card:hover .amenity-icon-wrapper::before {
+  opacity: 1;
+}
+
+.amenity-icon {
+  color: white !important;
+  filter: drop-shadow(0 2px 4px rgba(0, 0, 0, 0.1));
+}
+
+.amenity-content {
+  position: relative;
+  z-index: 1;
+}
+
+.amenity-name {
+  font-size: 1.1rem;
+  font-weight: 600;
+  color: #2c3e50;
+  margin: 0;
+  line-height: 1.4;
+}
+
+/* Mobile Responsive Styles */
+@media (max-width: 768px) {
+  .amenities-section {
+    padding: 2rem 1rem;
+  }
+
+  .amenities-grid {
+    grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+    gap: 1rem;
+    padding: 0;
+  }
+
+  .amenity-card {
+    padding: 1.5rem 1rem;
+  }
+
+  .amenity-icon-wrapper {
+    width: 60px;
+    height: 60px;
+    margin-bottom: 1rem;
+  }
+
+  .amenity-name {
+    font-size: 1rem;
+  }
+}
+
+@media (max-width: 480px) {
+  .amenities-grid {
+    grid-template-columns: 1fr;
+  }
+
+  .amenity-card {
+    padding: 1.25rem 1rem;
+  }
 }
 </style>
