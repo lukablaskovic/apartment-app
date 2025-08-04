@@ -335,6 +335,28 @@ export default {
       faq,
     };
   },
+  mounted() {
+    this.scrollActiveTabIntoView();
+  },
+  methods: {
+    scrollActiveTabIntoView() {
+      this.$nextTick(() => {
+        const activeButton = this.$el.querySelector(".tab-button.active");
+        if (activeButton) {
+          activeButton.scrollIntoView({
+            behavior: "smooth",
+            block: "nearest",
+            inline: "center",
+          });
+        }
+      });
+    },
+  },
+  watch: {
+    activeTab() {
+      this.scrollActiveTabIntoView();
+    },
+  },
 };
 </script>
 
@@ -354,6 +376,12 @@ export default {
   border-bottom: 1px solid #eee;
   -webkit-overflow-scrolling: touch;
   justify-content: center;
+  scrollbar-width: none; /* Firefox */
+  -ms-overflow-style: none; /* IE and Edge */
+}
+
+.tab-nav::-webkit-scrollbar {
+  display: none; /* Chrome, Safari and Opera */
 }
 
 .tab-button {
@@ -688,11 +716,17 @@ export default {
   .tab-nav {
     padding-bottom: 0.5rem;
     margin-bottom: 1rem;
+    justify-content: flex-start;
+    gap: 0.25rem;
+    scroll-padding-left: 1rem;
+    scroll-padding-right: 1rem;
   }
 
   .tab-button {
-    padding: 0.5rem 1rem;
-    font-size: 0.9rem;
+    padding: 0.5rem 0.75rem;
+    font-size: 0.85rem;
+    min-width: auto;
+    flex-shrink: 0;
   }
 
   .emergency-grid,

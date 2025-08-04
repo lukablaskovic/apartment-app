@@ -17,8 +17,8 @@
               data-aos-delay="300"
               :class="
                 $vuetify.display.mobile
-                  ? 'text-h3 dancing-script-font text-amber-lighten-3 mb-2'
-                  : 'text-h1 dancing-script-font text-amber-lighten-3'
+                  ? 'text-h3 dancing-script-font text-amber-darken-1 mb-2'
+                  : 'text-h1 dancing-script-font text-amber-darken-1'
               ">
               Welcome !
             </h1>
@@ -39,65 +39,81 @@
       </div></v-img
     >
     <!--Modern and Elegant apartment heading-->
-    <div class="bg-grey-lighten-3">
+    <div class="modern-apartment-section">
       <v-container
-        :class="
-          $vuetify.display.mobile ? 'px-12 py-12 ' : 'px-12 py-12 mt-12 mb-12'
-        ">
-        <h2 :class="$vuetify.display.mobile ? 'text-h4 mb-2' : 'text-h4 mb-12'">
-          <b>Modern and Elegant Apartment in a Quiet Part of Pula</b>
-        </h2>
-        <v-row no-gutters>
-          <v-col
-            cols="12"
-            sm="4"
-            :class="
-              $vuetify.display.mobile
-                ? 'text-left mt-2 paragrahs-big-spacing mb-4'
-                : 'text-left mt-2 paragrahs-big-spacing px-4'
-            ">
-            <div>
+        :class="$vuetify.display.mobile ? 'px-6 py-16' : 'px-16 py-20'">
+        <div class="text-center mb-16">
+          <h2 class="section-title">
+            Modern & Elegant Apartment in a Quiet Part of Pula
+          </h2>
+          <div class="section-divider"></div>
+        </div>
+
+        <v-row class="justify-center">
+          <v-col cols="12" lg="8" class="text-center mb-8">
+            <p class="lead-text">
               Nestled in a tranquil corner of
               <a
-                class="underline"
+                class="highlight-link"
                 href="https://www.pulainfo.hr/"
                 target="_blank"
                 >Pula</a
-              >, this elegant ground floor apartment 🏠 in a family home is a
-              blend of modern design enriched by timeless details .
-            </div>
-          </v-col>
-          <v-col
-            cols="12"
-            sm="4"
-            :class="
-              $vuetify.display.mobile
-                ? 'text-left mt-2 paragrahs-big-spacing mb-4'
-                : 'text-left mt-2 paragrahs-big-spacing px-4'
-            ">
-            <div>
-              The interiors captivate with intriguing artwork and a library
-              brimming with classic reads. Begin your mornings with a cup of
-              coffee ☕ on the veranda, overlooking the beautiful garden
-              surrounded by a lush green wall, bursting with diverse plants 🪴.
-            </div>
-            <p>
-              The outdoor patio is an inviting space, perfect for leisurely
-              breakfasts or intimate evening dinners amidst nature.
+              >, this elegant ground floor apartment in a family home is a blend
+              of modern design enriched by timeless details.
             </p>
           </v-col>
-          <v-col
-            cols="12"
-            sm="4"
-            :class="
-              $vuetify.display.mobile
-                ? 'text-left mt-2 paragrahs-big-spacing mb-4'
-                : 'text-left mt-2 paragrahs-big-spacing px-4'
-            ">
-            <div>
-              With 2 spacious bedrooms 🛏️, a state-of-the-art kitchen, and
-              high-speed internet, our apartment offers a serene escape,
-              ensuring every moment is steeped in comfort and beauty!
+        </v-row>
+
+        <v-row class="justify-center">
+          <v-col cols="12" md="4" class="feature-column">
+            <div class="feature-card">
+              <div class="feature-icon">
+                <v-icon
+                  icon="mdi-home"
+                  size="48"
+                  color="amber-darken-2"></v-icon>
+              </div>
+              <h3 class="feature-title">Elegant Interiors</h3>
+              <p class="feature-text">
+                The interiors captivate with intriguing artwork and a library
+                brimming with classic reads. Begin your mornings with a cup of
+                coffee on the veranda, overlooking the beautiful garden
+                surrounded by a lush green wall, bursting with diverse plants.
+              </p>
+            </div>
+          </v-col>
+
+          <v-col cols="12" md="4" class="feature-column">
+            <div class="feature-card">
+              <div class="feature-icon">
+                <v-icon
+                  icon="mdi-table-furniture"
+                  size="48"
+                  color="amber-darken-2"></v-icon>
+              </div>
+              <h3 class="feature-title">Outdoor Living</h3>
+              <p class="feature-text">
+                The outdoor patio is an inviting space, perfect for leisurely
+                breakfasts or intimate evening dinners amidst nature. Enjoy the
+                serene atmosphere and beautiful surroundings.
+              </p>
+            </div>
+          </v-col>
+
+          <v-col cols="12" md="4" class="feature-column">
+            <div class="feature-card">
+              <div class="feature-icon">
+                <v-icon
+                  icon="mdi-bed"
+                  size="48"
+                  color="amber-darken-2"></v-icon>
+              </div>
+              <h3 class="feature-title">Comfort & Convenience</h3>
+              <p class="feature-text">
+                With 2 spacious bedrooms, a state-of-the-art kitchen, and
+                high-speed internet, our apartment offers a serene escape,
+                ensuring every moment is steeped in comfort and beauty.
+              </p>
             </div>
           </v-col>
         </v-row>
@@ -155,168 +171,180 @@
     </v-container>
 
     <v-divider class="mt-2"></v-divider>
-    <v-container class="mt-4 text-center">
-      <div
-        id="info"
-        class="text-h3 mb-6 font-weight-bold text-blue-grey-darken-4">
-        Useful information
+    <div class="useful-info-section">
+      <v-container class="mt-4 text-center">
+        <div
+          id="info"
+          class="text-h3 mb-6 font-weight-bold text-blue-grey-darken-4">
+          Useful information
+        </div>
+      </v-container>
+
+      <div class="info-cards-section" v-if="!$vuetify.display.mobile">
+        <div class="info-cards-container">
+          <div class="info-card">
+            <div class="card-header">
+              <div class="card-icon">
+                <i class="fas fa-exclamation-triangle"></i>
+              </div>
+              <div class="card-title">
+                <h3>House Rules</h3>
+                <p>General house rules</p>
+              </div>
+            </div>
+            <div class="card-content">
+              <div
+                class="rule-item"
+                v-for="rule in houseRules"
+                :key="rule.title">
+                <div class="rule-icon">
+                  <i class="fas fa-check-circle"></i>
+                </div>
+                <div class="rule-info">
+                  <div class="rule-title">{{ rule.title }}</div>
+                  <div class="rule-subtitle">{{ rule.subtitle }}</div>
+                </div>
+              </div>
+            </div>
+          </div>
+
+          <div class="info-card">
+            <div class="card-header">
+              <div class="card-icon">
+                <i class="fas fa-wifi"></i>
+              </div>
+              <div class="card-title">
+                <h3>Wi-Fi Details</h3>
+                <p>Connect to our network</p>
+              </div>
+            </div>
+            <div class="card-content">
+              <div class="wifi-item">
+                <div class="wifi-label">SSID:</div>
+                <div class="wifi-value"><strong>LUKA_Guest</strong></div>
+              </div>
+              <div class="wifi-item">
+                <div class="wifi-label">Password:</div>
+                <div class="wifi-value">
+                  <strong>apartment-luka2000</strong>
+                </div>
+              </div>
+              <div class="wifi-item">
+                <div class="wifi-icon">
+                  <i class="fas fa-tachometer-alt"></i>
+                </div>
+                <div class="wifi-value">60/10 Mbps | Mesh Wi-Fi system</div>
+              </div>
+            </div>
+          </div>
+
+          <div class="info-card">
+            <div class="card-header">
+              <div class="card-icon">
+                <i class="fas fa-kitchen-set"></i>
+              </div>
+              <div class="card-title">
+                <h3>House Appliances</h3>
+                <p>Available amenities</p>
+              </div>
+            </div>
+            <div class="card-content">
+              <div
+                class="appliance-item"
+                v-for="appliance in appliances"
+                :key="appliance.title">
+                <div class="appliance-icon">
+                  <i class="fas fa-check"></i>
+                </div>
+                <div class="appliance-info">
+                  <div class="appliance-title">{{ appliance.title }}</div>
+                  <div class="appliance-subtitle">{{ appliance.subtitle }}</div>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
       </div>
-    </v-container>
+      <div class="info-cards-section-mobile" v-else>
+        <div class="info-cards-container-mobile">
+          <div class="info-card-mobile">
+            <div class="card-header">
+              <div class="card-icon">
+                <i class="fas fa-exclamation-triangle"></i>
+              </div>
+              <div class="card-title">
+                <h3>House Rules</h3>
+                <p>General house rules</p>
+              </div>
+            </div>
+            <div class="card-content">
+              <div
+                class="rule-item"
+                v-for="rule in houseRules"
+                :key="rule.title">
+                <div class="rule-icon">
+                  <i class="fas fa-check-circle"></i>
+                </div>
+                <div class="rule-info">
+                  <div class="rule-title">{{ rule.title }}</div>
+                  <div class="rule-subtitle">{{ rule.subtitle }}</div>
+                </div>
+              </div>
+            </div>
+          </div>
 
-    <div class="info-cards-section" v-if="!$vuetify.display.mobile">
-      <div class="info-cards-container">
-        <div class="info-card">
-          <div class="card-header">
-            <div class="card-icon">
-              <i class="fas fa-exclamation-triangle"></i>
-            </div>
-            <div class="card-title">
-              <h3>House Rules</h3>
-              <p>General house rules</p>
-            </div>
-          </div>
-          <div class="card-content">
-            <div class="rule-item" v-for="rule in houseRules" :key="rule.title">
-              <div class="rule-icon">
-                <i class="fas fa-check-circle"></i>
+          <div class="info-card-mobile">
+            <div class="card-header">
+              <div class="card-icon">
+                <i class="fas fa-wifi"></i>
               </div>
-              <div class="rule-info">
-                <div class="rule-title">{{ rule.title }}</div>
-                <div class="rule-subtitle">{{ rule.subtitle }}</div>
+              <div class="card-title">
+                <h3>Wi-Fi Details</h3>
+                <p>Connect to our network</p>
               </div>
             </div>
+            <div class="card-content">
+              <div class="wifi-item">
+                <div class="wifi-label">SSID:</div>
+                <div class="wifi-value"><strong>LUKA_Guest</strong></div>
+              </div>
+              <div class="wifi-item">
+                <div class="wifi-label">Password:</div>
+                <div class="wifi-value">
+                  <strong>apartment-luka2000</strong>
+                </div>
+              </div>
+              <div class="wifi-item">
+                <div class="wifi-icon">
+                  <i class="fas fa-tachometer-alt"></i>
+                </div>
+                <div class="wifi-value">60/10 Mbps | Mesh Wi-Fi system</div>
+              </div>
+            </div>
           </div>
-        </div>
 
-        <div class="info-card">
-          <div class="card-header">
-            <div class="card-icon">
-              <i class="fas fa-wifi"></i>
-            </div>
-            <div class="card-title">
-              <h3>Wi-Fi Details</h3>
-              <p>Connect to our network</p>
-            </div>
-          </div>
-          <div class="card-content">
-            <div class="wifi-item">
-              <div class="wifi-label">SSID:</div>
-              <div class="wifi-value"><strong>LUKA_Guest</strong></div>
-            </div>
-            <div class="wifi-item">
-              <div class="wifi-label">Password:</div>
-              <div class="wifi-value"><strong>apartment-luka2000</strong></div>
-            </div>
-            <div class="wifi-item">
-              <div class="wifi-icon">
-                <i class="fas fa-tachometer-alt"></i>
+          <div class="info-card-mobile">
+            <div class="card-header">
+              <div class="card-icon">
+                <i class="fas fa-dishwasher"></i>
               </div>
-              <div class="wifi-value">60/10 Mbps | Mesh Wi-Fi system</div>
-            </div>
-          </div>
-        </div>
-
-        <div class="info-card">
-          <div class="card-header">
-            <div class="card-icon">
-              <i class="fas fa-kitchen-set"></i>
-            </div>
-            <div class="card-title">
-              <h3>House Appliances</h3>
-              <p>Available amenities</p>
-            </div>
-          </div>
-          <div class="card-content">
-            <div
-              class="appliance-item"
-              v-for="appliance in appliances"
-              :key="appliance.title">
-              <div class="appliance-icon">
-                <i class="fas fa-check"></i>
-              </div>
-              <div class="appliance-info">
-                <div class="appliance-title">{{ appliance.title }}</div>
-                <div class="appliance-subtitle">{{ appliance.subtitle }}</div>
+              <div class="card-title">
+                <h3>House Appliances</h3>
+                <p>Available amenities</p>
               </div>
             </div>
-          </div>
-        </div>
-      </div>
-    </div>
-    <div class="info-cards-section-mobile" v-else>
-      <div class="info-cards-container-mobile">
-        <div class="info-card-mobile">
-          <div class="card-header">
-            <div class="card-icon">
-              <i class="fas fa-exclamation-triangle"></i>
-            </div>
-            <div class="card-title">
-              <h3>House Rules</h3>
-              <p>General house rules</p>
-            </div>
-          </div>
-          <div class="card-content">
-            <div class="rule-item" v-for="rule in houseRules" :key="rule.title">
-              <div class="rule-icon">
-                <i class="fas fa-check-circle"></i>
-              </div>
-              <div class="rule-info">
-                <div class="rule-title">{{ rule.title }}</div>
-                <div class="rule-subtitle">{{ rule.subtitle }}</div>
-              </div>
-            </div>
-          </div>
-        </div>
-
-        <div class="info-card-mobile">
-          <div class="card-header">
-            <div class="card-icon">
-              <i class="fas fa-wifi"></i>
-            </div>
-            <div class="card-title">
-              <h3>Wi-Fi Details</h3>
-              <p>Connect to our network</p>
-            </div>
-          </div>
-          <div class="card-content">
-            <div class="wifi-item">
-              <div class="wifi-label">SSID:</div>
-              <div class="wifi-value"><strong>LUKA_Guest</strong></div>
-            </div>
-            <div class="wifi-item">
-              <div class="wifi-label">Password:</div>
-              <div class="wifi-value"><strong>apartment-luka2000</strong></div>
-            </div>
-            <div class="wifi-item">
-              <div class="wifi-icon">
-                <i class="fas fa-tachometer-alt"></i>
-              </div>
-              <div class="wifi-value">60/10 Mbps | Mesh Wi-Fi system</div>
-            </div>
-          </div>
-        </div>
-
-        <div class="info-card-mobile">
-          <div class="card-header">
-            <div class="card-icon">
-              <i class="fas fa-dishwasher"></i>
-            </div>
-            <div class="card-title">
-              <h3>House Appliances</h3>
-              <p>Available amenities</p>
-            </div>
-          </div>
-          <div class="card-content">
-            <div
-              class="appliance-item"
-              v-for="appliance in appliances"
-              :key="appliance.title">
-              <div class="appliance-icon">
-                <i class="fas fa-check"></i>
-              </div>
-              <div class="appliance-info">
-                <div class="appliance-title">{{ appliance.title }}</div>
-                <div class="appliance-subtitle">{{ appliance.subtitle }}</div>
+            <div class="card-content">
+              <div
+                class="appliance-item"
+                v-for="appliance in appliances"
+                :key="appliance.title">
+                <div class="appliance-icon">
+                  <i class="fas fa-check"></i>
+                </div>
+                <div class="appliance-info">
+                  <div class="appliance-title">{{ appliance.title }}</div>
+                  <div class="appliance-subtitle">{{ appliance.subtitle }}</div>
+                </div>
               </div>
             </div>
           </div>
@@ -361,7 +389,9 @@
             readonly
             half-increments
             length="10"
-            color="amber-darken-1"></v-rating>
+            :size="$vuetify.display.mobile ? 16 : 24"
+            color="amber-darken-1"
+            class="rating-container"></v-rating>
           <pre>{{ rating }}</pre>
           <div class="container mx-auto px-4">
             <div class="flex flex-wrap -mx-2">
@@ -385,13 +415,14 @@
                     </div>
 
                     <!-- Rating -->
-                    <div class="mb-2">
+                    <div class="mb-2 rating-wrapper">
                       <v-rating
                         :value="r.rating"
                         color="amber"
                         dense
                         readonly
-                        size="20" />
+                        :size="$vuetify.display.mobile ? 14 : 20"
+                        class="review-rating" />
                     </div>
 
                     <!-- Text -->
@@ -866,6 +897,191 @@ export default {
   }
 }
 
+/* Modern Apartment Section Styles */
+.modern-apartment-section {
+  background: linear-gradient(135deg, #f8f9fa 0%, #e9ecef 100%);
+  position: relative;
+  overflow: hidden;
+}
+
+/* Useful Information Section Styles */
+.useful-info-section {
+  background: linear-gradient(135deg, #f8f9fa 0%, #e9ecef 100%);
+  position: relative;
+  overflow: hidden;
+}
+
+/* Professional Section Styling */
+.section-subtitle {
+  font-size: 0.9rem;
+  font-weight: 500;
+  color: #ffc107;
+  text-transform: uppercase;
+  letter-spacing: 2px;
+  margin-bottom: 1rem;
+}
+
+.section-title {
+  font-size: 2.5rem;
+  font-weight: 700;
+  color: #2c3e50;
+  line-height: 1.2;
+  margin-bottom: 1.5rem;
+  max-width: 800px;
+  margin-left: auto;
+  margin-right: auto;
+}
+
+.section-divider {
+  width: 80px;
+  height: 4px;
+  background: linear-gradient(90deg, #ffc107, #ffb300);
+  margin: 0 auto;
+  border-radius: 2px;
+}
+
+.lead-text {
+  font-size: 1.25rem;
+  line-height: 1.8;
+  color: #5a6c7d;
+  font-weight: 400;
+  max-width: 700px;
+  margin: 0 auto;
+}
+
+.highlight-link {
+  color: #ffc107;
+  text-decoration: none;
+  font-weight: 600;
+  transition: color 0.3s ease;
+  border-bottom: 2px solid transparent;
+}
+
+.highlight-link:hover {
+  color: #ffb300;
+  border-bottom-color: #ffb300;
+}
+
+.feature-column {
+  margin-bottom: 2rem;
+}
+
+.feature-card {
+  background: white;
+  border-radius: 16px;
+  padding: 2.5rem 2rem;
+  text-align: center;
+  box-shadow: 0 8px 32px rgba(0, 0, 0, 0.08);
+  transition: all 0.4s cubic-bezier(0.4, 0, 0.2, 1);
+  height: 100%;
+  position: relative;
+  overflow: hidden;
+  border: 1px solid rgba(255, 255, 255, 0.9);
+}
+
+.feature-card::before {
+  content: "";
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  background: linear-gradient(
+    135deg,
+    rgba(255, 193, 7, 0.03) 0%,
+    rgba(255, 193, 7, 0.08) 100%
+  );
+  opacity: 0;
+  transition: opacity 0.3s ease;
+}
+
+.feature-card:hover {
+  transform: translateY(-12px);
+  box-shadow: 0 20px 60px rgba(0, 0, 0, 0.15);
+  border-color: #ffe082;
+}
+
+.feature-card:hover::before {
+  opacity: 1;
+}
+
+.feature-icon {
+  margin-bottom: 1.5rem;
+  display: inline-block;
+  padding: 1rem;
+  background: linear-gradient(
+    135deg,
+    rgba(255, 193, 7, 0.1),
+    rgba(255, 193, 7, 0.2)
+  );
+  border-radius: 50%;
+  transition: all 0.3s ease;
+}
+
+.feature-card:hover .feature-icon {
+  transform: scale(1.1);
+  background: linear-gradient(
+    135deg,
+    rgba(255, 193, 7, 0.2),
+    rgba(255, 193, 7, 0.3)
+  );
+}
+
+.feature-title {
+  font-size: 1.5rem;
+  font-weight: 600;
+  color: #2c3e50;
+  margin-bottom: 1rem;
+  line-height: 1.3;
+}
+
+.feature-text {
+  font-size: 1rem;
+  line-height: 1.7;
+  color: #5a6c7d;
+  font-weight: 400;
+  margin: 0;
+}
+
+/* Mobile Responsive Adjustments */
+@media (max-width: 768px) {
+  .section-title {
+    font-size: 2rem;
+    padding: 0 1rem;
+  }
+
+  .lead-text {
+    font-size: 1.1rem;
+    padding: 0 1rem;
+  }
+
+  .feature-card {
+    padding: 2rem 1.5rem;
+  }
+
+  .feature-title {
+    font-size: 1.3rem;
+  }
+
+  .feature-text {
+    font-size: 0.95rem;
+  }
+}
+
+@media (max-width: 480px) {
+  .section-title {
+    font-size: 1.75rem;
+  }
+
+  .lead-text {
+    font-size: 1rem;
+  }
+
+  .feature-card {
+    padding: 1.5rem 1rem;
+  }
+}
+
 /* Modern Amenities Section Styles */
 .amenities-section {
   padding: 4rem 2rem;
@@ -1026,6 +1242,47 @@ export default {
 
   .amenity-card {
     padding: 1.25rem 1rem;
+  }
+}
+
+/* Rating overflow fixes for mobile */
+.rating-container {
+  overflow: visible;
+  max-width: 100%;
+}
+
+.review-rating {
+  overflow: visible;
+  max-width: 100%;
+}
+
+.rating-wrapper {
+  overflow: visible;
+  max-width: 100%;
+}
+
+/* Mobile-specific rating adjustments */
+@media (max-width: 768px) {
+  .rating-container {
+    transform: scale(0.9);
+    transform-origin: center;
+  }
+
+  .review-rating {
+    transform: scale(0.85);
+    transform-origin: center;
+  }
+}
+
+@media (max-width: 480px) {
+  .rating-container {
+    transform: scale(0.8);
+    transform-origin: center;
+  }
+
+  .review-rating {
+    transform: scale(0.75);
+    transform-origin: center;
   }
 }
 </style>
