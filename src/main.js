@@ -4,6 +4,7 @@ import vuetify from "./plugins/vuetify";
 import { createRouter, createWebHistory } from "vue-router";
 import HomePage from "./pages/HomeView.vue";
 import AOS from "aos";
+import { createGtag } from "vue-gtag";
 const router = createRouter({
   history: createWebHistory(),
   routes: [{ path: "/", name: "Home", component: HomePage }],
@@ -61,8 +62,13 @@ const lazyLoad = {
   },
 };
 
+const gtag = createGtag({
+  tagId: "G-RT8WQ6C3XV",
+});
+
 let app = createApp(App);
 app.use(vuetify);
+app.use(gtag);
 app.use(router);
 app.directive("lazy", lazyLoad);
 
