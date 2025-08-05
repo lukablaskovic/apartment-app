@@ -7,11 +7,63 @@ import AOS from "aos";
 const router = createRouter({
   history: createWebHistory(),
   routes: [{ path: "/", name: "Home", component: HomePage }],
+  scrollBehavior(to, from, savedPosition) {
+    // If there's a saved position (like back button), use it
+    if (savedPosition) {
+      return savedPosition;
+    }
+    // If there's a hash, scroll to it
+    if (to.hash) {
+      return {
+        el: to.hash,
+        behavior: "smooth",
+      };
+    }
+    // Otherwise, scroll to top but preserve existing position on refresh
+    if (from.name) {
+      // Coming from another route, scroll to top
+      return { top: 0 };
+    }
+    // On page refresh/direct access, don't auto-scroll
+    return false;
+  },
 });
-AOS.init();
+// Initialize AOS with specific settings to prevent scroll interference
+AOS.init({
+  duration: 800,
+  once: true,
+  offset: 120,
+  disable: false,
+  startEvent: "DOMContentLoaded",
+});
+
+// Custom lazy loading directive
+const lazyLoad = {
+  mounted(el, binding) {
+    const observer = new IntersectionObserver(
+      (entries) => {
+        entries.forEach((entry) => {
+          if (entry.isIntersecting) {
+            const img = entry.target;
+            img.src = binding.value;
+            img.classList.remove("lazy");
+            observer.unobserve(img);
+          }
+        });
+      },
+      {
+        rootMargin: "50px 0px",
+        threshold: 0.01,
+      }
+    );
+
+    observer.observe(el);
+  },
+};
 
 let app = createApp(App);
 app.use(vuetify);
 app.use(router);
+app.directive("lazy", lazyLoad);
 
 app.mount("#app");

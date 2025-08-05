@@ -10,10 +10,12 @@
     "serve": "vite preview",
     "build": "vite build",
     "dev": "vite",
-    "preview": "vite preview"
+    "preview": "vite preview",
+    "build:analyze": "vite build --mode analyze"
   },
   "dependencies": {
     "@mdi/font": "7.4.47",
+    "@vueuse/head": "^2.0.0",
     "animate.css": "^4.1.1",
     "aos": "^2.3.4",
     "roboto-fontface": "*",
@@ -28,7 +30,8 @@
     "sass": "^1.89.2",
     "vite": "^5.4.19",
     "vite-plugin-vuetify": "^2.1.2",
-    "vue-cli-plugin-vuetify": "~2.5.8"
+    "vue-cli-plugin-vuetify": "~2.5.8",
+    "vite-plugin-imagemin": "^0.6.1"
   },
   "type": "module"
 }

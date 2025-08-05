@@ -1,9 +1,10 @@
 <template>
   <div id="welcome" class="bg-grey-lighten-2">
-    <v-img
-      :aspect-ratio="$vuetify.display.mobile ? 1.2 : 2.5"
-      :src="mainImageSRC"
-      cover>
+    <div class="hero-image-container">
+      <LazyImage
+        :src="mainImageSRC"
+        :aspect-ratio="$vuetify.display.mobile ? 1.2 : 2.5"
+        :cover="true" />
       <div
         :class="
           $vuetify.display.mobile
@@ -53,8 +54,8 @@
             </v-btn>
           </v-col>
         </v-row>
-      </div></v-img
-    >
+      </div>
+    </div>
     <!--Modern and Elegant apartment heading-->
     <div class="modern-apartment-section">
       <v-container
@@ -481,6 +482,7 @@
                 :src="bookingcomLogo"
                 :aspect-ratio="$vuetify.display.mobile ? 18 : 48"
                 alt="booking.com - Apartment Luka Pula Croatia"
+                loading="lazy"
             /></a>
           </v-col>
         </v-row>
@@ -496,6 +498,7 @@
                 :src="airbnbLogo"
                 :aspect-ratio="$vuetify.display.mobile ? 12 : 32"
                 alt="airbnb - Apartment Luka Pula Croatia"
+                loading="lazy"
             /></a>
           </v-col>
         </v-row>
@@ -513,17 +516,17 @@
         </div>
       </div>
     </v-container>
-    <v-img
-      :aspect-ratio="$vuetify.display.mobile ? 1 : 2.5"
+    <LazyImage
       :src="gardenImage"
-      cover>
-    </v-img>
+      :aspect-ratio="$vuetify.display.mobile ? 1 : 2.5"
+      :cover="true" />
   </div>
 </template>
 
 <script>
 import infoTabs from "@/components/info-tabs.vue";
 import gallery from "@/components/gallery.vue";
+import LazyImage from "@/components/LazyImage.vue";
 import mainImage from "@/assets/main.jpg";
 import mainAlphaReduced from "@/assets/main_alpha_reduced.jpg";
 import libraryImage from "@/assets/library.jpg";
@@ -536,6 +539,7 @@ export default {
   components: {
     infoTabs,
     gallery,
+    LazyImage,
     CountryFlag,
   },
   data() {
@@ -710,7 +714,7 @@ export default {
   top: 50%;
   left: 50%;
   transform: translate(-50%, -50%);
-  z-index: 1;
+  z-index: 2;
   color: whitesmoke;
   width: 90%;
   max-width: 600px;
@@ -961,7 +965,7 @@ export default {
 
 .section-divider {
   width: 80px;
-  height: 4px;
+  height: 5px;
   background: linear-gradient(90deg, #ffc107, #ffb300);
   margin: 0 auto;
   border-radius: 2px;
@@ -1311,6 +1315,12 @@ export default {
     transform: scale(0.75);
     transform-origin: center;
   }
+}
+
+/* Hero Image Container */
+.hero-image-container {
+  position: relative;
+  width: 100%;
 }
 
 /* Contact Button Styles */

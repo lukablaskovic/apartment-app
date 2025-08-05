@@ -9,25 +9,21 @@
       sm="6"
       cols="12">
       <div class="d-flex flex-column">
-        <v-img
-          :src="g.src"
-          aspect-ratio="16/9"
-          cover
-          class="bg-grey-lighten-2 rounded-lg">
-          <template v-slot:placeholder>
-            <v-row class="fill-height ma-0" align="center" justify="center">
-              <v-progress-circular
-                indeterminate
-                color="grey-lighten-5"></v-progress-circular>
-            </v-row>
-          </template>
-        </v-img>
+        <div class="gallery-image-container">
+          <LazyImage
+            :src="g.src"
+            :alt="g.desc"
+            :cover="true"
+            class="bg-grey-lighten-2 rounded-lg"
+            :aspect-ratio="16 / 9" />
+        </div>
         <span class="text-center pt-2">{{ g.desc }}</span>
       </div>
     </v-col>
   </v-row>
 </template>
 <script>
+import LazyImage from "./LazyImage.vue";
 import room1 from "@/assets//gallery/room1.jpg";
 import room2 from "@/assets//gallery/room2.jpg";
 import bathroom from "@/assets//gallery/bathroom.webp";
@@ -42,6 +38,9 @@ import garden2 from "@/assets//gallery//garden2.jpg";
 import garden3 from "@/assets//gallery//garden3.jpg";
 
 export default {
+  components: {
+    LazyImage,
+  },
   data: () => ({
     galleryImages: [
       { src: living_room, desc: "Cozy living room" },
@@ -60,3 +59,13 @@ export default {
   }),
 };
 </script>
+
+<style scoped>
+.gallery-image-container {
+  position: relative;
+  width: 100%;
+  aspect-ratio: 16/9;
+  border-radius: 8px;
+  overflow: hidden;
+}
+</style>

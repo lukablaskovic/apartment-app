@@ -3,11 +3,12 @@
     <v-app-bar class="px-3" color="white" flat density="compact">
       <v-spacer></v-spacer>
 
-      <v-tabs centered color="amber-darken-1">
-        <v-tab
-          v-for="link in links"
-          :key="link"
-          @click="scroll(link.toLocaleLowerCase())">
+      <v-tabs
+        v-model="activeTab"
+        centered
+        color="amber-darken-1"
+        @update:model-value="onTabChange">
+        <v-tab v-for="(link, index) in links" :key="link" :value="index">
           {{ link }}
         </v-tab>
       </v-tabs>
@@ -74,19 +75,132 @@ export default {
 
   data: () => ({
     links: ["Welcome", "Amenities", "Gallery", "Info", "Reviews", "Contact"],
+    sectionIds: [
+      "welcome",
+      "amenities",
+      "gallery",
+      "info",
+      "reviews",
+      "contact",
+    ],
     contact: false,
+    activeTab: 0,
+    isScrolling: false,
+    observer: null,
   }),
+
+  mounted() {
+    // Delay scroll spy initialization to prevent interference with initial page load
+    this.$nextTick(() => {
+      setTimeout(() => {
+        this.initScrollSpy();
+      }, 500); // Small delay to ensure page is fully loaded
+    });
+
+    // Prevent any automatic scrolling on page refresh
+    this.preventAutoScroll();
+  },
+
+  beforeUnmount() {
+    if (this.observer) {
+      this.observer.disconnect();
+    }
+  },
+
   methods: {
+    initScrollSpy() {
+      // Wait for next tick to ensure all sections are rendered
+      this.$nextTick(() => {
+        const sections = this.sectionIds
+          .map((id) => document.getElementById(id))
+          .filter(Boolean);
+
+        if (sections.length === 0) return;
+
+        this.observer = new IntersectionObserver(
+          (entries) => {
+            if (this.isScrolling) return; // Don't update tabs while programmatically scrolling
+
+            // Find the section that's most visible
+            let maxRatio = 0;
+            let activeSection = null;
+
+            entries.forEach((entry) => {
+              if (entry.intersectionRatio > maxRatio) {
+                maxRatio = entry.intersectionRatio;
+                activeSection = entry.target;
+              }
+            });
+
+            if (activeSection) {
+              const sectionId = activeSection.id;
+              const tabIndex = this.sectionIds.indexOf(sectionId);
+              if (tabIndex !== -1 && tabIndex !== this.activeTab) {
+                this.activeTab = tabIndex;
+              }
+            }
+          },
+          {
+            root: null,
+            rootMargin: "-20% 0px -20% 0px", // Only trigger when section is well into view
+            threshold: [0, 0.1, 0.2, 0.3, 0.4, 0.5, 0.6, 0.7, 0.8, 0.9, 1.0],
+          }
+        );
+
+        sections.forEach((section) => {
+          this.observer.observe(section);
+        });
+      });
+    },
+
+    preventAutoScroll() {
+      // Clear any hash from URL on page load to prevent auto-scrolling
+      if (window.location.hash) {
+        history.replaceState(null, null, window.location.pathname);
+      }
+
+      // Ensure we start at the top for new visits or refreshes
+      if (document.readyState === "complete") {
+        window.scrollTo(0, 0);
+      } else {
+        window.addEventListener("load", () => {
+          window.scrollTo(0, 0);
+        });
+      }
+    },
+
+    onTabChange(tabIndex) {
+      if (
+        typeof tabIndex === "number" &&
+        tabIndex >= 0 &&
+        tabIndex < this.sectionIds.length
+      ) {
+        this.scroll(this.sectionIds[tabIndex]);
+      }
+    },
+
     //Link scroll
     async scroll(id) {
       if (id == null) return;
 
       try {
-        document.getElementById(id).scrollIntoView({
-          behavior: "smooth",
-        });
+        this.isScrolling = true;
+        const element = document.getElementById(id);
+        if (element) {
+          element.scrollIntoView({
+            behavior: "smooth",
+            block: "start",
+          });
+
+          // Reset scrolling flag after animation completes
+          setTimeout(() => {
+            this.isScrolling = false;
+          }, 1000);
+        }
         this.drawer = false;
-      } catch (e) {}
+      } catch (e) {
+        this.isScrolling = false;
+      }
     },
   },
 };
