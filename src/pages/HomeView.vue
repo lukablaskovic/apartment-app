@@ -8,7 +8,7 @@
       <div
         :class="
           $vuetify.display.mobile
-            ? 'overlay-content text-center dark-overlay pa-4'
+            ? 'overlay-content text-center dark-overlay pa-2'
             : 'overlay-content dark-overlay pa-12'
         ">
         <v-row>
@@ -508,11 +508,33 @@
             Notice: We are fully booked for 2025.
           </p>
           <p class="text-body-2">
-            We offer bookings from June - October 2026.
+            We offer bookings from June 1 - October 1, 2026.
             <br />
             <br />
             <b>We are looking forward to seeing you!</b>
           </p>
+        </div>
+
+        <!-- Calendar Section -->
+        <div class="mt-6">
+          <v-card class="mx-auto" max-width="400">
+            <v-card-title class="text-center">
+              <v-icon start icon="mdi-calendar" class="mr-2"></v-icon>
+              Availability Calendar
+            </v-card-title>
+            <v-card-subtitle class="text-center text-caption">
+              Last updated:
+              <span class="font-weight-medium">August 5, 2025</span>
+            </v-card-subtitle>
+            <v-card-text>
+              <CustomCalendar
+                v-model="selectedDate"
+                :min-date="minDate"
+                :max-date="maxDate"
+                :disabled-dates="disabledDates"
+                class="mx-auto" />
+            </v-card-text>
+          </v-card>
         </div>
       </div>
     </v-container>
@@ -527,6 +549,7 @@
 import infoTabs from "@/components/info-tabs.vue";
 import gallery from "@/components/gallery.vue";
 import LazyImage from "@/components/LazyImage.vue";
+import CustomCalendar from "@/components/CustomCalendar.vue";
 import mainImage from "@/assets/main.jpg";
 import mainAlphaReduced from "@/assets/main_alpha_reduced.jpg";
 import libraryImage from "@/assets/library.jpg";
@@ -541,6 +564,7 @@ export default {
     gallery,
     LazyImage,
     CountryFlag,
+    CustomCalendar,
   },
   data() {
     return {
@@ -550,6 +574,49 @@ export default {
       librarySRC: libraryImage,
       bookingcomLogo: bookingcomLogo,
       airbnbLogo: airbnbLogo,
+      // Calendar data
+      selectedDate: null,
+      minDate: "2026-06-01",
+      maxDate: "2026-10-01",
+      disabledDates: [
+        "2026-07-01",
+        "2026-07-02",
+        "2026-07-03",
+        "2026-07-04",
+        "2026-07-05",
+        "2026-07-06",
+        "2026-07-07",
+        "2026-07-08",
+        "2026-07-12",
+        "2026-07-13",
+        "2026-07-14",
+        "2026-07-15",
+        "2026-07-16",
+        "2026-07-17",
+        "2026-07-18",
+        "2026-07-19",
+        "2026-07-20",
+        "2026-07-21",
+        "2026-07-22",
+        "2026-07-23",
+        "2026-07-24",
+        "2026-07-25",
+        "2026-07-26",
+        "2026-07-27",
+        "2026-07-28",
+        "2026-07-29",
+        "2026-07-30",
+        "2026-07-31",
+        "2026-08-04",
+        "2026-08-05",
+        "2026-08-06",
+        "2026-08-07",
+        "2026-08-08",
+        "2026-08-09",
+        "2026-08-10",
+        "2026-08-11",
+        "2026-08-12",
+      ],
       amenities: [
         { name: "Fast Wi-Fi", icon: "mdi-wifi" },
         { name: "Free Parking", icon: "mdi-parking" },
@@ -559,7 +626,7 @@ export default {
         { name: "Dishwasher", icon: "mdi-dishwasher" },
         { name: "Washing Machine", icon: "mdi-washing-machine" },
         { name: "100 m² Flat", icon: "mdi-texture-box" },
-        { name: "Recycling Practices", icon: "mdi-recycle" },
+
         { name: "Child-Friendly", icon: "mdi-human-male-boy" },
         { name: "Terrace Patio", icon: "mdi-table-furniture" },
         { name: "Lovely Garden", icon: "mdi-flower" },
@@ -735,6 +802,7 @@ export default {
   }
 
   .dark-overlay {
+    background: rgba(0, 0, 0, 0.4);
     letter-spacing: 2px;
     backdrop-filter: blur(1px);
   }
