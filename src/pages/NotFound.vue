@@ -37,8 +37,21 @@
 </template>
 
 <script>
+import { useSEO } from "@/composables/useSEO";
+
 export default {
   name: "NotFound",
+  setup() {
+    // Set SEO for 404 page
+    useSEO({
+      title: "Page Not Found - Apartment Luka, Pula Croatia",
+      description:
+        "The page you are looking for could not be found. Return to our homepage to explore our luxury vacation rental in Pula, Croatia.",
+      keywords: "404, page not found, apartment Luka, Pula Croatia",
+      robots: "noindex, nofollow",
+      url: "https://apartment-luka.eu/404",
+    });
+  },
   data() {
     return {
       sections: [

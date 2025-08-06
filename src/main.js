@@ -6,6 +6,8 @@ import HomePage from "./pages/HomeView.vue";
 import NotFound from "./pages/NotFound.vue";
 import AOS from "aos";
 import { createGtag } from "vue-gtag";
+import { createHead } from "@vueuse/head";
+
 const router = createRouter({
   history: createWebHistory(),
   routes: [
@@ -33,6 +35,7 @@ const router = createRouter({
     return false;
   },
 });
+
 // Initialize AOS with specific settings to prevent scroll interference
 AOS.init({
   duration: 800,
@@ -70,10 +73,14 @@ const gtag = createGtag({
   tagId: "G-RT8WQ6C3XV",
 });
 
+// Create head instance for SEO management
+const head = createHead();
+
 let app = createApp(App);
 app.use(vuetify);
 app.use(gtag);
 app.use(router);
+app.use(head);
 app.directive("lazy", lazyLoad);
 
 app.mount("#app");

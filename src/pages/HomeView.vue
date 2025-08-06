@@ -631,6 +631,7 @@ import bookingcomLogo from "@/assets/Bookingcom-logo.png";
 import airbnbLogo from "@/assets/airbnb.png";
 import CountryFlag from "vue-country-flag-next";
 import gardenImage from "@/assets/garden.png";
+import { usePageSEO } from "@/composables/useSEO";
 
 export default {
   components: {
@@ -639,6 +640,17 @@ export default {
     LazyImage,
     CountryFlag,
     CustomCalendar,
+  },
+  setup() {
+    // Initialize SEO for the home page
+    usePageSEO({
+      title: "Apartment Luka - Luxury Vacation Rental in Pula, Croatia",
+      description:
+        "Modern & elegant 2-bedroom apartment in Pula, Croatia. 100m² with garden, WiFi, parking. Perfect for families. Book direct and save on booking fees!",
+      keywords:
+        "apartment rental, Pula Croatia, vacation rental, holiday apartment, Istria, Adriatic coast, family accommodation, luxury vacation rental",
+      url: "https://apartment-luka.eu/",
+    });
   },
   data() {
     return {
@@ -718,7 +730,7 @@ export default {
         },
         {
           title: "Pets allowed on request 🐕",
-          subtitle: "Additional charges may apply",
+          subtitle: "Additional charges do apply",
         },
       ],
       wiFi: [
@@ -928,8 +940,8 @@ export default {
           reviewBody: review.text,
         })),
         image: [
-          "https://apartment-luka.eu/assets/main.jpg",
-          "https://apartment-luka.eu/assets/garden.png",
+          "https://apartment-luka.eu/assets/living_room.jpg",
+          "https://apartment-luka.eu/assets/garden1.jpg",
         ],
         priceRange: "€€",
         availability: "https://schema.org/InStock",
