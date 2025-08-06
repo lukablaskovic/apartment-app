@@ -43,18 +43,42 @@ export default {
   },
   data: () => ({
     galleryImages: [
-      { src: living_room, desc: "Cozy living room" },
-      { src: dining, desc: "Dining Room" },
-      { src: bathroom, desc: "Bathroom" },
-      { src: toilet, desc: "Shower and Toilet" },
-      { src: veranda, desc: "Veranda ☕️" },
-      { src: bar, desc: "Bar 🍷" },
-      { src: kitchen, desc: "Kitchen" },
-      { src: room1, desc: "Bedroom #1" },
-      { src: room2, desc: "Bedroom #2" },
-      { src: garden1, desc: "Garden | Outdoor sitting" },
-      { src: garden2, desc: "Garden | Main" },
-      { src: garden3, desc: "Garden | Swing" },
+      {
+        src: living_room,
+        desc: "Cozy living room with a view of the garden",
+      },
+      {
+        src: dining,
+        desc: "Dining room with modern furniture",
+      },
+      { src: bathroom, desc: "Modern bathroom with all essentials" },
+      {
+        src: toilet,
+        desc: "Clean shower and toilet facilities",
+      },
+      {
+        src: veranda,
+        desc: "Peaceful veranda - great place to relax with a cup of coffee ☕️",
+      },
+      { src: bar, desc: "Enjoy a glass of wine at the bar 🍷" },
+      { src: kitchen, desc: "Fully equipped modern kitchen" },
+      {
+        src: room1,
+        desc: "Spacious bedroom #1 (double bed and double wardrobe)",
+      },
+      { src: room2, desc: "Comfortable bedroom #2 with private working space" },
+      {
+        src: garden1,
+        desc: "Main garden area - perfect for BBQ and outdoor dining",
+      },
+      {
+        src: garden2,
+        desc: "Garden swing area - great place to relax with a book",
+      },
+      {
+        src: garden3,
+        desc: "Japanese Persimmon tree does a great job of providing enough shade in hot summer days",
+      },
     ],
   }),
 };

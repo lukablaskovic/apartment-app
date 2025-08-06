@@ -3,11 +3,15 @@ import App from "./App.vue";
 import vuetify from "./plugins/vuetify";
 import { createRouter, createWebHistory } from "vue-router";
 import HomePage from "./pages/HomeView.vue";
+import NotFound from "./pages/NotFound.vue";
 import AOS from "aos";
 import { createGtag } from "vue-gtag";
 const router = createRouter({
   history: createWebHistory(),
-  routes: [{ path: "/", name: "Home", component: HomePage }],
+  routes: [
+    { path: "/", name: "Home", component: HomePage },
+    { path: "/:pathMatch(.*)*", name: "NotFound", component: NotFound },
+  ],
   scrollBehavior(to, from, savedPosition) {
     // If there's a saved position (like back button), use it
     if (savedPosition) {
