@@ -5,7 +5,7 @@
         icon
         @click="previousMonth"
         :disabled="isFirstMonth"
-        color="amber-darken-1">
+        color="amber-lighten-3">
         <v-icon>mdi-chevron-left</v-icon>
       </v-btn>
       <h3 class="month-year">{{ currentMonthYear }}</h3>
@@ -13,7 +13,7 @@
         icon
         @click="nextMonth"
         :disabled="isLastMonth"
-        color="amber-darken-1">
+        color="amber-lighten-3">
         <v-icon>mdi-chevron-right</v-icon>
       </v-btn>
     </div>
@@ -48,7 +48,8 @@
             day.isCurrentMonth &&
             !isDateDisabled(day.date) &&
             !isOutOfScope(day.date),
-        }">
+        }"
+        :title="formatFullDate(day.date)">
         {{ day.dayNumber }}
       </div>
     </div>
@@ -174,6 +175,15 @@ export default {
       const day = String(date.getDate()).padStart(2, "0");
       return `${year}-${month}-${day}`;
     },
+    formatFullDate(dateString) {
+      const date = new Date(dateString);
+      return date.toLocaleDateString("en-US", {
+        weekday: "long",
+        year: "numeric",
+        month: "long",
+        day: "numeric",
+      });
+    },
     isDateDisabled(date) {
       return this.disabledDates.includes(date);
     },
@@ -209,7 +219,7 @@ export default {
 <style scoped>
 .custom-calendar {
   background: white;
-  border-radius: 8px;
+  border-radius: 16px;
   padding: 16px;
   box-shadow: 0 2px 8px rgba(0, 0, 0, 0.1);
 }
@@ -250,7 +260,7 @@ export default {
   align-items: center;
   justify-content: center;
   cursor: pointer;
-  border-radius: 4px;
+  border-radius: 8px;
   font-size: 0.9rem;
   font-weight: 500;
   transition: all 0.2s ease;
@@ -320,7 +330,7 @@ export default {
 .legend-color {
   width: 12px;
   height: 12px;
-  border-radius: 2px;
+  border-radius: 4px;
   border: 1px solid #ddd;
 }
 
@@ -350,5 +360,14 @@ export default {
     gap: 8px;
     align-items: center;
   }
+}
+
+/* Custom styling for disabled arrow buttons */
+.custom-calendar .v-btn--disabled {
+  opacity: 0.5 !important;
+}
+
+.custom-calendar .v-btn--disabled .v-icon {
+  opacity: 0.5 !important;
 }
 </style>

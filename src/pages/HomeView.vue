@@ -467,42 +467,9 @@
           <b>Book your stay directly with us and save money on booking fees!</b>
           <br />
           Or just send us a message if you have any questions.
-
-          <div><b>E-mail:</b> lukablaskovic2000@gmail.com</div>
-          <div><b>Phone:</b> +385 91 721 7631</div>
         </div>
-        <br />
-        <div class="mb-2 mt-2">
-          You can also book your stay through one of our partners:
-        </div>
-        <v-row>
-          <v-col>
-            <a href="https://www.booking.com/Pulse-itMdY9" target="_blank">
-              <v-img
-                :src="bookingcomLogo"
-                :aspect-ratio="$vuetify.display.mobile ? 18 : 48"
-                alt="booking.com - Apartment Luka Pula Croatia"
-                loading="lazy"
-            /></a>
-          </v-col>
-        </v-row>
-        <v-row>
-          <v-col>
-            <v-divider>or</v-divider>
-          </v-col>
-        </v-row>
-        <v-row>
-          <v-col>
-            <a href="https://www.airbnb.com/h/apartment-luka" target="_blank">
-              <v-img
-                :src="airbnbLogo"
-                :aspect-ratio="$vuetify.display.mobile ? 12 : 32"
-                alt="airbnb - Apartment Luka Pula Croatia"
-                loading="lazy"
-            /></a>
-          </v-col>
-        </v-row>
 
+        <!-- Notice Section -->
         <div class="mt-4 pa-4 bg-amber-lighten-3 rounded">
           <p class="text-body-1 font-weight-bold mb-2">
             Notice: We are fully booked for 2025.
@@ -515,26 +482,114 @@
           </p>
         </div>
 
-        <!-- Calendar Section -->
-        <div class="mt-6">
-          <v-card class="mx-auto" max-width="400">
-            <v-card-title class="text-center">
-              <v-icon start icon="mdi-calendar" class="mr-2"></v-icon>
-              Availability Calendar
-            </v-card-title>
-            <v-card-subtitle class="text-center text-caption">
-              Last updated:
-              <span class="font-weight-medium">August 5, 2025</span>
-            </v-card-subtitle>
-            <v-card-text>
-              <CustomCalendar
-                v-model="selectedDate"
-                :min-date="minDate"
-                :max-date="maxDate"
-                :disabled-dates="disabledDates"
-                class="mx-auto" />
-            </v-card-text>
-          </v-card>
+        <!-- Contact and Calendar Layout -->
+        <div class="contact-calendar-section mt-6">
+          <v-row>
+            <!-- Column 1: Contact Cards -->
+            <v-col cols="12" md="8">
+              <div class="contact-cards-section">
+                <div class="contact-cards-container">
+                  <div
+                    class="contact-card"
+                    @click="openEmail"
+                    style="cursor: pointer">
+                    <div class="contact-icon-wrapper">
+                      <v-icon
+                        icon="mdi-email-outline"
+                        :size="$vuetify.display.mobile ? 40 : 40"
+                        class="contact-icon">
+                      </v-icon>
+                    </div>
+                    <div class="contact-content">
+                      <h3 class="contact-label">E-mail</h3>
+                      <p class="contact-value">lukablaskovic2000@gmail.com</p>
+                    </div>
+                  </div>
+
+                  <div
+                    class="contact-card"
+                    @click="openWhatsApp"
+                    style="cursor: pointer">
+                    <div class="contact-icon-wrapper">
+                      <v-icon
+                        icon="mdi-phone"
+                        :size="$vuetify.display.mobile ? 40 : 40"
+                        class="contact-icon">
+                      </v-icon>
+                    </div>
+                    <div class="contact-content">
+                      <h3 class="contact-label">Phone</h3>
+                      <p class="contact-value">+385 91 721 7631</p>
+                    </div>
+                  </div>
+
+                  <div
+                    class="contact-card"
+                    @click="openBooking"
+                    style="cursor: pointer">
+                    <div class="contact-icon-wrapper">
+                      <v-img
+                        :src="bookingcomLogo"
+                        :aspect-ratio="$vuetify.display.mobile ? 2.5 : 3"
+                        alt="booking.com"
+                        loading="lazy"
+                        class="contact-logo" />
+                    </div>
+                    <div class="contact-content">
+                      <h3 class="contact-label">Booking.com</h3>
+                      <p class="contact-value">
+                        Additional booking charges apply.
+                      </p>
+                    </div>
+                  </div>
+
+                  <div
+                    class="contact-card"
+                    @click="openAirbnb"
+                    style="cursor: pointer">
+                    <div class="contact-icon-wrapper">
+                      <v-img
+                        :src="airbnbLogo"
+                        :aspect-ratio="$vuetify.display.mobile ? 1.5 : 2"
+                        alt="airbnb"
+                        loading="lazy"
+                        class="contact-logo" />
+                    </div>
+                    <div class="contact-content">
+                      <h3 class="contact-label">Airbnb</h3>
+                      <p class="contact-value">
+                        Additional booking charges apply.
+                      </p>
+                    </div>
+                  </div>
+                </div>
+              </div>
+            </v-col>
+
+            <!-- Column 2: Calendar -->
+            <v-col cols="12" md="4">
+              <div class="calendar-section">
+                <v-card class="mx-auto" max-width="400">
+                  <v-card-title class="text-center">
+                    <v-icon start icon="mdi-calendar" class="mr-2"></v-icon>
+                    Availability Calendar
+                  </v-card-title>
+                  <v-card-subtitle class="text-center text-caption">
+                    Last updated:
+                    <span class="font-weight-medium">August 5, 2025</span>
+                  </v-card-subtitle>
+                  <v-card-text>
+                    <CustomCalendar
+                      v-model="selectedDate"
+                      :min-date="minDate"
+                      :max-date="maxDate"
+                      :disabled-dates="disabledDates"
+                      class="mx-auto" />
+                  </v-card-text>
+                </v-card>
+              </div>
+            </v-col>
+          </v-row>
         </div>
       </div>
     </v-container>
@@ -764,6 +819,23 @@ export default {
         });
         this.drawer = false;
       } catch (e) {}
+    },
+
+    // Contact methods
+    openEmail() {
+      window.open("mailto:lukablaskovic2000@gmail.com", "_blank");
+    },
+
+    openWhatsApp() {
+      window.open("https://wa.me/385917217631", "_blank");
+    },
+
+    openBooking() {
+      window.open("https://www.booking.com/Pulse-itMdY9", "_blank");
+    },
+
+    openAirbnb() {
+      window.open("https://www.airbnb.com/h/apartment-luka", "_blank");
     },
   },
 };
@@ -1415,6 +1487,308 @@ export default {
 @media (max-width: 768px) {
   .contact-btn {
     padding: 0 1.5rem;
+    font-size: 0.9rem;
+  }
+}
+
+/* Contact and Calendar Layout Styles */
+.contact-calendar-section {
+  max-width: 1200px;
+  margin: 0 auto;
+  padding: 1rem 0;
+}
+
+/* Contact Cards Section Styles */
+.contact-cards-section {
+  max-width: 100%;
+  margin: 0 auto;
+  padding: 1rem 0;
+}
+
+.contact-cards-container {
+  display: grid;
+  grid-template-columns: repeat(2, 1fr);
+  gap: 1.5rem;
+  max-width: 100%;
+  margin: 0 auto;
+}
+
+.contact-card {
+  background: white;
+  border-radius: 16px;
+  padding: 2rem 1.5rem;
+  text-align: center;
+  box-shadow: 0 4px 20px rgba(0, 0, 0, 0.08);
+  transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+  position: relative;
+  overflow: hidden;
+  border: 1px solid rgba(255, 255, 255, 0.8);
+}
+
+.contact-card::before {
+  content: "";
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  background: linear-gradient(
+    135deg,
+    rgba(255, 193, 7, 0.05) 0%,
+    rgba(255, 193, 7, 0.1) 100%
+  );
+  opacity: 0;
+  transition: opacity 0.3s ease;
+}
+
+.contact-card:hover {
+  transform: translateY(-8px);
+  box-shadow: 0 12px 40px rgba(0, 0, 0, 0.15);
+  border-color: #ffe082;
+}
+
+.contact-card:hover::before {
+  opacity: 1;
+}
+
+.contact-icon-wrapper {
+  width: 80px;
+  height: 80px;
+  margin: 0 auto 1.5rem;
+  background: linear-gradient(135deg, #ffc107 0%, #ffb300 100%);
+  border-radius: 50%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  position: relative;
+  transition: all 0.3s ease;
+}
+
+.contact-icon-wrapper::before {
+  content: "";
+  position: absolute;
+  top: -2px;
+  left: -2px;
+  right: -2px;
+  bottom: -2px;
+  background: linear-gradient(135deg, #ffc107, #ffb300, #ff9800);
+  border-radius: 50%;
+  z-index: -1;
+  opacity: 0;
+  transition: opacity 0.3s ease;
+}
+
+.contact-card:hover .contact-icon-wrapper {
+  transform: scale(1.1);
+  box-shadow: 0 8px 25px rgba(255, 193, 7, 0.4);
+}
+
+.contact-card:hover .contact-icon-wrapper::before {
+  opacity: 1;
+}
+
+/* Special styling for logo contact cards (Booking.com and Airbnb) */
+.contact-card:has(.contact-logo) .contact-icon-wrapper {
+  background: transparent;
+  box-shadow: none;
+}
+
+.contact-card:has(.contact-logo):hover .contact-icon-wrapper {
+  background: transparent;
+  box-shadow: none;
+  transform: scale(1.05);
+}
+
+.contact-card:has(.contact-logo) .contact-icon-wrapper::before {
+  display: none;
+}
+
+.contact-icon {
+  color: white !important;
+  filter: drop-shadow(0 2px 4px rgba(0, 0, 0, 0.1));
+}
+
+.contact-logo {
+  max-width: 100%;
+  height: auto;
+  object-fit: contain;
+  filter: drop-shadow(0 2px 4px rgba(0, 0, 0, 0.1));
+}
+
+.contact-content {
+  position: relative;
+  z-index: 1;
+}
+
+.contact-label {
+  font-size: 1.1rem;
+  font-weight: 600;
+  color: #2c3e50;
+  margin: 0 0 0.5rem 0;
+  line-height: 1.4;
+}
+
+.contact-value {
+  font-size: 1rem;
+  color: #5a6c7d;
+  margin: 0;
+  line-height: 1.4;
+  word-break: break-word;
+}
+
+/* Booking Partners Section Styles */
+.booking-partners-section {
+  max-width: 800px;
+  margin: 0 auto;
+  padding: 1rem 0;
+}
+
+.booking-partners-container {
+  text-align: center;
+}
+
+.booking-partners-title {
+  font-size: 1.25rem;
+  font-weight: 600;
+  color: #2c3e50;
+  margin-bottom: 2rem;
+  line-height: 1.4;
+}
+
+.booking-partners-grid {
+  display: grid;
+  grid-template-columns: repeat(2, 1fr);
+  gap: 2rem;
+  max-width: 500px;
+  margin: 0 auto;
+}
+
+.booking-partner-card {
+  background: white;
+  border-radius: 16px;
+  padding: 2rem 1.5rem;
+  text-align: center;
+  box-shadow: 0 4px 20px rgba(0, 0, 0, 0.08);
+  transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+  position: relative;
+  overflow: hidden;
+  border: 1px solid rgba(255, 255, 255, 0.8);
+}
+
+.booking-partner-card::before {
+  content: "";
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  background: linear-gradient(
+    135deg,
+    rgba(255, 193, 7, 0.05) 0%,
+    rgba(255, 193, 7, 0.1) 100%
+  );
+  opacity: 0;
+  transition: opacity 0.3s ease;
+}
+
+.booking-partner-card:hover {
+  transform: translateY(-8px);
+  box-shadow: 0 12px 40px rgba(0, 0, 0, 0.15);
+  border-color: #ffe082;
+}
+
+.booking-partner-card:hover::before {
+  opacity: 1;
+}
+
+.partner-link {
+  text-decoration: none;
+  color: inherit;
+  display: block;
+  height: 100%;
+}
+
+.partner-logo-wrapper {
+  margin-bottom: 1rem;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  min-height: 60px;
+}
+
+.partner-logo {
+  max-width: 100%;
+  height: auto;
+  object-fit: contain;
+}
+
+.partner-text {
+  font-size: 1rem;
+  font-weight: 500;
+  color: #2c3e50;
+  margin: 0;
+  line-height: 1.4;
+}
+
+.partner-subtext {
+  font-size: 0.8rem;
+  color: #6c757d;
+  margin: 0.25rem 0 0 0;
+  line-height: 1.3;
+}
+
+/* Mobile Responsive Styles for Contact and Calendar Sections */
+@media (max-width: 768px) {
+  .contact-cards-container {
+    grid-template-columns: repeat(2, 1fr);
+    gap: 1rem;
+    max-width: 100%;
+  }
+
+  .contact-card {
+    padding: 1.25rem 0.75rem;
+  }
+
+  .contact-icon-wrapper {
+    width: 60px;
+    height: 60px;
+    margin-bottom: 0.75rem;
+  }
+
+  .contact-label {
+    font-size: 1.1rem;
+  }
+
+  .contact-value {
+    font-size: 0.95rem;
+  }
+
+  .calendar-section {
+    margin-top: 2rem;
+  }
+}
+
+@media (max-width: 480px) {
+  .contact-cards-container {
+    grid-template-columns: 1fr;
+    max-width: 100%;
+  }
+
+  .contact-card {
+    padding: 1rem 0.75rem;
+  }
+
+  .contact-icon-wrapper {
+    width: 55px;
+    height: 55px;
+    margin-bottom: 0.5rem;
+  }
+
+  .contact-label {
+    font-size: 1rem;
+  }
+
+  .contact-value {
     font-size: 0.9rem;
   }
 }
