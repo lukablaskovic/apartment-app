@@ -477,9 +477,11 @@
             Contact Info
           </div>
           <div>
-            <b
-              >Book your stay directly with us and save money on booking
-              fees!</b
+            <b class="text-blue-grey-darken-4 text-h5"
+              >Book your stay directly with us and
+              <span class="text-amber-darken-1"
+                >save money on booking fees!</span
+              ></b
             >
             <br />
             Or just send us a message if you have any questions.
@@ -494,7 +496,7 @@
               We offer bookings from June 1 - October 1, 2026.
               <br />
               <br />
-              <b>We are looking forward to seeing you!</b>
+              <b>Thank you for your interest!</b>
             </p>
           </div>
 
@@ -726,7 +728,7 @@ export default {
         },
         {
           title: "Quiet hours 🔇",
-          subtitle: "00:00 - 08:00",
+          subtitle: "00:00 - 07:00",
         },
         {
           title: "Pets allowed on request 🐕",
@@ -768,6 +770,24 @@ export default {
         },
       ],
       reviews: [
+        {
+          name: "Family Doskočilová",
+          ragin: "10/10",
+          flag: "cz",
+          text: "Everything was perfect. Thank you.",
+        },
+        {
+          name: "Family Stehlík",
+          ragin: "10/10",
+          flag: "cz",
+          text: "Tastefully and modernly furnished apartment, beautiful garden corner available. Close to the center of Pula. We lacked nothing during our stay and the owners were very helpful. It is definitely worth a visit.",
+        },
+        {
+          name: "Family Nagy",
+          ragin: "10/10",
+          flag: "hu",
+          text: "I highly recommend it to everyone, the host was a kind, considerate and helpful person. We had everything we needed and couldn't have asked for anything better.",
+        },
         {
           name: "Family Wojciech",
           ragin: "10/10",

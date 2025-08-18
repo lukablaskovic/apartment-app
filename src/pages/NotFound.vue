@@ -5,28 +5,48 @@
         <v-col cols="12" md="8" lg="6" class="text-center">
           <v-card class="not-found-card" elevation="8">
             <v-card-text class="pa-8">
-              <div class="error-code">404</div>
-              <div class="error-title">Page Not Found</div>
-              <div class="error-message">
-                Oops! The page you're looking for doesn't exist.
-              </div>
-              <div class="error-description">
-                The page might have been moved, deleted, or you entered the
-                wrong URL.
+              <!-- Skeleton Loader -->
+              <div class="skeleton-loader">
+                <!-- Error Code Skeleton -->
+                <div class="skeleton-error-code shimmer"></div>
+
+                <!-- Error Title Skeleton -->
+                <div class="skeleton-error-title shimmer"></div>
+
+                <!-- Error Message Skeleton -->
+                <div class="skeleton-error-message shimmer"></div>
+
+                <!-- Error Description Skeleton -->
+                <div class="skeleton-error-description shimmer"></div>
+
+                <v-divider class="my-6"></v-divider>
+
+                <!-- Button Skeleton -->
+                <div class="skeleton-button shimmer"></div>
               </div>
 
-              <v-divider class="my-6"></v-divider>
-
-              <div class="action-buttons">
-                <v-btn
-                  color="amber-darken-1"
-                  size="large"
-                  variant="elevated"
-                  @click="goHome"
-                  class="mr-4">
-                  <v-icon start>mdi-home</v-icon>
-                  Home page
-                </v-btn>
+              <!-- Hidden Content (for SEO) -->
+              <div style="display: none">
+                <div class="error-code">404</div>
+                <div class="error-title">Page Not Found</div>
+                <div class="error-message">
+                  Oops! The page you're looking for doesn't exist.
+                </div>
+                <div class="error-description">
+                  The page might have been moved, deleted, or you entered the
+                  wrong URL.
+                </div>
+                <div class="action-buttons">
+                  <v-btn
+                    color="amber-darken-1"
+                    size="large"
+                    variant="elevated"
+                    @click="goHome"
+                    class="mr-4">
+                    <v-icon start>mdi-home</v-icon>
+                    Home page
+                  </v-btn>
+                </div>
               </div>
             </v-card-text>
           </v-card>
@@ -102,6 +122,128 @@ export default {
   background: rgba(255, 255, 255, 0.95);
 }
 
+/* Skeleton Loader Styles */
+.skeleton-loader {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 1.5rem;
+}
+
+.skeleton-error-code {
+  width: 200px;
+  height: 120px;
+  background: #e0e0e0;
+  border-radius: 12px;
+  animation: pulse 1.5s ease-in-out infinite;
+}
+
+.skeleton-error-title {
+  width: 300px;
+  height: 32px;
+  background: #e0e0e0;
+  border-radius: 8px;
+  animation: pulse 1.5s ease-in-out infinite 0.2s;
+}
+
+.skeleton-error-message {
+  width: 400px;
+  height: 24px;
+  background: #e0e0e0;
+  border-radius: 6px;
+  animation: pulse 1.5s ease-in-out infinite 0.4s;
+}
+
+.skeleton-error-description {
+  width: 350px;
+  height: 20px;
+  background: #e0e0e0;
+  border-radius: 6px;
+  animation: pulse 1.5s ease-in-out infinite 0.6s;
+}
+
+.skeleton-button {
+  width: 180px;
+  height: 48px;
+  background: #e0e0e0;
+  border-radius: 24px;
+  animation: pulse 1.5s ease-in-out infinite 0.8s;
+}
+
+/* Shimmer Effect */
+.shimmer {
+  position: relative;
+  overflow: hidden;
+}
+
+.shimmer::before {
+  content: "";
+  position: absolute;
+  top: 0;
+  left: -100%;
+  width: 100%;
+  height: 100%;
+  background: linear-gradient(
+    90deg,
+    transparent,
+    rgba(255, 255, 255, 0.6),
+    transparent
+  );
+  animation: shimmer 2s infinite;
+}
+
+/* Pulse Animation */
+@keyframes pulse {
+  0%,
+  100% {
+    opacity: 1;
+    transform: scale(1);
+  }
+  50% {
+    opacity: 0.7;
+    transform: scale(1.02);
+  }
+}
+
+/* Shimmer Animation */
+@keyframes shimmer {
+  0% {
+    left: -100%;
+  }
+  100% {
+    left: 100%;
+  }
+}
+
+/* Responsive Design */
+@media (max-width: 600px) {
+  .skeleton-error-code {
+    width: 150px;
+    height: 90px;
+  }
+
+  .skeleton-error-title {
+    width: 250px;
+    height: 28px;
+  }
+
+  .skeleton-error-message {
+    width: 300px;
+    height: 20px;
+  }
+
+  .skeleton-error-description {
+    width: 280px;
+    height: 18px;
+  }
+
+  .skeleton-button {
+    width: 160px;
+    height: 44px;
+  }
+}
+
+/* Original styles kept for reference but hidden content */
 .error-code {
   font-size: 6rem;
   font-weight: 900;
