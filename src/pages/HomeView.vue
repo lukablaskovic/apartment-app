@@ -419,45 +419,36 @@
               color="amber-darken-1"
               class="rating-container"></v-rating>
             <pre>{{ rating }}</pre>
-            <div class="container mx-auto px-4">
-              <div class="flex flex-wrap -mx-2">
+            <div class="reviews-grid-container">
+              <div class="reviews-grid">
                 <div
                   v-for="r in reviews"
                   :key="r.name"
-                  class="w-full sm:w-1/2 md:w-1/3 lg:w-1/5 px-2 mb-4">
-                  <div
-                    data-aos="flip-up"
-                    class="bg-white rounded-lg shadow p-3 flex flex-col justify-between h-full">
-                    <div>
-                      <!-- Name + Flag -->
-                      <div class="flex items-center gap-x-2 mb-2">
-                        <p class="text-base font-semibold truncate">
-                          {{ r.name }}
-                        </p>
-                        <country-flag
-                          :country="r.flag"
-                          size="normal"
-                          class="h-5 w-5" />
-                      </div>
-
-                      <!-- Rating -->
-                      <div class="mb-2 rating-wrapper">
-                        <v-rating
-                          :value="r.rating"
-                          color="amber"
-                          dense
-                          readonly
-                          :size="$vuetify.display.mobile ? 14 : 20"
-                          class="review-rating" />
-                      </div>
-
-                      <!-- Text -->
-                      <div
-                        class="text-sm text-gray-600 truncate"
-                        :title="r.text">
-                        {{ r.text }}
+                  class="review-card"
+                  data-aos="fade-up"
+                  data-aos-delay="100">
+                  <div class="review-card-header">
+                    <div class="reviewer-info">
+                      <country-flag
+                        :country="r.flag"
+                        size="normal"
+                        class="reviewer-flag" />
+                      <h4 class="reviewer-name">{{ r.name }}</h4>
+                    </div>
+                    <div class="review-rating">
+                      <div class="custom-stars">
+                        <span
+                          v-for="star in 10"
+                          :key="star"
+                          :class="['star', { filled: star <= r.rating }]"
+                          class="star">
+                          ★
+                        </span>
                       </div>
                     </div>
+                  </div>
+                  <div class="review-content">
+                    <p class="review-text">{{ r.text }}</p>
                   </div>
                 </div>
               </div>
@@ -656,7 +647,7 @@ export default {
   },
   data() {
     return {
-      rating: 10.0,
+      rating: 9.8,
       mainImageSRC: mainAlphaReduced,
       gardenImage: gardenImage,
       librarySRC: libraryImage,
@@ -704,6 +695,13 @@ export default {
         "2026-08-10",
         "2026-08-11",
         "2026-08-12",
+        "2026-08-15",
+        "2026-08-16",
+        "2026-08-17",
+        "2026-08-18",
+        "2026-08-19",
+        "2026-08-20",
+        "2026-08-21",
       ],
       amenities: [
         { name: "Fast Wi-Fi", icon: "mdi-wifi" },
@@ -771,88 +769,94 @@ export default {
       ],
       reviews: [
         {
+          name: "Family Donesana",
+          rating: 9,
+          flag: "it",
+          text: "Excellent apartment, well maintained, furnished in a modern and spacious style. Bathroom with extra spacious shower. Kitchen complete with all accessories. The garden is well-kept and perfect for relaxing, after having been protected from mosquitoes ;) Highly recommended!!!!",
+        },
+        {
           name: "Family Doskočilová",
-          ragin: "10/10",
+          rating: 10,
           flag: "cz",
           text: "Everything was perfect. Thank you.",
         },
         {
           name: "Family Stehlík",
-          ragin: "10/10",
+          rating: 10,
           flag: "cz",
           text: "Tastefully and modernly furnished apartment, beautiful garden corner available. Close to the center of Pula. We lacked nothing during our stay and the owners were very helpful. It is definitely worth a visit.",
         },
         {
           name: "Family Nagy",
-          ragin: "10/10",
+          rating: 10,
           flag: "hu",
           text: "I highly recommend it to everyone, the host was a kind, considerate and helpful person. We had everything we needed and couldn't have asked for anything better.",
         },
         {
           name: "Family Wojciech",
-          ragin: "10/10",
+          rating: 10,
           flag: "pl",
           text: "It was a pleasure to visit this place. Clean, quiet and very comfortable apartament helped my family to get rest for another busy year. I definately reccomend it as a nice place to spend wonderful holiday.",
         },
         {
           name: "Family Klaus",
-          rating: "10/10",
+          rating: 10,
           flag: "de",
           text: "Lovingly and well furnished apartment on the ground floor.We immediately felt comfortable and almost like at home. Everything you need for your daily life is there.",
         },
         {
           name: "Family Rückert",
-          rating: "10/10",
+          rating: 10,
           flag: "de",
           text: "We want to say: Thank you! - for the unforgettable boat-tour, - for having such a lovely apartment with beautiful garden, - for being very kind hosts. We enjoyed our holiday very much! Hopefuly we will be able to be your guests again! Stay healthy and take care of yourself! Best wishes",
         },
         {
           name: "Family Schrödl",
-          rating: "10/10",
+          rating: 10,
           flag: "de",
           text: "Beautiful apartment in Pula with every comfort. Everything is actually there, even freezer bags. The aircraft noise is a bit disturbing when lying in the garden. The playing children of the nearby school didn't bother us. Landlord is awesome! If we visit Pula again we will definitely come back here.",
         },
         {
           name: "Family Surmann",
-          rating: "10/10",
+          rating: 10,
           flag: "de",
           text: "We felt very comfortable in the apartment. The two weeks of vacation were over far too quickly.",
         },
         {
           name: "Family van Ruth",
-          rating: "9/10",
+          rating: 9,
           flag: "nl",
           text: "A very nice house with a very friendly owner. All the trimmings, the only thing I missed in the kitchen was scissors and a liter. Nice garden where you can sit outside until late.",
         },
         {
           name: "Family Merkel",
-          rating: "10/10",
+          rating: 10,
           flag: "de",
           text: "Beautiful apartment with a great garden. We felt very comfortable there.",
         },
 
         {
           name: "Family Pietrzak ",
-          rating: "10/10",
+          rating: 10,
           flag: "pl",
           text: "Excpetional",
         },
 
         {
           name: "Family Boggian",
-          rating: "10/10",
+          rating: 10,
           flag: "it",
           text: "The hosts, Luka and father Davor, are very helpful and welcoming people. The apartment is very nice, with large and comfortable spaces, tastefully furnished in a simple and very functional way. The kitchen has everything you need, including a dishwasher. The living room has a nice comfortable sofa and a large living room, where c'is a table for dinner. The two bedrooms are spacious, with comfortable beds. The bathroom is new, with a nice big shower and washing machine. But the strength of the solution, in our opinion, is the well-kept and wonderful garden!! Here you can find refreshment under the fruit plants, lulling you with the' swing or sitting on the armchairs at the' shade of the gazebo. Just excellent. We will definitely be back & more!!",
         },
         {
           name: "Family Šimsa",
-          rating: "10/10",
+          rating: 10,
           flag: "cz",
           text: "Excpetional",
         },
         {
           name: "Family Sarycheva",
-          rating: "10/10",
+          rating: 10,
           flag: "sk",
           text: "Clean spacious and well equipped apartment with its own shaded garden. The area is really quiet and just max 25 minutes walking from the city center. Free parking is in front of the house. Really nice friendly and hospitable owners. Great thanks!",
         },
@@ -1953,6 +1957,177 @@ export default {
   color: #6c757d;
   margin: 0.25rem 0 0 0;
   line-height: 1.3;
+}
+
+/* Custom Star Rating Styles */
+.custom-stars {
+  display: inline-flex;
+  align-items: center;
+  gap: 2px;
+}
+
+.star {
+  font-size: 16px;
+  color: #e0e0e0;
+  transition: color 0.2s ease;
+}
+
+.star.filled {
+  color: #ffc107;
+}
+
+/* Modern Review Grid Styles */
+.reviews-grid-container {
+  max-width: 1200px;
+  margin: 0 auto;
+  padding: 2rem 1rem;
+}
+
+.reviews-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+  gap: 1.5rem;
+  margin: 0 auto;
+}
+
+.review-card {
+  background: white;
+  border-radius: 16px;
+  padding: 1.5rem;
+  box-shadow: 0 4px 20px rgba(0, 0, 0, 0.08);
+  transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+  position: relative;
+  overflow: hidden;
+  border: 1px solid rgba(255, 255, 255, 0.8);
+  min-height: 200px;
+  display: flex;
+  flex-direction: column;
+}
+
+.review-card::before {
+  content: "";
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  background: linear-gradient(
+    135deg,
+    rgba(255, 193, 7, 0.03) 0%,
+    rgba(255, 193, 7, 0.08) 100%
+  );
+  opacity: 0;
+  transition: opacity 0.3s ease;
+}
+
+.review-card:hover {
+  transform: translateY(-8px);
+  box-shadow: 0 12px 40px rgba(0, 0, 0, 0.15);
+  border-color: #ffe082;
+}
+
+.review-card:hover::before {
+  opacity: 1;
+}
+
+.review-card-header {
+  display: flex;
+  justify-content: space-between;
+  align-items: flex-start;
+  margin-bottom: 1rem;
+  flex-shrink: 0;
+}
+
+.reviewer-info {
+  display: flex;
+  align-items: center;
+  gap: 0.75rem;
+  flex: 1;
+}
+
+.reviewer-flag {
+  flex-shrink: 0;
+}
+
+.reviewer-name {
+  font-size: 1.1rem;
+  font-weight: 600;
+  color: #2c3e50;
+  margin: 0;
+  line-height: 1.3;
+}
+
+.review-rating {
+  flex-shrink: 0;
+  margin-left: 1rem;
+}
+
+.review-content {
+  flex: 1;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+}
+
+.review-text {
+  font-size: 0.95rem;
+  line-height: 1.6;
+  color: #5a6c7d;
+  margin: 0;
+  display: -webkit-box;
+  -webkit-line-clamp: 6;
+  -webkit-box-orient: vertical;
+  overflow: hidden;
+  text-overflow: ellipsis;
+}
+
+/* Mobile Responsive Styles for Reviews */
+@media (max-width: 768px) {
+  .reviews-grid {
+    grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+    gap: 1rem;
+    padding: 0 0.5rem;
+  }
+
+  .review-card {
+    padding: 1.25rem;
+    min-height: 180px;
+  }
+
+  .review-card-header {
+    flex-direction: column;
+    align-items: flex-start;
+    gap: 0.75rem;
+  }
+
+  .review-rating {
+    margin-left: 0;
+  }
+
+  .reviewer-name {
+    font-size: 1rem;
+  }
+
+  .review-text {
+    font-size: 0.9rem;
+    -webkit-line-clamp: 5;
+  }
+}
+
+@media (max-width: 480px) {
+  .reviews-grid {
+    grid-template-columns: 1fr;
+    max-width: 100%;
+  }
+
+  .review-card {
+    padding: 1rem;
+    min-height: 160px;
+  }
+
+  .review-text {
+    -webkit-line-clamp: 4;
+  }
 }
 
 /* Mobile Responsive Styles for Contact and Calendar Sections */
