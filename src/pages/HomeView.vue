@@ -257,7 +257,9 @@
                 <div class="wifi-icon">
                   <i class="fas fa-tachometer-alt"></i>
                 </div>
-                <div class="wifi-value">60/10 Mbps | Mesh Wi-Fi system</div>
+                <div class="wifi-value">
+                  60/30 Mbps | Mesh Wi-Fi system covering the entire apartment
+                </div>
               </div>
             </div>
           </div>
@@ -379,85 +381,6 @@
       <infoTabs></infoTabs>
     </v-container>
 
-    <!-- Reviews Section -->
-    <section class="reviews-section" aria-label="Guest reviews">
-      <v-container class="mt-2 text-center">
-        <div>
-          <div
-            id="reviews"
-            class="text-h3 text-center mb-4 font-weight-bold text-blue-grey-darken-4">
-            Guest reviews
-          </div>
-          <p>
-            We have been renting our home apartment for 10 years now and
-            received great review from our friends all over Europe.
-          </p>
-          <p>We want to thank you for that! 😊</p>
-          <p>
-            Hope you enjoy your stay here too! Feel free to contact us if you
-            need something, anytime!
-          </p>
-
-          <v-row>
-            <v-divider class="mt-12"></v-divider>
-            <v-col cols="12"> </v-col>
-            <v-col cols="12">
-              Reviews on
-              <a target="_blank" href="https://www.booking.com/Pulse-itMdY9"
-                >Booking.com</a
-              >:
-            </v-col>
-          </v-row>
-          <div class="text-center">
-            <v-rating
-              v-model="rating"
-              bg-color="amber-lighten-3"
-              readonly
-              half-increments
-              length="10"
-              :size="$vuetify.display.mobile ? 16 : 24"
-              color="amber-darken-1"
-              class="rating-container"></v-rating>
-            <pre>{{ rating }}</pre>
-            <div class="reviews-grid-container">
-              <div class="reviews-grid">
-                <div
-                  v-for="r in reviews"
-                  :key="r.name"
-                  class="review-card"
-                  data-aos="fade-up"
-                  data-aos-delay="100">
-                  <div class="review-card-header">
-                    <div class="reviewer-info">
-                      <country-flag
-                        :country="r.flag"
-                        size="normal"
-                        class="reviewer-flag" />
-                      <h4 class="reviewer-name">{{ r.name }}</h4>
-                    </div>
-                    <div class="review-rating">
-                      <div class="custom-stars">
-                        <span
-                          v-for="star in 10"
-                          :key="star"
-                          :class="['star', { filled: star <= r.rating }]"
-                          class="star">
-                          ★
-                        </span>
-                      </div>
-                    </div>
-                  </div>
-                  <div class="review-content">
-                    <p class="review-text">{{ r.text }}</p>
-                  </div>
-                </div>
-              </div>
-            </div>
-          </div>
-        </div>
-      </v-container>
-    </section>
-
     <!-- Contact Section -->
     <section class="contact-section" aria-label="Contact information">
       <v-container class="mt-2 text-center">
@@ -470,7 +393,7 @@
           <div>
             <b class="text-blue-grey-darken-4 text-h5"
               >Book your stay directly with us and
-              <span class="text-amber-darken-1"
+              <span class="booking-sticker"
                 >save money on booking fees!</span
               ></b
             >
@@ -478,11 +401,12 @@
             Or just send us a message if you have any questions.
           </div>
 
-          <!-- Notice Section -->
+          <!--
           <div class="mt-4 pa-4 bg-amber-lighten-3 rounded">
             <p class="text-body-1 font-weight-bold mb-2">
-              Notice: We are fully booked for 2025.
+              Notice: We are fully booked for 2026.
             </p>
+
             <p class="text-body-2">
               We offer bookings from June 1 - October 1, 2026.
               <br />
@@ -490,7 +414,7 @@
               <b>Thank you for your interest!</b>
             </p>
           </div>
-
+          -->
           <!-- Contact and Calendar Layout -->
           <div class="contact-calendar-section mt-6">
             <v-row>
@@ -585,7 +509,7 @@
                     </v-card-title>
                     <v-card-subtitle class="text-center text-caption">
                       Last updated:
-                      <span class="font-weight-medium">August 5, 2025</span>
+                      <span class="font-weight-medium">January 2, 2026</span>
                     </v-card-subtitle>
                     <v-card-text>
                       <CustomCalendar
@@ -599,6 +523,91 @@
                 </div>
               </v-col>
             </v-row>
+          </div>
+        </div>
+      </v-container>
+    </section>
+
+    <!-- Reviews Section -->
+    <section class="reviews-section" aria-label="Guest reviews">
+      <v-container class="mt-2 text-center">
+        <div>
+          <div
+            id="reviews"
+            class="text-h3 text-center mb-4 font-weight-bold text-blue-grey-darken-4">
+            Guest reviews
+          </div>
+          <p>
+            We have been renting our home apartment for 10 years now and
+            received great review from our friends all over Europe.
+          </p>
+          <p>We want to thank you for that! 😊</p>
+          <p>
+            Hope you enjoy your stay here too! Feel free to contact us if you
+            need something, anytime!
+          </p>
+
+          <v-row>
+            <v-divider class="mt-12"></v-divider>
+            <v-col cols="12"> </v-col>
+            <v-col cols="12">
+              Reviews from
+              <a target="_blank" href="https://www.booking.com/Pulse-itMdY9"
+                >Booking.com</a
+              >
+              and
+              <a
+                target="_blank"
+                href="https://www.airbnb.com/rooms/1463775402539485368"
+                >Airbnb</a
+              >:
+            </v-col>
+          </v-row>
+          <div class="text-center">
+            <v-rating
+              v-model="rating"
+              bg-color="amber-lighten-3"
+              readonly
+              half-increments
+              length="10"
+              :size="$vuetify.display.mobile ? 16 : 24"
+              color="amber-darken-1"
+              class="rating-container"></v-rating>
+            <pre>{{ rating }}</pre>
+            <div class="reviews-grid-container">
+              <div class="reviews-grid">
+                <div
+                  v-for="r in reviews"
+                  :key="r.name"
+                  class="review-card"
+                  data-aos="fade-up"
+                  data-aos-delay="100">
+                  <div class="review-card-header">
+                    <div class="reviewer-info">
+                      <country-flag
+                        :country="r.flag"
+                        size="normal"
+                        class="reviewer-flag" />
+                      <h4 class="reviewer-name">{{ r.name }}</h4>
+                    </div>
+                    <div class="review-rating">
+                      <div class="custom-stars">
+                        <span
+                          v-for="star in 10"
+                          :key="star"
+                          :class="['star', { filled: star <= r.rating }]"
+                          class="star">
+                          ★
+                        </span>
+                      </div>
+                    </div>
+                  </div>
+                  <div class="review-content">
+                    <p class="review-text">{{ r.text }}</p>
+                  </div>
+                </div>
+              </div>
+            </div>
           </div>
         </div>
       </v-container>
@@ -658,6 +667,8 @@ export default {
       minDate: "2026-06-01",
       maxDate: "2026-10-01",
       disabledDates: [
+        "2026-06-07",
+        "2026-06-08",
         "2026-07-01",
         "2026-07-02",
         "2026-07-03",
@@ -686,6 +697,9 @@ export default {
         "2026-07-29",
         "2026-07-30",
         "2026-07-31",
+        "2026-08-01",
+        "2026-08-02",
+        "2026-08-03",
         "2026-08-04",
         "2026-08-05",
         "2026-08-06",
@@ -694,7 +708,6 @@ export default {
         "2026-08-09",
         "2026-08-10",
         "2026-08-11",
-        "2026-08-12",
         "2026-08-15",
         "2026-08-16",
         "2026-08-17",
@@ -702,6 +715,32 @@ export default {
         "2026-08-19",
         "2026-08-20",
         "2026-08-21",
+        "2026-08-22",
+        "2026-08-23",
+        "2026-08-24",
+        "2026-08-25",
+        "2026-08-28",
+        "2026-08-29",
+        "2026-08-30",
+        "2026-08-31",
+        "2026-09-01",
+        "2026-09-02",
+        "2026-09-03",
+        "2026-09-04",
+        "2026-09-05",
+        "2026-09-06",
+        "2026-09-07",
+        "2026-09-08",
+        "2026-09-09",
+        "2026-09-10",
+        "2026-09-11",
+        "2026-09-12",
+        "2026-09-13",
+        "2026-09-14",
+        "2026-09-15",
+        "2026-09-16",
+        "2026-09-17",
+        "2026-09-18",
       ],
       amenities: [
         { name: "Fast Wi-Fi", icon: "mdi-wifi" },
@@ -712,7 +751,7 @@ export default {
         { name: "Dishwasher", icon: "mdi-dishwasher" },
         { name: "Washing Machine", icon: "mdi-washing-machine" },
         { name: "100 m² Flat", icon: "mdi-texture-box" },
-
+        { name: "Pet Friendly", icon: "mdi-dog" },
         { name: "Child-Friendly", icon: "mdi-human-male-boy" },
         { name: "Terrace Patio", icon: "mdi-table-furniture" },
         { name: "Lovely Garden", icon: "mdi-flower" },
@@ -768,6 +807,12 @@ export default {
         },
       ],
       reviews: [
+        {
+          name: "Modestas",
+          rating: 10,
+          flag: "lt",
+          text: "We really enjoyed our stay was very relaxing and beautiful, had everything we needed for our stay and very private.",
+        },
         {
           name: "Family Donesana",
           rating: 9,
@@ -1066,6 +1111,45 @@ export default {
 <style>
 @import url("https://fonts.googleapis.com/css2?family=Dancing+Script&display=swap");
 
+/* Prevent horizontal scrolling on mobile */
+#welcome {
+  overflow-x: hidden;
+  max-width: 100vw;
+  position: relative;
+}
+
+* {
+  box-sizing: border-box;
+}
+
+/* Ensure all sections fit within viewport */
+section {
+  max-width: 100vw;
+  overflow-x: hidden;
+}
+
+.v-container {
+  max-width: 100%;
+}
+
+/* Mobile specific overflow prevention */
+@media (max-width: 768px) {
+  section {
+    padding-left: 0;
+    padding-right: 0;
+  }
+
+  .v-container {
+    padding-left: 0.5rem;
+    padding-right: 0.5rem;
+  }
+
+  .v-row {
+    margin-left: 0;
+    margin-right: 0;
+  }
+}
+
 .overlay {
   position: relative;
 }
@@ -1295,6 +1379,7 @@ export default {
   background: linear-gradient(135deg, #f8f9fa 0%, #e9ecef 100%);
   position: relative;
   overflow: hidden;
+  max-width: 100vw;
 }
 
 /* Useful Information Section Styles */
@@ -1302,6 +1387,7 @@ export default {
   background: linear-gradient(135deg, #f8f9fa 0%, #e9ecef 100%);
   position: relative;
   overflow: hidden;
+  max-width: 100vw;
 }
 
 /* Professional Section Styling */
@@ -1481,6 +1567,7 @@ export default {
   background: linear-gradient(135deg, #f8f9fa 0%, #e9ecef 100%);
   position: relative;
   overflow: hidden;
+  max-width: 100vw;
 }
 
 .amenities-section::before {
@@ -1500,13 +1587,15 @@ export default {
   margin: 0 auto;
   position: relative;
   z-index: 1;
+  width: 100%;
 }
 
 .amenities-grid {
   display: grid;
-  grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+  grid-template-columns: repeat(auto-fit, minmax(min(280px, 100%), 1fr));
   gap: 1.5rem;
   padding: 0 1rem;
+  max-width: 100%;
 }
 
 .amenity-card {
@@ -1608,13 +1697,15 @@ export default {
   }
 
   .amenities-grid {
-    grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+    grid-template-columns: repeat(auto-fit, minmax(min(250px, 100%), 1fr));
     gap: 1rem;
-    padding: 0;
+    padding: 0 0.5rem;
+    max-width: 100%;
   }
 
   .amenity-card {
     padding: 1.5rem 1rem;
+    max-width: 100%;
   }
 
   .amenity-icon-wrapper {
@@ -1631,6 +1722,7 @@ export default {
 @media (max-width: 480px) {
   .amenities-grid {
     grid-template-columns: 1fr;
+    padding: 0;
   }
 
   .amenity-card {
@@ -1640,17 +1732,18 @@ export default {
 
 /* Rating overflow fixes for mobile */
 .rating-container {
-  overflow: visible;
+  overflow: hidden;
   max-width: 100%;
+  display: inline-block;
 }
 
 .review-rating {
-  overflow: visible;
+  overflow: hidden;
   max-width: 100%;
 }
 
 .rating-wrapper {
-  overflow: visible;
+  overflow: hidden;
   max-width: 100%;
 }
 
@@ -1659,22 +1752,40 @@ export default {
   .rating-container {
     transform: scale(0.9);
     transform-origin: center;
+    max-width: 100vw !important;
   }
 
   .review-rating {
     transform: scale(0.85);
     transform-origin: center;
   }
+
+  .text-center {
+    overflow-x: hidden;
+  }
 }
 
 @media (max-width: 480px) {
   .rating-container {
-    transform: scale(0.8);
+    transform: scale(0.7);
+    transform-origin: center;
+    max-width: 100vw !important;
+  }
+
+  .review-rating {
+    transform: scale(0.65);
+    transform-origin: center;
+  }
+}
+
+@media (max-width: 360px) {
+  .rating-container {
+    transform: scale(0.6);
     transform-origin: center;
   }
 
   .review-rating {
-    transform: scale(0.75);
+    transform: scale(0.55);
     transform-origin: center;
   }
 }
@@ -1683,6 +1794,8 @@ export default {
 .hero-image-container {
   position: relative;
   width: 100%;
+  max-width: 100vw;
+  overflow: hidden;
 }
 
 /* Contact Button Styles */
@@ -1713,11 +1826,40 @@ export default {
   }
 }
 
+/* Booking Sticker Styles */
+.booking-sticker {
+  display: inline-block;
+  background: #ffb300; /* amber-darken-1 */
+  color: white;
+  padding: 0.5rem 1rem;
+  border-radius: 8px;
+  font-weight: 700;
+  letter-spacing: 0.3px;
+  box-shadow: 0 3px 10px rgba(245, 124, 0, 0.4);
+  transform: rotate(-1deg);
+  transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+  margin: 0 0.25rem;
+}
+
+.booking-sticker:hover {
+  transform: rotate(0deg) scale(1.05);
+  box-shadow: 0 5px 15px rgba(245, 124, 0, 0.5);
+}
+
+/* Reviews and Contact Sections */
+.reviews-section,
+.contact-section,
+.gallery-section {
+  max-width: 100vw;
+  overflow-x: hidden;
+}
+
 /* Contact and Calendar Layout Styles */
 .contact-calendar-section {
   max-width: 1200px;
   margin: 0 auto;
   padding: 1rem 0;
+  width: 100%;
 }
 
 /* Contact Cards Section Styles */
@@ -1964,6 +2106,8 @@ export default {
   display: inline-flex;
   align-items: center;
   gap: 2px;
+  max-width: 100%;
+  flex-wrap: wrap;
 }
 
 .star {
@@ -1976,18 +2120,30 @@ export default {
   color: #ffc107;
 }
 
+@media (max-width: 480px) {
+  .custom-stars {
+    gap: 1px;
+  }
+
+  .star {
+    font-size: 14px;
+  }
+}
+
 /* Modern Review Grid Styles */
 .reviews-grid-container {
   max-width: 1200px;
   margin: 0 auto;
   padding: 2rem 1rem;
+  width: 100%;
 }
 
 .reviews-grid {
   display: grid;
-  grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+  grid-template-columns: repeat(auto-fit, minmax(min(300px, 100%), 1fr));
   gap: 1.5rem;
   margin: 0 auto;
+  max-width: 100%;
 }
 
 .review-card {
@@ -2084,14 +2240,16 @@ export default {
 /* Mobile Responsive Styles for Reviews */
 @media (max-width: 768px) {
   .reviews-grid {
-    grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+    grid-template-columns: repeat(auto-fit, minmax(min(280px, 100%), 1fr));
     gap: 1rem;
     padding: 0 0.5rem;
+    max-width: 100%;
   }
 
   .review-card {
     padding: 1.25rem;
     min-height: 180px;
+    max-width: 100%;
   }
 
   .review-card-header {
@@ -2118,6 +2276,7 @@ export default {
   .reviews-grid {
     grid-template-columns: 1fr;
     max-width: 100%;
+    padding: 0;
   }
 
   .review-card {

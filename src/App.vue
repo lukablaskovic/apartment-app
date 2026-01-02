@@ -74,14 +74,14 @@ export default {
   components: {},
 
   data: () => ({
-    links: ["Welcome", "Amenities", "Gallery", "Info", "Reviews", "Contact"],
+    links: ["Welcome", "Amenities", "Gallery", "Info", "Contact", "Reviews"],
     sectionIds: [
       "welcome",
       "amenities",
       "gallery",
       "info",
-      "reviews",
       "contact",
+      "reviews",
     ],
     contact: false,
     activeTab: 0,

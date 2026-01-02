@@ -1,29 +1,41 @@
 <template>
-  <v-row class="pa-2">
-    <v-col
-      data-aos="flip-left"
-      data-aos-delay="300"
-      v-for="g in galleryImages"
-      :key="g.src"
-      class="pa-2"
-      sm="6"
-      cols="12">
-      <div class="d-flex flex-column">
-        <div class="gallery-image-container">
-          <LazyImage
-            :src="g.src"
-            :alt="g.desc"
-            :cover="true"
-            class="bg-grey-lighten-2 rounded-lg"
-            :aspect-ratio="16 / 9" />
+  <div>
+    <v-row class="pa-2">
+      <v-col
+        data-aos="flip-left"
+        data-aos-delay="300"
+        v-for="(g, index) in galleryImages"
+        :key="g.src"
+        class="pa-2"
+        sm="6"
+        cols="12">
+        <div class="d-flex flex-column">
+          <div class="gallery-image-container" @click="openFullscreen(index)">
+            <LazyImage
+              :src="g.src"
+              :alt="g.desc"
+              :cover="true"
+              class="bg-grey-lighten-2 rounded-lg clickable-image"
+              :aspect-ratio="16 / 9" />
+            <div class="image-overlay">
+              <v-icon size="48" color="white">mdi-magnify-plus-outline</v-icon>
+            </div>
+          </div>
+          <span class="text-center pt-2">{{ g.desc }}</span>
         </div>
-        <span class="text-center pt-2">{{ g.desc }}</span>
-      </div>
-    </v-col>
-  </v-row>
+      </v-col>
+    </v-row>
+
+    <!-- Fullscreen Image Viewer -->
+    <FullscreenImageViewer
+      v-model="showFullscreen"
+      :images="galleryImages"
+      :initial-index="selectedImageIndex" />
+  </div>
 </template>
 <script>
 import LazyImage from "./LazyImage.vue";
+import FullscreenImageViewer from "./FullscreenImageViewer.vue";
 import room1 from "@/assets//gallery/room1.jpg";
 import room2 from "@/assets//gallery/room2.jpg";
 import bathroom from "@/assets//gallery/bathroom.webp";
@@ -40,8 +52,11 @@ import garden3 from "@/assets//gallery//garden3.jpg";
 export default {
   components: {
     LazyImage,
+    FullscreenImageViewer,
   },
   data: () => ({
+    showFullscreen: false,
+    selectedImageIndex: 0,
     galleryImages: [
       {
         src: living_room,
@@ -81,6 +96,12 @@ export default {
       },
     ],
   }),
+  methods: {
+    openFullscreen(index) {
+      this.selectedImageIndex = index;
+      this.showFullscreen = true;
+    },
+  },
 };
 </script>
 
@@ -91,5 +112,39 @@ export default {
   aspect-ratio: 16/9;
   border-radius: 8px;
   overflow: hidden;
+  cursor: pointer;
+  transition: transform 0.3s ease, box-shadow 0.3s ease;
+}
+
+.gallery-image-container:hover {
+  transform: scale(1.02);
+  box-shadow: 0 8px 24px rgba(0, 0, 0, 0.2);
+}
+
+.gallery-image-container:hover .image-overlay {
+  opacity: 1;
+}
+
+.clickable-image {
+  transition: filter 0.3s ease;
+}
+
+.gallery-image-container:hover .clickable-image {
+  filter: brightness(0.8);
+}
+
+.image-overlay {
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  background-color: rgba(0, 0, 0, 0.4);
+  opacity: 0;
+  transition: opacity 0.3s ease;
+  pointer-events: none;
 }
 </style>
