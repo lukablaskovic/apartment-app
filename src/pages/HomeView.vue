@@ -852,7 +852,7 @@ export default {
           text: "I highly recommend it to everyone, the host was a kind, considerate and helpful person. We had everything we needed and couldn't have asked for anything better.",
         },
         {
-          name: "Family Wojciech",
+          name: "Family Szwed",
           rating: 10,
           flag: "pl",
           text: "It was a pleasure to visit this place. Clean, quiet and very comfortable apartament helped my family to get rest for another busy year. I definately reccomend it as a nice place to spend wonderful holiday.",
