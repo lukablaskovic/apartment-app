@@ -1,7 +1,7 @@
 <template>
   <main id="welcome" class="bg-grey-lighten-2" lang="en" role="main">
     <!-- Hero Section -->
-    <section class="hero-image-container" aria-label="Hero section">
+    <section id="home" class="hero-image-container" aria-label="Hero section">
       <LazyImage
         :src="mainImageSRC"
         :aspect-ratio="$vuetify.display.mobile ? 1.2 : 2.5"
@@ -62,6 +62,7 @@
 
     <!-- Apartment Description Section -->
     <section
+      id="about"
       class="modern-apartment-section"
       aria-label="Apartment description">
       <v-container
@@ -145,11 +146,10 @@
     </section>
 
     <!-- Amenities Section -->
-    <section class="amenities-section" aria-label="Amenities">
+    <section id="amenities" class="amenities-section" aria-label="Amenities">
       <v-container class="mt-4 text-center">
         <div>
           <div
-            id="amenities"
             class="text-h3 text-center mb-4 font-weight-bold text-blue-grey-darken-4">
             Amenities
           </div>
@@ -181,11 +181,10 @@
     </section>
 
     <!-- Gallery Section -->
-    <section class="gallery-section" aria-label="Photo gallery">
+    <section id="gallery" class="gallery-section" aria-label="Photo gallery">
       <v-container class="mt-4 text-center">
         <div>
           <div
-            id="gallery"
             class="text-h3 text-center mb-4 font-weight-bold text-blue-grey-darken-4">
             Gallery
           </div>
@@ -195,10 +194,9 @@
     </section>
 
     <!-- Information Section -->
-    <section class="useful-info-section" aria-label="Useful information">
+    <section id="info" class="useful-info-section" aria-label="Useful information">
       <v-container class="mt-4 text-center">
         <div
-          id="info"
           class="text-h3 mb-6 font-weight-bold text-blue-grey-darken-4">
           Useful information
         </div>
@@ -382,11 +380,10 @@
     </v-container>
 
     <!-- Contact Section -->
-    <section class="contact-section" aria-label="Contact information">
+    <section id="contact" class="contact-section" aria-label="Contact information">
       <v-container class="mt-2 text-center">
         <div>
           <div
-            id="contact"
             class="text-h3 text-center mb-4 font-weight-bold text-blue-grey-darken-4">
             Contact Info
           </div>
@@ -501,7 +498,7 @@
 
               <!-- Column 2: Calendar -->
               <v-col cols="12" md="4">
-                <div class="calendar-section">
+                <div id="calendar" class="calendar-section">
                   <v-card class="mx-auto" max-width="400">
                     <v-card-title class="text-center">
                       <v-icon start icon="mdi-calendar" class="mr-2"></v-icon>
@@ -529,11 +526,10 @@
     </section>
 
     <!-- Reviews Section -->
-    <section class="reviews-section" aria-label="Guest reviews">
+    <section id="reviews" class="reviews-section" aria-label="Guest reviews">
       <v-container class="mt-2 text-center">
         <div>
           <div
-            id="reviews"
             class="text-h3 text-center mb-4 font-weight-bold text-blue-grey-darken-4">
             Guest reviews
           </div>
@@ -1140,6 +1136,12 @@ export default {
 section {
   max-width: 100vw;
   overflow-x: hidden;
+}
+
+/* Scroll margin for hash navigation (accounts for fixed header) */
+section[id],
+#calendar {
+  scroll-margin-top: 56px;
 }
 
 .v-container {

@@ -154,12 +154,18 @@ export default {
     },
 
     preventAutoScroll() {
-      // Clear any hash from URL on page load to prevent auto-scrolling
+      // If there's a hash in the URL, scroll to that section instead of clearing it
       if (window.location.hash) {
-        history.replaceState(null, null, window.location.pathname);
+        const targetId = window.location.hash.substring(1);
+        this.$nextTick(() => {
+          setTimeout(() => {
+            this.scroll(targetId);
+          }, 100);
+        });
+        return;
       }
 
-      // Ensure we start at the top for new visits or refreshes
+      // Ensure we start at the top for new visits or refreshes (only when no hash)
       if (document.readyState === "complete") {
         window.scrollTo(0, 0);
       } else {
