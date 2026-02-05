@@ -194,10 +194,12 @@
     </section>
 
     <!-- Information Section -->
-    <section id="info" class="useful-info-section" aria-label="Useful information">
+    <section
+      id="info"
+      class="useful-info-section"
+      aria-label="Useful information">
       <v-container class="mt-4 text-center">
-        <div
-          class="text-h3 mb-6 font-weight-bold text-blue-grey-darken-4">
+        <div class="text-h3 mb-6 font-weight-bold text-blue-grey-darken-4">
           Useful information
         </div>
       </v-container>
@@ -380,7 +382,10 @@
     </v-container>
 
     <!-- Contact Section -->
-    <section id="contact" class="contact-section" aria-label="Contact information">
+    <section
+      id="contact"
+      class="contact-section"
+      aria-label="Contact information">
       <v-container class="mt-2 text-center">
         <div>
           <div
@@ -506,7 +511,7 @@
                     </v-card-title>
                     <v-card-subtitle class="text-center text-caption">
                       Last updated:
-                      <span class="font-weight-medium">January 2, 2026</span>
+                      <span class="font-weight-medium">February 5, 2026</span>
                     </v-card-subtitle>
                     <v-card-text>
                       <CustomCalendar
@@ -716,14 +721,6 @@ export default {
         "2026-08-12",
         "2026-08-13",
         "2026-08-14",
-        "2026-08-15",
-        "2026-08-16",
-        "2026-08-17",
-        "2026-08-18",
-        "2026-08-19",
-        "2026-08-20",
-        "2026-08-21",
-        "2026-08-22",
         "2026-08-23",
         "2026-08-24",
         "2026-08-25",
@@ -750,7 +747,6 @@ export default {
         "2026-09-15",
         "2026-09-16",
         "2026-09-17",
-        "2026-09-18",
       ],
       amenities: [
         { name: "Fast Wi-Fi", icon: "mdi-wifi" },
