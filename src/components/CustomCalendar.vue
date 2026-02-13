@@ -5,6 +5,7 @@
         icon
         @click="previousMonth"
         :disabled="isFirstMonth"
+        class="cursor-pointer"
         color="amber-lighten-3">
         <v-icon>mdi-chevron-left</v-icon>
       </v-btn>
@@ -13,6 +14,7 @@
         icon
         @click="nextMonth"
         :disabled="isLastMonth"
+        class="cursor-pointer"
         color="amber-lighten-3">
         <v-icon>mdi-chevron-right</v-icon>
       </v-btn>
@@ -29,6 +31,7 @@
         v-for="day in calendarDays"
         :key="day.date"
         class="calendar-day"
+        @click="onDayClick(day.date)"
         :class="{
           'other-month': !day.isCurrentMonth,
           'out-of-scope': isOutOfScope(day.date),
@@ -48,6 +51,8 @@
             day.isCurrentMonth &&
             !isDateDisabled(day.date) &&
             !isOutOfScope(day.date),
+          'day-clickable': isDayClickable(day.date),
+          'cursor-pointer': isDayClickable(day.date),
         }"
         :title="formatFullDate(day.date)">
         {{ day.dayNumber }}
@@ -70,6 +75,7 @@
 <script>
 export default {
   name: "CustomCalendar",
+  emits: ["update:modelValue", "toggle-day"],
   props: {
     modelValue: {
       type: String,
@@ -86,6 +92,14 @@ export default {
     disabledDates: {
       type: Array,
       default: () => [],
+    },
+    editable: {
+      type: Boolean,
+      default: false,
+    },
+    canEdit: {
+      type: Boolean,
+      default: false,
     },
   },
   data() {
@@ -193,6 +207,20 @@ export default {
       const maxDate = new Date(this.maxDate);
       return selectedDate < minDate || selectedDate > maxDate;
     },
+    isDayClickable(date) {
+      return this.editable && this.canEdit && !this.isOutOfScope(date);
+    },
+    onDayClick(date) {
+      if (this.isOutOfScope(date)) {
+        return;
+      }
+
+      this.$emit("update:modelValue", date);
+
+      if (this.isDayClickable(date)) {
+        this.$emit("toggle-day", date);
+      }
+    },
 
     previousMonth() {
       if (!this.isFirstMonth) {
@@ -259,7 +287,7 @@ export default {
   display: flex;
   align-items: center;
   justify-content: center;
-  cursor: pointer;
+  cursor: default;
   border-radius: 8px;
   font-size: 0.9rem;
   font-weight: 500;
@@ -297,7 +325,7 @@ export default {
   border-color: #4caf50;
 }
 
-.calendar-day.available:hover {
+.calendar-day.day-clickable.available:hover {
   background-color: #c8e6c9;
   border-color: #4caf50;
 }
@@ -305,9 +333,16 @@ export default {
 .calendar-day.disabled {
   color: #d32f2f;
   background-color: #ffebee;
-  cursor: not-allowed;
   text-decoration: line-through;
   opacity: 0.8;
+}
+
+.calendar-day.day-clickable:hover {
+  transform: scale(1.04);
+}
+
+.cursor-pointer {
+  cursor: pointer !important;
 }
 
 .calendar-legend {

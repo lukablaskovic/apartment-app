@@ -11,7 +11,13 @@ import { createHead } from "@vueuse/head";
 const router = createRouter({
   history: createWebHistory(),
   routes: [
-    { path: "/", name: "Home", component: HomePage },
+    { path: "/", name: "Home", component: HomePage, props: { adminMode: false } },
+    {
+      path: "/admin",
+      name: "Admin",
+      component: HomePage,
+      props: { adminMode: true },
+    },
     { path: "/:pathMatch(.*)*", name: "NotFound", component: NotFound },
   ],
   scrollBehavior(to, from, savedPosition) {

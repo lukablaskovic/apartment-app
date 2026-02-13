@@ -511,15 +511,89 @@
                     </v-card-title>
                     <v-card-subtitle class="text-center text-caption">
                       Last updated:
-                      <span class="font-weight-medium">February 5, 2026</span>
+                      <span class="font-weight-medium">{{
+                        formattedLastUpdated
+                      }}</span>
                     </v-card-subtitle>
-                    <v-card-text>
+                    <v-card-text v-if="adminMode" class="pt-0">
+                      <div class="admin-auth-panel">
+                        <p class="admin-auth-title">Admin Controls</p>
+                        <p class="admin-auth-message">
+                          Manage availability on this page via
+                          <strong>/admin</strong>.
+                        </p>
+
+                        <template v-if="!isFirebaseEnabled">
+                          <p class="admin-auth-error">
+                            Firebase config is missing. Fill credentials in
+                            <code>.env</code> using <code>env.template</code>.
+                          </p>
+                        </template>
+
+                        <template v-else>
+                          <p class="admin-auth-message" v-if="!isAuthenticated">
+                            Sign in with Google to open/close days by clicking
+                            the calendar. Only
+                            <strong>{{ allowedAdminEmail }}</strong> is allowed.
+                          </p>
+                          <p class="admin-auth-message" v-else>
+                            Signed in as
+                            <strong>{{ currentUserEmail }}</strong
+                            >.
+                          </p>
+
+                          <div class="admin-auth-actions">
+                            <v-btn
+                              v-if="!isAuthenticated"
+                              color="amber-darken-1"
+                              prepend-icon="mdi-google"
+                              class="cursor-pointer"
+                              :loading="authActionInProgress"
+                              @click="signInAdmin">
+                              Sign in with Google
+                            </v-btn>
+                            <v-btn
+                              v-else
+                              variant="outlined"
+                              color="grey-darken-2"
+                              prepend-icon="mdi-logout"
+                              class="cursor-pointer"
+                              :loading="authActionInProgress"
+                              @click="signOutAdmin">
+                              Sign out
+                            </v-btn>
+                          </div>
+
+                          <p
+                            v-if="canEditCalendar"
+                            class="admin-auth-message admin-edit-tip">
+                            Click any in-range day to toggle open/closed.
+                          </p>
+                        </template>
+
+                        <p v-if="authErrorMessage" class="admin-auth-error">
+                          {{ authErrorMessage }}
+                        </p>
+                        <p v-if="calendarErrorMessage" class="admin-auth-error">
+                          {{ calendarErrorMessage }}
+                        </p>
+                      </div>
+                    </v-card-text>
+                    <v-card-text :class="{ 'pt-0': adminMode }">
                       <CustomCalendar
                         v-model="selectedDate"
                         :min-date="minDate"
                         :max-date="maxDate"
                         :disabled-dates="disabledDates"
+                        :editable="adminMode"
+                        :can-edit="canEditCalendar"
+                        @toggle-day="toggleDayAvailability"
                         class="mx-auto" />
+                      <p
+                        v-if="calendarSaveInProgress && canEditCalendar"
+                        class="admin-auth-message mt-3 mb-0 text-center">
+                        Saving changes...
+                      </p>
                     </v-card-text>
                   </v-card>
                 </div>
@@ -635,8 +709,22 @@ import airbnbLogo from "@/assets/airbnb.png";
 import CountryFlag from "vue-country-flag-next";
 import gardenImage from "@/assets/garden.png";
 import { usePageSEO } from "@/composables/useSEO";
+import {
+  isFirebaseConfigured,
+  saveCalendarAvailability,
+  signInWithGoogle,
+  signOutUser,
+  watchAuthState,
+  watchCalendarAvailability,
+} from "@/services/firebase";
 
 export default {
+  props: {
+    adminMode: {
+      type: Boolean,
+      default: false,
+    },
+  },
   components: {
     infoTabs,
     gallery,
@@ -655,6 +743,28 @@ export default {
       url: "https://apartment-luka.eu/",
     });
   },
+  computed: {
+    formattedLastUpdated() {
+      const parsedDate = this.parseCalendarDate(this.lastUpdatedAt);
+      if (!parsedDate) {
+        return "Not available";
+      }
+
+      return parsedDate.toLocaleDateString("en-US", {
+        month: "long",
+        day: "numeric",
+        year: "numeric",
+      });
+    },
+    currentUserEmail() {
+      return this.currentUser?.email || "Unknown";
+    },
+    canEditCalendar() {
+      return (
+        this.adminMode && this.isFirebaseEnabled && this.isAuthenticated
+      );
+    },
+  },
   data() {
     return {
       rating: 9.8,
@@ -667,6 +777,17 @@ export default {
       selectedDate: null,
       minDate: "2026-06-01",
       maxDate: "2026-10-01",
+      lastUpdatedAt: "2026-02-05T00:00:00.000Z",
+      allowedAdminEmail: "lukablaskovic2000@gmail.com",
+      isFirebaseEnabled: isFirebaseConfigured,
+      isAuthenticated: false,
+      currentUser: null,
+      authActionInProgress: false,
+      calendarSaveInProgress: false,
+      authErrorMessage: "",
+      calendarErrorMessage: "",
+      authUnsubscribe: null,
+      calendarUnsubscribe: null,
       disabledDates: [
         "2026-06-07",
         "2026-06-08",
@@ -944,6 +1065,160 @@ export default {
       window.open("https://www.airbnb.com/h/apartment-luka", "_blank");
     },
 
+    parseCalendarDate(value) {
+      if (!value) {
+        return null;
+      }
+
+      if (typeof value.toDate === "function") {
+        return value.toDate();
+      }
+
+      if (value instanceof Date) {
+        return value;
+      }
+
+      const parsed = new Date(value);
+      if (Number.isNaN(parsed.getTime())) {
+        return null;
+      }
+
+      return parsed;
+    },
+
+    sortDisabledDates(dates) {
+      return [...new Set(dates)].sort((a, b) => {
+        return new Date(a).getTime() - new Date(b).getTime();
+      });
+    },
+    isAllowedAdminEmail(email) {
+      return (email || "").toLowerCase() === this.allowedAdminEmail;
+    },
+    rejectUnauthorizedUser(email) {
+      this.currentUser = null;
+      this.isAuthenticated = false;
+      this.authErrorMessage = `Access denied for ${email || "this account"}. Only ${this.allowedAdminEmail} is allowed.`;
+      signOutUser().catch((error) => {
+        console.error("Failed to sign out unauthorized user:", error);
+      });
+    },
+
+    applyCalendarData(calendarData) {
+      if (!calendarData) {
+        return;
+      }
+
+      if (Array.isArray(calendarData.disabledDates)) {
+        this.disabledDates = this.sortDisabledDates(calendarData.disabledDates);
+      }
+
+      const parsedLastUpdated = this.parseCalendarDate(calendarData.lastUpdated);
+      if (parsedLastUpdated) {
+        this.lastUpdatedAt = parsedLastUpdated.toISOString();
+      }
+    },
+
+    startCalendarSubscriptions() {
+      if (!this.isFirebaseEnabled) {
+        return;
+      }
+
+      this.authUnsubscribe = watchAuthState((user) => {
+        if (user && !this.isAllowedAdminEmail(user.email)) {
+          this.rejectUnauthorizedUser(user.email);
+          return;
+        }
+
+        this.currentUser = user;
+        this.isAuthenticated = Boolean(user);
+        this.authErrorMessage = "";
+      });
+
+      this.calendarUnsubscribe = watchCalendarAvailability(
+        (calendarData) => {
+          this.applyCalendarData(calendarData);
+        },
+        (error) => {
+          console.error("Failed to load calendar availability:", error);
+          this.calendarErrorMessage =
+            "Could not load calendar changes from Firebase.";
+        }
+      );
+    },
+
+    async signInAdmin() {
+      if (!this.isFirebaseEnabled || this.authActionInProgress) {
+        return;
+      }
+
+      this.authActionInProgress = true;
+      this.authErrorMessage = "";
+
+      try {
+        const authResult = await signInWithGoogle();
+        const email = authResult?.user?.email;
+
+        if (!this.isAllowedAdminEmail(email)) {
+          this.rejectUnauthorizedUser(email);
+          return;
+        }
+      } catch (error) {
+        console.error("Google sign-in failed:", error);
+        this.authErrorMessage =
+          "Google sign-in failed. Please try again.";
+      } finally {
+        this.authActionInProgress = false;
+      }
+    },
+
+    async signOutAdmin() {
+      if (!this.isFirebaseEnabled || this.authActionInProgress) {
+        return;
+      }
+
+      this.authActionInProgress = true;
+      this.authErrorMessage = "";
+
+      try {
+        await signOutUser();
+      } catch (error) {
+        console.error("Sign-out failed:", error);
+        this.authErrorMessage = "Sign-out failed. Please try again.";
+      } finally {
+        this.authActionInProgress = false;
+      }
+    },
+
+    async toggleDayAvailability(date) {
+      if (!this.canEditCalendar || this.calendarSaveInProgress) {
+        return;
+      }
+
+      const previousDates = [...this.disabledDates];
+      const updatedDates = this.disabledDates.includes(date)
+        ? this.disabledDates.filter((disabledDate) => disabledDate !== date)
+        : [...this.disabledDates, date];
+
+      this.disabledDates = this.sortDisabledDates(updatedDates);
+      this.lastUpdatedAt = new Date().toISOString();
+      this.calendarErrorMessage = "";
+      this.calendarSaveInProgress = true;
+
+      try {
+        await saveCalendarAvailability({
+          disabledDates: this.disabledDates,
+          updatedBy: this.currentUser?.email,
+        });
+      } catch (error) {
+        console.error("Failed to save calendar availability:", error);
+        this.disabledDates = previousDates;
+        this.calendarErrorMessage =
+          "Could not save changes. Check Firebase permissions and try again.";
+      } finally {
+        this.calendarSaveInProgress = false;
+      }
+    },
+
     // SEO Structured Data Methods
     addStructuredData() {
       const structuredData = {
@@ -1110,6 +1385,17 @@ export default {
     this.addStructuredData();
     this.addBreadcrumbData();
     this.addFAQData();
+    this.startCalendarSubscriptions();
+  },
+
+  beforeUnmount() {
+    if (typeof this.authUnsubscribe === "function") {
+      this.authUnsubscribe();
+    }
+
+    if (typeof this.calendarUnsubscribe === "function") {
+      this.calendarUnsubscribe();
+    }
   },
 };
 </script>
@@ -1872,6 +2158,44 @@ section[id],
   margin: 0 auto;
   padding: 1rem 0;
   width: 100%;
+}
+
+.admin-auth-panel {
+  border: 1px solid #eceff1;
+  border-radius: 10px;
+  padding: 0.9rem;
+  background: #fafafa;
+}
+
+.admin-auth-title {
+  font-weight: 700;
+  margin: 0 0 0.35rem;
+  color: #37474f;
+}
+
+.admin-auth-message {
+  margin: 0;
+  color: #546e7a;
+  font-size: 0.85rem;
+}
+
+.admin-auth-actions {
+  margin-top: 0.75rem;
+  margin-bottom: 0.5rem;
+}
+
+.admin-auth-error {
+  margin: 0.4rem 0 0;
+  color: #b71c1c;
+  font-size: 0.8rem;
+}
+
+.admin-edit-tip {
+  color: #37474f;
+}
+
+.cursor-pointer {
+  cursor: pointer !important;
 }
 
 /* Contact Cards Section Styles */
